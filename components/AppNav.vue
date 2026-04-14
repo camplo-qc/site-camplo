@@ -4,9 +4,8 @@
 <template>
   <nav aria-label="Navigation principale" class="nav">
     <div class="wrap nav-inner">
-      <a href="#" class="logo-mark" aria-label="Camplo — accueil">
-        <CamploMark />
-        <span>Camplo</span>
+      <a href="#" class="wordmark-link" aria-label="Camplo — accueil">
+        <img src="/camplo-wordmark.png" alt="Camplo" class="wordmark-img">
       </a>
       <div class="nav-links">
         <a href="#approche">Approche</a>
@@ -32,23 +31,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 0;
+  padding: 14px 0;
 }
-.logo-mark {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 20px;
-  color: var(--color-fern);
+.wordmark-link {
+  display: block;
   text-decoration: none;
-  letter-spacing: -.01em;
+  line-height: 0;
 }
-.logo-mark :deep(svg) {
-  width: 28px;
-  height: 28px;
+.wordmark-img {
+  height: 40px;
+  width: auto;
+  display: block;
 }
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -74,8 +69,10 @@
 
 @media (max-width: 900px) {
   .nav-links { gap: 14px; font-size: 13px; }
+  .wordmark-img { height: 34px; }
 }
 @media (max-width: 600px) {
   .nav-links a:not(.cta-ghost) { display: none; }
+  .wordmark-img { height: 30px; }
 }
 </style>

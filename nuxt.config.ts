@@ -45,7 +45,7 @@ export default defineNuxtConfig({
 
   fonts: {
     families: [
-      { name: 'Cabinet Grotesk', provider: 'fontshare', weights: [500, 700, 800] },
+      { name: 'Sentient', provider: 'fontshare', weights: [500, 700, 800] },
       { name: 'Satoshi', provider: 'fontshare', weights: [500, 700] },
       { name: 'General Sans', provider: 'fontshare', weights: [500, 600] },
     ],

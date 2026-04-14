@@ -4,13 +4,13 @@
 <template>
   <div class="mock-site">
     <div class="mock-nav">
-      <span>Camping Lajoie</span>
+      <span>Votre camping</span>
       <span class="reserve">Réserver</span>
     </div>
     <div class="mock-hero">
-      <div class="mock-h1">Au bord du lac,<br>depuis 1987.</div>
+      <div class="mock-h1">Votre nom.<br>Votre histoire.</div>
       <div class="mock-sub">
-        40 emplacements · 3 chalets · Accès direct au lac.
+        Construit pour votre camping spécifiquement. Jamais un template partagé.
       </div>
       <div class="mock-cta">Vérifier les dispos</div>
     </div>

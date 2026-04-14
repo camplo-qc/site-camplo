@@ -19,31 +19,15 @@
       </g>
     </svg>
     <div class="wrap proof-inner">
-      <div class="eyebrow">Preuve vivante</div>
+      <div class="eyebrow">Ils utilisent Camplo</div>
       <h2 id="proof-title" class="proof-heading">
-        Camping Lajoie gère son été entier sur Camplo.
+        Déjà en production chez un camping québécois.
       </h2>
       <div class="quote" data-placeholder>
-        Citation à obtenir — ce que la propriétaire dit à ses amies sur Camplo,
-        mot pour mot.
+        Citation à obtenir — ce qu'une cliente dit à ses amies sur Camplo, mot
+        pour mot.
       </div>
-      <div class="attr">
-        — Propriétaire, Camping Lajoie · Cliente Camplo depuis 2026
-      </div>
-      <div class="proof-stats">
-        <div class="proof-stat">
-          <div class="n" data-placeholder>—</div>
-          <div class="l">Réservations traitées en 2025</div>
-        </div>
-        <div class="proof-stat">
-          <div class="n" data-placeholder>—</div>
-          <div class="l">Heures économisées par semaine</div>
-        </div>
-        <div class="proof-stat">
-          <div class="n">100%</div>
-          <div class="l">Du business, sur notre système</div>
-        </div>
-      </div>
+      <div class="attr">— Propriétaire de camping, Québec · Cliente Camplo</div>
     </div>
   </section>
 </template>

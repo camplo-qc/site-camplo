@@ -7,7 +7,7 @@
       <span class="mock-crm-dot r" />
       <span class="mock-crm-dot y" />
       <span class="mock-crm-dot g" />
-      <span class="mock-crm-title">Camplo · Camping Lajoie</span>
+      <span class="mock-crm-title">Camplo · Votre camping</span>
     </div>
     <div class="mock-crm-body">
       <div class="mock-crm-side">

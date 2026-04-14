@@ -40,12 +40,16 @@
       </div>
       <div class="hero-meta reveal">
         <div class="hero-meta-item">
-          <div class="label">En prod</div>
-          <div class="value">Camping Lajoie</div>
+          <div class="label">Approche</div>
+          <div class="value">Agence, pas SaaS anonyme</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="label">Architecture</div>
+          <div class="value">Local-first, vos données vous appartiennent</div>
         </div>
         <div class="hero-meta-item">
           <div class="label">Langue</div>
-          <div class="value">Français</div>
+          <div class="value">Français, sans excuse</div>
         </div>
       </div>
     </div>
@@ -97,15 +101,15 @@
 .hero-meta {
   margin-top: clamp(56px, 7vw, 80px);
   display: flex;
-  gap: clamp(32px, 5vw, 64px);
+  gap: clamp(28px, 4vw, 48px);
   flex-wrap: wrap;
   padding-top: 24px;
   border-top: 1px solid var(--rule);
-  max-width: 640px;
+  max-width: 820px;
 }
 .hero-meta-item {
   flex: 1;
-  min-width: 140px;
+  min-width: 180px;
 }
 .hero-meta-item .label {
   font-family: var(--font-label);

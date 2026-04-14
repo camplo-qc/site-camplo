@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<title>Camplo · Brand sheet</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=sentient@800,700,500&f[]=satoshi@700,500&f[]=general-sans@600,500&display=swap">
+
+<style>
+:root {
+  --fern: #3E6B31;
+  --fern-deep: #2A4A22;
+  --marmalade: #E8853B;
+  --marmalade-bright: #F09A58;
+  --paper: #F6F0E0;
+  --paper-warm: #EEE4CC;
+  --ink: #1C1C1A;
+  --ink-soft: rgba(28,28,26,.68);
+  --ink-muted: rgba(28,28,26,.48);
+  --rule: rgba(28,28,26,.14);
+  --rule-light: rgba(28,28,26,.07);
+  --font-display: 'Sentient', Georgia, serif;
+  --font-body: 'Satoshi', -apple-system, system-ui, sans-serif;
+  --font-label: 'General Sans', -apple-system, system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-weight: 500; font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 64px); }
+
+.eyebrow { font-family: var(--font-label); font-weight: 600; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--fern); }
+.display { font-family: var(--font-display); font-weight: 700; letter-spacing: -.02em; line-height: 1; color: var(--ink); }
+
+/* ───── hero ───── */
+.hero {
+  padding: clamp(60px, 10vw, 120px) 0 clamp(40px, 6vw, 80px);
+  border-bottom: 1px solid var(--rule);
+}
+.hero-logo { display: block; width: clamp(320px, 40vw, 520px); margin-bottom: 48px; }
+.hero h1 { font-size: clamp(40px, 5vw, 72px); font-weight: 700; margin-top: 16px; }
+.hero h1 em { font-style: italic; color: var(--fern); }
+.hero .meta { margin-top: 28px; display: flex; gap: 32px; flex-wrap: wrap; font-family: var(--font-label); font-size: 12px; color: var(--ink-soft); }
+.hero .meta strong { color: var(--ink); font-weight: 600; }
+
+/* ───── section ───── */
+section { padding: clamp(60px, 10vw, 120px) 0; border-bottom: 1px solid var(--rule); }
+section h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 4vw, 52px); letter-spacing: -.02em; line-height: 1.05; margin-top: 14px; }
+section > .wrap > p.intro { margin-top: 20px; max-width: 62ch; font-size: 17px; color: var(--ink-soft); line-height: 1.6; }
+
+/* ───── logos grid ───── */
+.logo-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (max-width: 780px) { .logo-grid { grid-template-columns: 1fr; } }
+.logo-card { background: var(--paper-warm); padding: 48px; display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 16/10; border: 1px solid var(--rule-light); }
+.logo-card.on-fern { background: var(--fern); }
+.logo-card.on-ink { background: var(--ink); }
+.logo-card img { max-width: 72%; max-height: 72%; display: block; }
+.logo-card .caption { margin-top: 24px; font-family: var(--font-label); font-weight: 600; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-muted); align-self: flex-start; position: absolute; top: 20px; left: 20px; }
+.logo-card { position: relative; }
+.logo-card.on-fern .caption, .logo-card.on-ink .caption { color: rgba(246, 240, 224, 0.6); }
+
+/* ───── color palette ───── */
+.palette { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 900px) { .palette { grid-template-columns: repeat(2, 1fr); } }
+.swatch { aspect-ratio: 1; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; border: 1px solid var(--rule-light); }
+.swatch.sw-fern { background: var(--fern); color: var(--paper); }
+.swatch.sw-fern-deep { background: var(--fern-deep); color: var(--paper); }
+.swatch.sw-marmalade { background: var(--marmalade); color: var(--paper); }
+.swatch.sw-paper { background: var(--paper); color: var(--ink); }
+.swatch.sw-paper-warm { background: var(--paper-warm); color: var(--ink); }
+.swatch.sw-ink { background: var(--ink); color: var(--paper); }
+.swatch .sw-name { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -.01em; }
+.swatch .sw-hex { font-family: var(--font-label); font-weight: 600; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+.swatch .sw-role { font-family: var(--font-body); font-weight: 500; font-size: 12px; opacity: .75; }
+
+/* ───── typography ───── */
+.type-spec { margin-top: 56px; display: flex; flex-direction: column; gap: 48px; }
+.type-row { padding: 40px 32px; background: var(--paper-warm); border: 1px solid var(--rule-light); display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: start; }
+@media (max-width: 780px) { .type-row { grid-template-columns: 1fr; } }
+.type-meta { font-family: var(--font-label); font-weight: 500; font-size: 13px; color: var(--ink-soft); }
+.type-meta strong { display: block; font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--ink); letter-spacing: -.01em; margin-bottom: 6px; }
+.type-meta em { font-style: normal; display: block; font-family: var(--font-label); font-weight: 600; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--fern); margin-top: 12px; }
+.type-sample.display { font-family: var(--font-display); font-weight: 700; font-size: clamp(40px, 5vw, 64px); letter-spacing: -.02em; line-height: 1.05; color: var(--ink); }
+.type-sample.display em { font-style: italic; color: var(--fern); }
+.type-sample.body { font-family: var(--font-body); font-weight: 500; font-size: 18px; line-height: 1.6; color: var(--ink-soft); max-width: 58ch; }
+.type-sample.body strong { color: var(--ink); font-weight: 700; }
+.type-sample.label { font-family: var(--font-label); font-weight: 600; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--fern); }
+
+/* ───── rules grid ───── */
+.rules { margin-top: 56px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+@media (max-width: 780px) { .rules { grid-template-columns: 1fr; } }
+.rule-card { padding: 32px; border: 1px solid var(--rule-light); background: var(--paper-warm); display: flex; flex-direction: column; gap: 12px; }
+.rule-card.do { border-left: 3px solid var(--fern); }
+.rule-card.dont { border-left: 3px solid var(--marmalade); }
+.rule-card .label { font-family: var(--font-label); font-weight: 600; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+.rule-card.do .label { color: var(--fern); }
+.rule-card.dont .label { color: var(--marmalade); }
+.rule-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -.01em; line-height: 1.2; }
+.rule-card p { font-size: 15px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ───── footer ───── */
+footer { padding: 48px 0 40px; font-family: var(--font-label); font-weight: 500; font-size: 12px; color: var(--ink-muted); }
+footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
+
+.section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+.section-head .num { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 18px; color: var(--marmalade); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <img class="hero-logo" src="camplo-wordmark-below-2048.png" alt="Camplo">
+    <div class="eyebrow">Identité de marque · Version 2 · 2026-04-14</div>
+    <h1 class="display">Camplo, c'est <em>deux</em> choses<br>et un système pour les porter.</h1>
+    <div class="meta">
+      <span><strong>Brand · 2026</strong></span>
+      <span>Pin + tente</span>
+      <span>Squared edges</span>
+      <span>Sentient 700</span>
+      <span>Fern · Marmalade · Paper</span>
+    </div>
+  </div>
+</header>
+
+<!-- 01 LOGOS -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">01 · Logos</div>
+        <h2>La marque vit en <em style="font-style:italic;color:var(--fern)">trois</em> formes.</h2>
+      </div>
+      <div class="num">I</div>
+    </div>
+    <p class="intro">Le logomark seul pour les favicons, pfp, petites surfaces. Le wordmark "nom dessous" pour signature, carte d'affaires, mockups. Le wordmark intégré (le pin+tente remplace le "a") pour en-têtes, papeterie, usage principal.</p>
+
+    <div class="logo-grid">
+      <div class="logo-card">
+        <div class="caption">Logomark · Sur paper</div>
+        <img src="camplo-mark-2048-transparent.png" alt="Camplo mark">
+      </div>
+      <div class="logo-card on-fern">
+        <div class="caption">Logomark · Sur fern</div>
+        <img src="camplo-mark-2048-transparent.png" alt="Camplo mark sur fern">
+      </div>
+      <div class="logo-card">
+        <div class="caption">Wordmark below · Principal pour pfp</div>
+        <img src="camplo-wordmark-below-2048.png" alt="Camplo wordmark below">
+      </div>
+      <div class="logo-card">
+        <div class="caption">Wordmark integrated · En-tête de site</div>
+        <img src="camplo-wordmark-integrated-2048.png" alt="Camplo wordmark integrated">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 COULEURS -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">02 · Palette</div>
+        <h2><em style="font-style:italic;color:var(--fern)">Deux</em> couleurs de marque, trois supports.</h2>
+      </div>
+      <div class="num">II</div>
+    </div>
+    <p class="intro">Fern (vert forêt) et marmalade (orange brûlé) portent la marque. Paper (crème) est le support dominant. Fern-deep et ink pour les sections sombres et le texte. Pas de troisième couleur de marque.</p>
+
+    <div class="palette">
+      <div class="swatch sw-fern">
+        <div><div class="sw-hex">#3E6B31</div><div class="sw-role">Primaire / pin</div></div>
+        <div class="sw-name">Fern</div>
+      </div>
+      <div class="swatch sw-marmalade">
+        <div><div class="sw-hex">#E8853B</div><div class="sw-role">Accent / tente / CTA</div></div>
+        <div class="sw-name">Marmalade</div>
+      </div>
+      <div class="swatch sw-paper">
+        <div><div class="sw-hex">#F6F0E0</div><div class="sw-role">Fond dominant</div></div>
+        <div class="sw-name">Paper</div>
+      </div>
+      <div class="swatch sw-ink">
+        <div><div class="sw-hex">#1C1C1A</div><div class="sw-role">Texte / ink</div></div>
+        <div class="sw-name">Ink</div>
+      </div>
+      <div class="swatch sw-fern-deep">
+        <div><div class="sw-hex">#2A4A22</div><div class="sw-role">Sections sombres</div></div>
+        <div class="sw-name">Fern-deep</div>
+      </div>
+      <div class="swatch sw-paper-warm">
+        <div><div class="sw-hex">#EEE4CC</div><div class="sw-role">Variantes paper</div></div>
+        <div class="sw-name">Paper-warm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 TYPO -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">03 · Typographie</div>
+        <h2>Trois familles, trois rôles, <em style="font-style:italic;color:var(--fern)">zéro</em> ambiguïté.</h2>
+      </div>
+      <div class="num">III</div>
+    </div>
+    <p class="intro">Sentient est la typo display — serif aux terminaisons squared qui matchent les coins du logo. Satoshi porte le corps de texte. General Sans marque les labels et les eyebrows.</p>
+
+    <div class="type-spec">
+      <div class="type-row">
+        <div class="type-meta">
+          <strong>Sentient</strong>
+          700 &middot; Serif transitionnel<br>Fontshare
+          <em>Display · Titres · Citations</em>
+        </div>
+        <div class="type-sample display">
+          Un camping. Une famille.<br>Un logiciel qui <em>date</em> de 2008.
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <strong>Satoshi</strong>
+          500 &middot; 700 &middot; Sans-serif<br>Fontshare
+          <em>Body · UI · paragraphes</em>
+        </div>
+        <div class="type-sample body">
+          Camplo conçoit des sites de réservation et un logiciel de gestion pour les campings indépendants du Québec. <strong>Modernes. Fiables. Québécois.</strong> On connaît le vocabulaire, on sait la différence entre un terrain saisonnier et un emplacement de passage.
+        </div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta">
+          <strong>General Sans</strong>
+          600 &middot; Sans-serif neutre<br>Fontshare
+          <em>Labels · Eyebrows · nav</em>
+        </div>
+        <div class="type-sample label">
+          Agence québécoise · Campings indépendants · 2026
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 RÈGLES -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">04 · Règles</div>
+        <h2>Ce qu'on fait, <em style="font-style:italic;color:var(--fern)">et ce qu'on ne fait pas</em>.</h2>
+      </div>
+      <div class="num">IV</div>
+    </div>
+    <p class="intro">Quelques garde-fous pour garder la marque cohérente. La marque vit dans des supports imprimés et numériques, mobiles et desktop. Ces règles évitent les dérives.</p>
+
+    <div class="rules">
+      <div class="rule-card do">
+        <span class="label">Do · 01</span>
+        <h3>Utiliser paper comme fond dominant</h3>
+        <p>Le cream #F6F0E0 porte la marque. Les sections sombres fern-deep sont des moments de rupture, pas la norme.</p>
+      </div>
+      <div class="rule-card dont">
+        <span class="label">Don't · 01</span>
+        <h3>Pas de glassmorphism ni de gradients violets</h3>
+        <p>Les tropes visuels SaaS 2026 (wave fields, glass blur, violet gradient) dissolvent le positioning artisanal québécois.</p>
+      </div>
+      <div class="rule-card do">
+        <span class="label">Do · 02</span>
+        <h3>Marmalade uniquement pour l'accent</h3>
+        <p>Orange brûlé sur le bouton principal, citations, italiques. Jamais comme couleur de fond dominante.</p>
+      </div>
+      <div class="rule-card dont">
+        <span class="label">Don't · 02</span>
+        <h3>Pas de stock photos</h3>
+        <p>Photos pro réelles du client, ou text-only. Unsplash people/laptops/forêts sont interdits.</p>
+      </div>
+      <div class="rule-card do">
+        <span class="label">Do · 03</span>
+        <h3>Squared edges sur logo et typo</h3>
+        <p>Les terminaisons tronquées du logo (apex + chamfers) dialoguent avec les bracket serifs de Sentient. Garder ce langage partout.</p>
+      </div>
+      <div class="rule-card dont">
+        <span class="label">Don't · 03</span>
+        <h3>Pas d'arrondi sur le logo</h3>
+        <p>L'ancien logo (stroke-linejoin round, Q curves sur tente) est déprécié. Utiliser exclusivement la version squared.</p>
+      </div>
+      <div class="rule-card do">
+        <span class="label">Do · 04</span>
+        <h3>Français sans excuse</h3>
+        <p>La marque est québécoise. Tous les supports en français par défaut. Version anglaise quand on atteint 10+ clients QC.</p>
+      </div>
+      <div class="rule-card dont">
+        <span class="label">Don't · 04</span>
+        <h3>Pas de feature cards 3-colonnes génériques</h3>
+        <p>Icônes rondes centrées avec titre et paragraphe — pattern SaaS générique. La marque respire en éditorial, pas en tableau.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Camplo · Conçu au Québec · Brand sheet v2</div>
+    <div>hello@camplo.ca</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,3 +1,4 @@
+@import url("https://api.fontshare.com/v2/css?f[]=sentient@800,700,500&f[]=satoshi@700,500&f[]=general-sans@600,500&display=swap");
 @import "tailwindcss";
 
 @theme {
@@ -10,7 +11,7 @@
   --color-paper-warm: #EEE4CC;
   --color-ink: #1C1C1A;
 
-  --font-display: 'Cabinet Grotesk', Georgia, serif;
+  --font-display: 'Sentient', Georgia, serif;
   --font-body: 'Satoshi', -apple-system, system-ui, sans-serif;
   --font-label: 'General Sans', -apple-system, system-ui, sans-serif;
 }

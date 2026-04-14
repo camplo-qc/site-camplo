@@ -5,8 +5,9 @@ const cid = useId()
 
 <template>
   <svg
-    viewBox="0 0 66 66"
+    viewBox="0 -5.5 66 66"
     xmlns="http://www.w3.org/2000/svg"
+    shape-rendering="geometricPrecision"
     aria-hidden="true"
   >
     <defs>
@@ -14,22 +15,24 @@ const cid = useId()
         <path
           clip-rule="evenodd"
           fill-rule="evenodd"
-          d="M 0 0 H 66 V 66 H 0 Z M 32.37 42.93 Q 33 40 33.63 42.93 L 36 54 L 30 54 Z"
+          d="M 0 -10 H 66 V 66 H 0 Z M 32.5 40 L 33.5 40 L 36 54.5 L 30 54.5 Z"
         />
       </clipPath>
     </defs>
     <g :clip-path="`url(#door-cutout-${cid})`">
       <g transform="translate(3, 0)">
+        <!-- tree: squared edges (flat apex + chamfered shoulders + chamfered bottom corners) -->
         <path
-          d="M 28.5 3.5 L 12 20 L 20 20 L 2 42 L 58 42 L 40 20 L 48 20 L 31.5 3.5 Q 30 2 28.5 3.5 Z"
+          d="M 29.25 3 L 30.75 3 L 47.43 19.44 L 47.2 20 L 40 20 L 57.49 41.38 L 57.2 42 L 2.8 42 L 2.51 41.38 L 20 20 L 12.8 20 L 12.57 19.44 Z"
           fill="#3E6B31"
           stroke="#3E6B31"
-          stroke-width="5"
-          stroke-linejoin="round"
-          stroke-linecap="round"
+          stroke-width="3.5"
+          stroke-linejoin="miter"
+          stroke-miterlimit="4"
         />
+        <!-- tent: squared edges (flat apex + chamfered feet) -->
         <path
-          d="M 29.26 27.30 Q 30 26 30.74 27.30 L 45.01 52.26 Q 46 54 44 54 L 16 54 Q 14 54 14.99 52.26 Z"
+          d="M 29.5 27 L 30.5 27 L 45.60 53.31 L 45.2 54 L 14.8 54 L 14.40 53.31 Z"
           fill="#E8853B"
         />
       </g>
