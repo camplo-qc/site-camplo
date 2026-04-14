@@ -1,0 +1,189 @@
+---
+// Section 3 — Case study Camping de la Joie
+// Background fern-deep (rupture sombre). 2-col: paragraphes éditoriaux + stats.
+---
+
+<section class="case" aria-label="Case study Camping de la Joie">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">
+          <span class="eyebrow-num">02</span> · Notre première réalisation
+        </p>
+        <h2 class="section-title">
+          Camping de la Joie. 25 ans d'opération. 162 emplacements. Un
+          système à la hauteur.
+        </h2>
+      </div>
+      <span class="section-roman">II</span>
+    </div>
+
+    <div class="grid">
+      <div class="col-copy">
+        <p>
+          Camping familial québécois, ouvert depuis 25 ans. 162 emplacements
+          — du terrain naturel au chalet tout confort. La réservation se
+          faisait par téléphone, la gestion se tenait à la main.
+        </p>
+        <p>
+          En mars 2026, on a livré un site de réservation complet avec
+          paiement intégré, et un logiciel desktop multi-utilisateur pour
+          gérer la saison. Les clients réservent en ligne, l'équipe gère en
+          interne, les données restent locales.
+        </p>
+        <p class="cta-line">
+          <a
+            href="https://delajoiequebec.com"
+            class="cta-link"
+            target="_blank"
+            rel="noopener"
+          >
+            Voir delajoiequebec.com →
+          </a>
+        </p>
+      </div>
+
+      <dl class="stats">
+        <div class="stat">
+          <dt class="stat-num">162</dt>
+          <dd class="stat-label">emplacements gérés</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat-num">3</dt>
+          <dd class="stat-label">types d'hébergement</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat-num">Mars 2026</dt>
+          <dd class="stat-label">en production</dd>
+        </div>
+        <div class="stat">
+          <dt class="stat-num">Saison 2026</dt>
+          <dd class="stat-label">opérationnelle</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<style>
+  .case {
+    background: var(--fern-deep);
+    color: var(--paper);
+    padding: var(--section-pad-y) 0;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--marmalade);
+  }
+  .eyebrow-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    margin-right: 2px;
+  }
+
+  .section-roman {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--marmalade);
+  }
+
+  .section-title {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--paper);
+    max-width: 24ch;
+  }
+
+  .grid {
+    margin-top: clamp(48px, 6vw, 80px);
+    display: grid;
+    grid-template-columns: minmax(0, 62ch) minmax(0, 1fr);
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .col-copy {
+    display: grid;
+    gap: 20px;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--paper-soft);
+  }
+
+  .cta-line {
+    margin-top: 12px;
+  }
+
+  .cta-link {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--marmalade);
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 3px;
+    transition: color 160ms ease;
+  }
+  .cta-link:hover {
+    color: var(--marmalade-bright);
+  }
+
+  .stats {
+    display: grid;
+    gap: clamp(28px, 3vw, 40px);
+  }
+
+  .stat {
+    border-top: 1px solid var(--rule-paper);
+    padding-top: 16px;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--paper);
+  }
+
+  .stat-label {
+    margin-top: 8px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--marmalade);
+  }
+</style>
