@@ -1,0 +1,168 @@
+---
+// Section 4 — Approche
+// Background: paper. 3 principes en grille I/II/III.
+---
+
+<section class="approach" id="approche" aria-label="Approche">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">
+          <span class="eyebrow-num">03</span> · Approche
+        </p>
+        <h2 class="section-title">Trois choses qui changent tout.</h2>
+      </div>
+      <span class="section-roman">III</span>
+    </div>
+
+    <ol class="principles">
+      <li class="principle">
+        <span class="num" aria-hidden="true">I</span>
+        <div class="body">
+          <h3 class="title">
+            Sur mesure. Pour un seul camping : le vôtre.
+          </h3>
+          <p class="desc">
+            Pas une template partagée entre des milliers de sites. Votre
+            outil est conçu pour votre réalité — votre carte, vos types
+            d'emplacements, votre façon de faire.
+          </p>
+        </div>
+      </li>
+
+      <li class="principle">
+        <span class="num" aria-hidden="true">II</span>
+        <div class="body">
+          <h3 class="title">On parle camping, en français.</h3>
+          <p class="desc">
+            Terrains saisonniers, emplacements 50 ampères, sites de
+            passage, chalets 4 saisons. On sait le vocabulaire avant la
+            première réunion.
+          </p>
+        </div>
+      </li>
+
+      <li class="principle">
+        <span class="num" aria-hidden="true">III</span>
+        <div class="body">
+          <h3 class="title">Vos données restent chez vous.</h3>
+          <p class="desc">
+            Le logiciel vit sur votre ordinateur. Vos données restent au
+            Québec. Votre camping fonctionne même quand internet est
+            coupé.
+          </p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<style>
+  .approach {
+    background: var(--paper);
+    padding: var(--section-pad-y) 0;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+  }
+  .eyebrow-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    margin-right: 2px;
+  }
+
+  .section-roman {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--marmalade);
+  }
+
+  .section-title {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  .principles {
+    list-style: none;
+    margin-top: clamp(48px, 6vw, 80px);
+    display: grid;
+    gap: 0;
+  }
+
+  .principle {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 48px);
+    padding: clamp(32px, 4vw, 48px) 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .principle:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(40px, 5vw, 64px);
+    color: var(--marmalade);
+    line-height: 1;
+  }
+
+  .body {
+    max-width: 62ch;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(24px, 3vw, 36px);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  .desc {
+    margin-top: 16px;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 640px) {
+    .principle {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .num {
+      font-size: 36px;
+    }
+  }
+</style>
