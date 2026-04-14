@@ -1,0 +1,88 @@
+---
+// Nav — sticky flottante, fern-deep background, squared corners
+---
+
+<header class="nav" role="banner">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo" aria-label="Camplo — accueil">
+      <img
+        src="/brand/camplo-wordmark-integrated.png"
+        alt="Camplo"
+        width="160"
+        height="40"
+      />
+    </a>
+
+    <nav class="nav-links" aria-label="Navigation principale">
+      <a href="#travaux">Travaux</a>
+      <a href="#approche">Approche</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 16px;
+    z-index: 50;
+    margin: 16px var(--wrap-pad-x) 0;
+    pointer-events: none;
+  }
+
+  .nav-inner {
+    pointer-events: auto;
+    max-width: var(--wrap-max);
+    margin: 0 auto;
+    background: var(--fern-deep);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 14px 24px;
+    border-radius: 0;
+  }
+
+  .nav-logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+  }
+
+  .nav-links a {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.85;
+    transition: opacity 160ms ease;
+  }
+
+  .nav-links a:hover {
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .nav-inner {
+      padding: 12px 18px;
+    }
+    .nav-links {
+      gap: 18px;
+    }
+    .nav-links a {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+    }
+    .nav-logo img {
+      height: 26px;
+    }
+  }
+</style>
