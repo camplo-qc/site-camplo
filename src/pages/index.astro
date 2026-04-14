@@ -1,48 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 ---
 
 <Layout>
   <main>
-    <section class="placeholder">
-      <div class="wrap">
-        <p class="eyebrow">Camplo · scaffold</p>
-        <h1>Un logiciel qui date <em>pas</em> de 2008.</h1>
-        <p class="intro">Page en construction.</p>
-      </div>
-    </section>
+    <Hero />
   </main>
 </Layout>
-
-<style>
-  .placeholder {
-    padding: var(--section-pad-y) 0;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-  }
-  .eyebrow {
-    font-family: var(--font-label);
-    font-weight: 600;
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--fern);
-  }
-  h1 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(48px, 8vw, 96px);
-    letter-spacing: -0.02em;
-    line-height: 1;
-    margin-top: 16px;
-  }
-  h1 em {
-    font-style: italic;
-    color: var(--marmalade);
-  }
-  .intro {
-    margin-top: 24px;
-    color: var(--ink-soft);
-  }
-</style>
