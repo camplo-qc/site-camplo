@@ -1,0 +1,237 @@
+---
+// Section 2 — "Ce qu'on fait"
+// Background: paper-warm. Intro + 2 cards empilées full-width.
+---
+
+<section class="services" id="travaux" aria-label="Ce qu'on fait">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">
+          <span class="eyebrow-num">01</span> · Ce qu'on fait
+        </p>
+        <h2 class="section-title">
+          Camplo, c'est <em>deux</em> choses et un système pour les porter.
+        </h2>
+      </div>
+      <span class="section-roman">I</span>
+    </div>
+
+    <p class="intro">
+      Un site public où vos clients réservent. Un logiciel où vous gérez.
+      Les deux conçus pour se parler quand vous les prenez ensemble.
+    </p>
+
+    <article class="card card-light">
+      <h3 class="card-title">Le site où vos clients réservent.</h3>
+      <div class="card-body">
+        <p>
+          Pages pensées pour la recherche d'un emplacement, pas pour
+          l'esthétique d'agence. Votre carte, vos types d'emplacements,
+          votre calendrier de disponibilités.
+        </p>
+        <p>
+          Réservation en ligne avec paiement par carte. Confirmation par
+          courriel. Aucune commission mangée par un intermédiaire.
+        </p>
+        <p>
+          Construit sur un framework moderne. Rapide, référencé, évolutif.
+        </p>
+      </div>
+      <p class="card-label">
+        Site rapide · Paiement en ligne · Référencé Google
+      </p>
+    </article>
+
+    <article class="card card-dark">
+      <h3 class="card-title">Le logiciel où vous gérez tout.</h3>
+      <div class="card-body">
+        <p>
+          Un outil desktop qui vit sur votre ordinateur. Vos données
+          restent chez vous. Le logiciel fonctionne même quand internet
+          tombe.
+        </p>
+        <p>
+          Calendrier visuel des arrivées et départs. Fiches clients. Liste
+          des emplacements avec dimensions, exposition, capacité VR.
+          Facturation et rapports.
+        </p>
+        <p>
+          Synchronisé avec votre site de réservation quand vous prenez les
+          deux : une réservation en ligne apparaît directement dans votre
+          logiciel.
+        </p>
+      </div>
+      <p class="card-label">
+        Sur votre ordinateur · Mac et Windows · Plusieurs utilisateurs · Fonctionne hors-ligne
+      </p>
+    </article>
+
+    <p class="a-la-carte">
+      <span class="rule" aria-hidden="true"></span>
+      <em>Site seul, logiciel seul, ou les deux. À vous de choisir.</em>
+      <span class="rule" aria-hidden="true"></span>
+    </p>
+  </div>
+</section>
+
+<style>
+  .services {
+    background: var(--paper-warm);
+    padding: var(--section-pad-y) 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+  }
+
+  .eyebrow-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+    letter-spacing: 0;
+    text-transform: none;
+    font-size: 14px;
+    margin-right: 2px;
+  }
+
+  .section-roman {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--marmalade);
+  }
+
+  .section-title {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--ink);
+    max-width: 22ch;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--fern);
+  }
+
+  .intro {
+    margin-top: 28px;
+    max-width: 62ch;
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .card {
+    margin-top: clamp(40px, 5vw, 64px);
+    padding: clamp(40px, 5vw, 72px);
+    display: grid;
+    gap: clamp(28px, 3vw, 40px);
+    border: 1px solid var(--rule-light);
+  }
+
+  .card-light {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .card-dark {
+    background: var(--fern);
+    color: var(--paper);
+  }
+  .card-dark .card-body {
+    color: var(--paper-soft);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    max-width: 20ch;
+  }
+
+  .card-body {
+    display: grid;
+    gap: 18px;
+    max-width: 62ch;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .card-light .card-body {
+    color: var(--ink-soft);
+  }
+
+  .card-label {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    padding-top: 12px;
+    border-top: 1px solid var(--rule-light);
+  }
+  .card-dark .card-label {
+    color: var(--paper-muted);
+    border-top-color: var(--rule-paper);
+  }
+
+  .a-la-carte {
+    margin-top: clamp(40px, 5vw, 64px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+
+  .a-la-carte em {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .a-la-carte .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 120px;
+  }
+
+  @media (max-width: 640px) {
+    .a-la-carte em {
+      white-space: normal;
+    }
+  }
+</style>
