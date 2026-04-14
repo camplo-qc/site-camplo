@@ -1,0 +1,306 @@
+<style>
+  @import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,700,500&f[]=satoshi@900,700,500&f[]=general-sans@600,500&display=swap');
+
+  body { background: #ecebe4; }
+
+  h2 { font-family: 'Cabinet Grotesk', system-ui; font-weight: 800; font-size: 30px; letter-spacing: -0.025em; color: #141414; margin: 0 0 6px; }
+  .tagline { font-family: 'General Sans', system-ui; font-size: 13px; color: #5b5b5b; margin: 0 0 20px; }
+
+  h3.section {
+    font-family: 'Cabinet Grotesk', system-ui; font-weight: 800; font-size: 12px;
+    letter-spacing: 0.16em; text-transform: uppercase; color: #2a4a22;
+    margin: 32px 0 10px; padding-bottom: 6px; border-bottom: 1px solid #2a4a22;
+  }
+
+  .sheet { background: #f6f0e0; border: 1px solid #d8d5cb; border-radius: 14px; padding: 28px; }
+
+  .row { display: grid; gap: 14px; }
+  .row-2 { grid-template-columns: 1fr 1fr; }
+  .row-3 { grid-template-columns: repeat(3, 1fr); }
+  .row-4 { grid-template-columns: repeat(4, 1fr); }
+  .row-5 { grid-template-columns: repeat(5, 1fr); }
+
+  .tile {
+    background: #faf5e5;
+    border: 1px solid #e4dcc2;
+    border-radius: 10px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    position: relative;
+  }
+  .tile.dark { background: #3e6b31; border-color: #2a4a22; }
+  .tile.orange { background: #e8853b; border-color: #b86a22; }
+  .tile.paper { background: #f6f0e0; border-color: #e4dcc2; }
+
+  .tile .cap {
+    position: absolute; bottom: 8px; left: 10px;
+    font-family: 'Satoshi', system-ui; font-weight: 500; font-size: 9px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: #9e9a8c;
+  }
+  .tile.dark .cap, .tile.orange .cap { color: rgba(255,255,255,0.6); }
+
+  .tile .content { flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; }
+
+  /* Color swatches */
+  .swatches { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .sw {
+    padding: 20px;
+    border-radius: 10px;
+    color: #faf8f2;
+    font-family: 'Satoshi', system-ui;
+    font-weight: 700;
+  }
+  .sw .label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; }
+  .sw .hex { font-family: 'Satoshi', system-ui; font-size: 18px; margin-top: 4px; }
+  .sw .name { font-family: 'Cabinet Grotesk', system-ui; font-weight: 800; font-size: 22px; margin-top: 2px; letter-spacing: -0.01em; }
+</style>
+
+<!-- Reusable symbol for the mark (defined once, referenced everywhere) -->
+<svg width="0" height="0" style="position:absolute;" aria-hidden="true">
+  <defs>
+    <!-- Default: green tree + orange tent + cream door -->
+    <symbol id="mark" viewBox="0 0 66 66">
+      <g transform="translate(3, 0)">
+        <path d="M 30 2 L 12 20 L 20 20 L 2 42 L 58 42 L 40 20 L 48 20 Z" fill="#3e6b31" stroke="#3e6b31" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M 29.26 27.30 Q 30 26 30.74 27.30 L 45.01 52.26 Q 46 54 44 54 L 16 54 Q 14 54 14.99 52.26 Z" fill="#e8853b"/>
+        <path d="M 29.37 42.93 Q 30 40 30.63 42.93 L 33.43 56 L 26.57 56 Z" fill="#f6f0e0"/>
+      </g>
+    </symbol>
+    <!-- Monochrome green version -->
+    <symbol id="mark-green" viewBox="0 0 66 66">
+      <g transform="translate(3, 0)">
+        <path d="M 30 2 L 12 20 L 20 20 L 2 42 L 58 42 L 40 20 L 48 20 Z" fill="#3e6b31" stroke="#3e6b31" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M 29.26 27.30 Q 30 26 30.74 27.30 L 45.01 52.26 Q 46 54 44 54 L 16 54 Q 14 54 14.99 52.26 Z" fill="#3e6b31"/>
+        <path d="M 29.37 42.93 Q 30 40 30.63 42.93 L 33.43 56 L 26.57 56 Z" fill="#f6f0e0"/>
+      </g>
+    </symbol>
+    <!-- Monochrome orange version -->
+    <symbol id="mark-orange" viewBox="0 0 66 66">
+      <g transform="translate(3, 0)">
+        <path d="M 30 2 L 12 20 L 20 20 L 2 42 L 58 42 L 40 20 L 48 20 Z" fill="#e8853b" stroke="#e8853b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M 29.26 27.30 Q 30 26 30.74 27.30 L 45.01 52.26 Q 46 54 44 54 L 16 54 Q 14 54 14.99 52.26 Z" fill="#e8853b"/>
+        <path d="M 29.37 42.93 Q 30 40 30.63 42.93 L 33.43 56 L 26.57 56 Z" fill="#f6f0e0"/>
+      </g>
+    </symbol>
+    <!-- On green bg: tree orange, tent cream? NO — sticking to 2 colors. Use orange tree + orange-tinted tent -->
+    <symbol id="mark-on-green" viewBox="0 0 66 66">
+      <g transform="translate(3, 0)">
+        <path d="M 30 2 L 12 20 L 20 20 L 2 42 L 58 42 L 40 20 L 48 20 Z" fill="#e8853b" stroke="#e8853b" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M 29.26 27.30 Q 30 26 30.74 27.30 L 45.01 52.26 Q 46 54 44 54 L 16 54 Q 14 54 14.99 52.26 Z" fill="#e8853b"/>
+        <path d="M 29.37 42.93 Q 30 40 30.63 42.93 L 33.43 56 L 26.57 56 Z" fill="#3e6b31"/>
+      </g>
+    </symbol>
+    <!-- On orange bg: everything green, door orange -->
+    <symbol id="mark-on-orange" viewBox="0 0 66 66">
+      <g transform="translate(3, 0)">
+        <path d="M 30 2 L 12 20 L 20 20 L 2 42 L 58 42 L 40 20 L 48 20 Z" fill="#3e6b31" stroke="#3e6b31" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M 29.26 27.30 Q 30 26 30.74 27.30 L 45.01 52.26 Q 46 54 44 54 L 16 54 Q 14 54 14.99 52.26 Z" fill="#3e6b31"/>
+        <path d="M 29.37 42.93 Q 30 40 30.63 42.93 L 33.43 56 L 26.57 56 Z" fill="#e8853b"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="sheet">
+
+<h2>Camplo — système de marque</h2>
+<p class="tagline">Sapin vert + tente orange. Une seule famille, plusieurs lockups, application partout.</p>
+
+<!-- ══════════════ PALETTE ══════════════ -->
+<h3 class="section">Palette — 2 couleurs seulement</h3>
+<div class="swatches">
+  <div class="sw" style="background:#3e6b31;">
+    <div class="label">Forest — couleur principale</div>
+    <div class="name">Fern</div>
+    <div class="hex">#3E6B31</div>
+  </div>
+  <div class="sw" style="background:#e8853b;">
+    <div class="label">Accent — chaleur / action</div>
+    <div class="name">Marmalade</div>
+    <div class="hex">#E8853B</div>
+  </div>
+</div>
+<p class="tagline" style="margin-top: 10px;">Couleur papier : <strong>#F6F0E0</strong> — support crème, pas utilisé dans la marque.</p>
+
+<!-- ══════════════ LOCKUP PRINCIPAL ══════════════ -->
+<h3 class="section">Lockup principal — horizontal</h3>
+<div class="tile paper" style="padding: 38px;">
+  <svg width="380" height="110" viewBox="0 0 380 110">
+    <use href="#mark" width="100" height="100" x="0" y="5"/>
+    <text x="112" y="78" fill="#2a4a22" font-family="'Cabinet Grotesk',sans-serif" font-weight="800" font-size="72" letter-spacing="-2.8">Camplo</text>
+  </svg>
+</div>
+
+<!-- ══════════════ LOCKUPS ALTERNATIFS ══════════════ -->
+<h3 class="section">Lockups alternatifs</h3>
+<div class="row row-3">
+  <div class="tile paper">
+    <div class="content" style="flex-direction: column; gap: 8px;">
+      <svg width="78" height="80" viewBox="0 0 66 66"><use href="#mark"/></svg>
+      <svg width="200" height="52" viewBox="0 0 280 72"><text x="0" y="56" fill="#2a4a22" font-family="'Cabinet Grotesk',sans-serif" font-weight="800" font-size="58" letter-spacing="-2.3">Camplo</text></svg>
+    </div>
+    <span class="cap">vertical / stacked</span>
+  </div>
+  <div class="tile paper">
+    <div class="content">
+      <svg width="120" height="120" viewBox="0 0 66 66"><use href="#mark"/></svg>
+    </div>
+    <span class="cap">icône seule</span>
+  </div>
+  <div class="tile paper">
+    <div class="content">
+      <svg width="260" height="70" viewBox="0 0 280 80"><text x="0" y="64" fill="#2a4a22" font-family="'Cabinet Grotesk',sans-serif" font-weight="800" font-size="68" letter-spacing="-2.6">Camplo</text></svg>
+    </div>
+    <span class="cap">wordmark seul</span>
+  </div>
+</div>
+
+<!-- ══════════════ VARIANTES MONOCHROMES ══════════════ -->
+<h3 class="section">Variantes monochromes</h3>
+<div class="row row-3">
+  <div class="tile paper">
+    <div class="content" style="gap: 16px;">
+      <svg width="82" height="82" viewBox="0 0 66 66"><use href="#mark-green"/></svg>
+      <svg width="200" height="54" viewBox="0 0 280 72"><text x="0" y="56" fill="#3e6b31" font-family="'Cabinet Grotesk',sans-serif" font-weight="800" font-size="58" letter-spacing="-2.3">Camplo</text></svg>
+    </div>
+    <span class="cap">tout vert — imprimés sobres</span>
+  </div>
+  <div class="tile paper">
+    <div class="content" style="gap: 16px;">
+      <svg width="82" height="82" viewBox="0 0 66 66"><use href="#mark-orange"/></svg>
+      <svg width="200" height="54" viewBox="0 0 280 72"><text x="0" y="56" fill="#e8853b" font-family="'Cabinet Grotesk',sans-serif" font-weight="800" font-size="58" letter-spacing="-2.3">Camplo</text></svg>
+    </div>
+    <span class="cap">tout orange — accent / call-out</span>
+  </div>
+  <div class="tile paper">
+    <!-- Wordmark with tiny monochrome mark beside -->
+    <div class="content">
+      <svg width="240" height="68" viewBox="0 0 340 80">
+        <use href="#mark-green" width="48" height="48" x="0" y="16"/>
+        <text x="56" y="60" fill="#3e6b31" font-family="'Cabinet Grotesk',sans-serif" font-weight="800" font-size="54" letter-spacing="-2">Camplo</text>
+      </svg>
+    </div>
+    <span class="cap">compact signature — email, pied de page</span>
+  </div>
+</div>
+
+<!-- ══════════════ SUR FONDS COLORÉS ══════════════ -->
+<h3 class="section">Sur fonds colorés (aucune 3e couleur utilisée)</h3>
+<div class="row row-2">
+  <div class="tile dark" style="padding: 38px;">
+    <svg width="360" height="100" viewBox="0 0 380 110">
+      <use href="#mark-on-green" width="100" height="100" x="0" y="5"/>
+      <text x="112" y="78" fill="#f6f0e0" font-family="'Cabinet Grotesk',sans-serif" font-weight="800" font-size="72" letter-spacing="-2.8">Camplo</text>
+    </svg>
+    <span class="cap">sur vert — la tente devient le mark</span>
+  </div>
+  <div class="tile orange" style="padding: 38px;">
+    <svg width="360" height="100" viewBox="0 0 380 110">
+      <use href="#mark-on-orange" width="100" height="100" x="0" y="5"/>
+      <text x="112" y="78" fill="#f6f0e0" font-family="'Cabinet Grotesk',sans-serif" font-weight="800" font-size="72" letter-spacing="-2.8">Camplo</text>
+    </svg>
+    <span class="cap">sur orange — tout passe en vert</span>
+  </div>
+</div>
+
+<!-- ══════════════ FAVICONS & APP ICONS ══════════════ -->
+<h3 class="section">Favicons & app icons</h3>
+<div class="row row-5">
+  <div class="tile paper">
+    <div class="content" style="flex-direction: column; gap: 8px;">
+      <svg width="16" height="16" viewBox="0 0 66 66"><use href="#mark"/></svg>
+      <span style="font-family: 'Satoshi', system-ui; font-size: 10px; color: #8a8a8a;">16 px</span>
+    </div>
+    <span class="cap">favicon</span>
+  </div>
+  <div class="tile paper">
+    <div class="content" style="flex-direction: column; gap: 8px;">
+      <svg width="32" height="32" viewBox="0 0 66 66"><use href="#mark"/></svg>
+      <span style="font-family: 'Satoshi', system-ui; font-size: 10px; color: #8a8a8a;">32 px</span>
+    </div>
+    <span class="cap">favicon @2x</span>
+  </div>
+  <div class="tile paper">
+    <div class="content" style="flex-direction: column; gap: 8px;">
+      <svg width="48" height="48" viewBox="0 0 66 66"><use href="#mark"/></svg>
+      <span style="font-family: 'Satoshi', system-ui; font-size: 10px; color: #8a8a8a;">48 px</span>
+    </div>
+    <span class="cap">pinned tab</span>
+  </div>
+  <div class="tile paper">
+    <div class="content">
+      <div style="width: 78px; height: 78px; border-radius: 18px; background: #3e6b31; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <svg width="54" height="54" viewBox="0 0 66 66"><use href="#mark-on-green"/></svg>
+      </div>
+    </div>
+    <span class="cap">app icon · iOS</span>
+  </div>
+  <div class="tile paper">
+    <div class="content">
+      <div style="width: 78px; height: 78px; border-radius: 50%; background: #e8853b; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.12);">
+        <svg width="54" height="54" viewBox="0 0 66 66"><use href="#mark-on-orange"/></svg>
+      </div>
+    </div>
+    <span class="cap">avatar social</span>
+  </div>
+</div>
+
+<!-- Browser tab mocks -->
+<h3 class="section">Onglet navigateur</h3>
+<div class="row row-2">
+  <div class="tile paper" style="padding: 24px; align-items: flex-start;">
+    <div style="display: flex; gap: 4px; align-items: flex-end;">
+      <div style="background: #ecebe4; border-radius: 10px 10px 0 0; padding: 8px 14px 10px 10px; display: flex; align-items: center; gap: 8px; font-family: 'Satoshi', system-ui; font-size: 11px; color: #2a2a2a;">
+        <svg width="16" height="16" viewBox="0 0 66 66"><use href="#mark"/></svg>
+        <span>Camplo — Sites &amp; CRM pour campings</span>
+        <span style="color: #999; margin-left: 6px;">×</span>
+      </div>
+      <div style="background: #d8d5cb; border-radius: 10px 10px 0 0; padding: 8px 12px 10px; font-family: 'Satoshi', system-ui; font-size: 11px; color: #666;">
+        Gmail
+      </div>
+    </div>
+    <span class="cap">mode clair navigateur</span>
+  </div>
+  <div class="tile paper" style="padding: 24px; align-items: flex-start;">
+    <div style="display: flex; gap: 10px; align-items: center;">
+      <svg width="18" height="18" viewBox="0 0 66 66"><use href="#mark"/></svg>
+      <div style="font-family: 'Satoshi', system-ui; font-size: 13px; color: #2a2a2a;">camplo.fr</div>
+    </div>
+    <span class="cap">bookmark / url bar</span>
+  </div>
+</div>
+
+<!-- ══════════════ USAGE CONTEXTE ══════════════ -->
+<h3 class="section">Mini-exemples d'usage</h3>
+<div class="row row-2">
+  <!-- Business card -->
+  <div class="tile paper" style="padding: 20px;">
+    <div style="width: 100%; aspect-ratio: 1.6; background: #f6f0e0; border: 1px solid #e4dcc2; border-radius: 6px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+      <svg width="52" height="52" viewBox="0 0 66 66"><use href="#mark"/></svg>
+      <div>
+        <div style="font-family: 'Cabinet Grotesk',sans-serif; font-weight: 800; font-size: 18px; color: #2a4a22; letter-spacing: -0.02em;">Camplo</div>
+        <div style="font-family: 'Satoshi',sans-serif; font-weight: 500; font-size: 10px; color: #6a6a6a; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px;">Sites &amp; CRM pour campings</div>
+      </div>
+    </div>
+    <span class="cap">carte de visite</span>
+  </div>
+  <!-- Button / CTA -->
+  <div class="tile paper">
+    <div class="content" style="flex-direction: column; gap: 12px; align-items: flex-start; padding: 0 20px;">
+      <button style="all: unset; padding: 12px 22px; background: #3e6b31; color: #f6f0e0; font-family: 'Satoshi',sans-serif; font-weight: 700; font-size: 14px; border-radius: 10px; cursor: pointer;">Démarrer un projet →</button>
+      <button style="all: unset; padding: 12px 22px; background: #e8853b; color: #f6f0e0; font-family: 'Satoshi',sans-serif; font-weight: 700; font-size: 14px; border-radius: 10px; cursor: pointer;">Voir la démo CRM</button>
+      <button style="all: unset; padding: 10px 20px; background: transparent; border: 1.5px solid #3e6b31; color: #3e6b31; font-family: 'Satoshi',sans-serif; font-weight: 700; font-size: 13px; border-radius: 10px; cursor: pointer;">En savoir plus</button>
+    </div>
+    <span class="cap">boutons / CTA</span>
+  </div>
+</div>
+
+</div>
+
+<p class="tagline" style="margin-top: 18px; text-align: center;">
+  Toutes les variantes dérivent du même mark. Deux couleurs, un sapin, une tente. Quand tu valides, on passe à la clarification du site.
+</p>
