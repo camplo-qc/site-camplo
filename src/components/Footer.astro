@@ -1,0 +1,44 @@
+---
+const YEAR = new Date().getFullYear();
+const EMAIL = 'hello@camplo.ca';
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="inner">
+      <span>© {YEAR} Camplo · Conçu au Québec</span>
+      <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--fern-deep);
+    color: var(--paper-muted);
+    padding: 48px 0;
+  }
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  .inner a {
+    color: var(--paper);
+    opacity: 0.78;
+    transition: opacity 160ms ease;
+    border-bottom: 1px solid var(--rule-paper);
+    padding-bottom: 2px;
+  }
+  .inner a:hover {
+    opacity: 1;
+  }
+</style>
