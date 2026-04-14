@@ -1,0 +1,123 @@
+---
+// Section 5 — CTA final
+// Background paper-warm. Mailto + tel en typographie monumentale.
+
+const EMAIL = 'hello@camplo.ca';
+const PHONE: string | null = null;
+---
+
+<section class="cta-final" id="contact" aria-label="Contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">
+          <span class="eyebrow-num">04</span> · Parler
+        </p>
+        <h2 class="section-title">
+          Prêt à remplacer ce qui date de 2008 ?
+        </h2>
+      </div>
+      <span class="section-roman">IV</span>
+    </div>
+
+    <p class="subtext">
+      Un courriel, un appel. La première conversation est gratuite, et
+      honnêtement c'est nous qui apprenons le plus.
+    </p>
+
+    <div class="contact-lines">
+      <a class="contact-line" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+      {
+        PHONE && (
+          <a class="contact-line" href={`tel:${PHONE.replace(/\s|-/g, '')}`}>
+            {PHONE}
+          </a>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-final {
+    background: var(--paper-warm);
+    padding: var(--section-pad-y) 0 clamp(100px, 14vw, 180px);
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+  }
+  .eyebrow-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    margin-right: 2px;
+  }
+
+  .section-roman {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--marmalade);
+  }
+
+  .section-title {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 6vw, 72px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    max-width: 18ch;
+  }
+
+  .subtext {
+    margin-top: 24px;
+    max-width: 58ch;
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .contact-lines {
+    margin-top: clamp(48px, 6vw, 80px);
+    display: grid;
+    gap: clamp(16px, 2vw, 28px);
+  }
+
+  .contact-line {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 64px);
+    letter-spacing: -0.02em;
+    color: var(--fern);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 12px;
+    transition: color 160ms ease, border-color 160ms ease;
+    word-break: break-word;
+  }
+
+  .contact-line:hover {
+    color: var(--fern-deep);
+    border-bottom-color: var(--fern);
+  }
+</style>
