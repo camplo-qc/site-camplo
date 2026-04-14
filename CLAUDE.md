@@ -4,24 +4,17 @@ Presentation site + CRM pitch for **Camplo**, an agency that builds websites and
 
 ## Brand
 
-All brand assets live in `brand/final/`:
-- `brand-sheet.html` — planche de marque complète
-- `camplo-mark-squared.svg` — logomark SVG (coins squared)
-- `camplo-mark-2048.png` / `-transparent.png` — logomark PNG
-- `camplo-wordmark-below-*.png` — logo + "Camplo" dessous
-- `camplo-wordmark-integrated-*.png` — "C[logo]mplo" intégré
-- `sentient-700.woff2` — display font self-hosted
+Tous les assets de marque sont dans `brand/`. Ouvrir `brand/brand-sheet.html` pour voir la planche complète.
 
-En production dans le site :
-- `public/camplo-wordmark.png` — wordmark du nav (tight crop)
-- `public/favicon.svg` — favicon (logomark squared)
+**Palette:**
+- `--fern` `#3E6B31` — primaire vert (pin, texte)
+- `--fern-deep` `#2A4A22` — sections sombres
+- `--marmalade` `#E8853B` — accent orange (tente, CTA, italiques)
+- `--paper` `#F6F0E0` — fond crème dominant
+- `--paper-warm` `#EEE4CC` — variante paper
+- `--ink` `#1C1C1A` — texte principal
 
-Primary palette:
-- `--fern` `#3E6B31` — primary green
-- `--marmalade` `#E8853B` — accent orange
-- `--paper` `#F6F0E0` — cream background
-
-Typography (via Fontshare):
+**Typographie (via Fontshare):**
 - **Sentient 500/700/800** — wordmark, display (serif, squared terminals)
 - Satoshi 500/700 — UI, body
 - General Sans 500/600 — labels, secondary
