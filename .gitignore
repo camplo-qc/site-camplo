@@ -1,11 +1,8 @@
 # Dependencies
 node_modules
 
-# Nuxt
-.nuxt
-.output
-.nitro
-.cache
+# Astro
+.astro
 dist
 
 # Env

@@ -1,0 +1,24 @@
+:root {
+  --fern: #3E6B31;
+  --fern-deep: #2A4A22;
+  --marmalade: #E8853B;
+  --marmalade-bright: #F09A58;
+  --paper: #F6F0E0;
+  --paper-warm: #EEE4CC;
+  --ink: #1C1C1A;
+  --ink-soft: rgba(28, 28, 26, 0.68);
+  --ink-muted: rgba(28, 28, 26, 0.48);
+  --paper-soft: rgba(246, 240, 224, 0.82);
+  --paper-muted: rgba(246, 240, 224, 0.58);
+  --rule: rgba(28, 28, 26, 0.14);
+  --rule-light: rgba(28, 28, 26, 0.07);
+  --rule-paper: rgba(246, 240, 224, 0.18);
+
+  --font-display: 'Sentient', Georgia, serif;
+  --font-body: 'Satoshi', -apple-system, system-ui, sans-serif;
+  --font-label: 'General Sans', -apple-system, system-ui, sans-serif;
+
+  --section-pad-y: clamp(80px, 10vw, 140px);
+  --wrap-pad-x: clamp(24px, 5vw, 64px);
+  --wrap-max: 1280px;
+}
