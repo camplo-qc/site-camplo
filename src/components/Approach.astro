@@ -42,7 +42,9 @@
 
       <li class="principle principle-right">
         <div class="body">
-          <h3 class="title">Vos données restent chez vous.</h3>
+          <h3 class="title">
+            Vos données restent chez vous.<sup class="footnote-mark">*</sup>
+          </h3>
           <p class="desc">
             Le logiciel vit sur votre ordinateur. Vos données restent au
             Québec. Votre camping fonctionne même quand internet est
@@ -52,6 +54,15 @@
         <span class="num" aria-hidden="true">III</span>
       </li>
     </ol>
+
+    <aside class="footnote">
+      <span class="footnote-ast" aria-hidden="true">*</span>
+      <p>
+        Sauf le mince fil qu'il faut pour encaisser par carte — faut bien
+        qu'un bout parle à la banque. Ça, c'est la seule exception, et on
+        vous l'annonce d'avance.
+      </p>
+    </aside>
   </div>
 </section>
 
@@ -220,5 +231,42 @@
     .principle-center .title-big {
       font-size: 32px;
     }
+  }
+
+  .footnote-mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+    font-size: 0.6em;
+    vertical-align: super;
+    margin-left: 4px;
+  }
+
+  .footnote {
+    margin-top: clamp(40px, 5vw, 64px);
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+    max-width: 68ch;
+    border-top: 1px solid var(--rule);
+  }
+
+  .footnote-ast {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--marmalade);
+    line-height: 1.4;
+  }
+
+  .footnote p {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--ink-muted);
   }
 </style>
