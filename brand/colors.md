@@ -1,4 +1,4 @@
-# Camplo — tokens de marque
+# Camplo, tokens de marque
 
 ## Couleurs
 
@@ -21,11 +21,11 @@ Fontshare : https://api.fontshare.com/v2/css?f[]=sentient@800,700,500&f[]=satosh
 
 ## Assets (tous dans `brand/`)
 
-- `brand-sheet.html` — planche de marque complète (ouvrir dans le browser)
-- `camplo-mark.svg` — logomark seul, SVG vectoriel (squared edges)
-- `camplo-mark-2048.png` — logomark sur paper (2048×2048)
-- `camplo-mark-2048-transparent.png` — logomark fond transparent
-- `camplo-wordmark-below.png` — lockup vertical (logo + Camplo dessous)
-- `camplo-wordmark-integrated.png` — wordmark intégré (pin+tente = lettre a)
-- `favicon.svg` — favicon squared
-- `sentient-700.woff2` — font display self-hosted
+- `brand-sheet.html`, planche de marque complète (ouvrir dans le browser)
+- `camplo-mark.svg`, logomark seul, SVG vectoriel (squared edges)
+- `camplo-mark-2048.png`, logomark sur paper (2048×2048)
+- `camplo-mark-2048-transparent.png`, logomark fond transparent
+- `camplo-wordmark-below.png`, lockup vertical (logo + Camplo dessous)
+- `camplo-wordmark-integrated.png`, wordmark intégré (pin+tente = lettre a)
+- `favicon.svg`, favicon squared
+- `sentient-700.woff2`, font display self-hosted
