@@ -1,15 +1,16 @@
 ---
-// Nav — sticky flottante, fern-deep background, squared corners
+// Nav — pill flottante centrée en haut, style Urban template
+// Fond ink, rounded-full, compact, centered
 ---
 
 <header class="nav" role="banner">
-  <div class="nav-inner">
+  <div class="nav-pill">
     <a href="#top" class="nav-logo" aria-label="Camplo — accueil">
       <img
-        src="/brand/camplo-wordmark-integrated.png"
+        src="/brand/camplo-mark.svg"
         alt="Camplo"
-        width="160"
-        height="40"
+        width="24"
+        height="24"
       />
     </a>
 
@@ -18,71 +19,142 @@
       <a href="#approche">Approche</a>
       <a href="#contact">Contact</a>
     </nav>
+
+    <a href="#contact" class="nav-cta" aria-label="Écrire à Camplo">
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 14 14"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="square"
+          stroke-linejoin="miter"
+        />
+      </svg>
+    </a>
   </div>
 </header>
 
 <style>
   .nav {
     position: sticky;
-    top: 16px;
+    top: 20px;
     z-index: 50;
-    margin: 16px var(--wrap-pad-x) 0;
-    pointer-events: none;
-  }
-
-  .nav-inner {
-    pointer-events: auto;
-    max-width: var(--wrap-max);
-    margin: 0 auto;
-    background: var(--fern-deep);
-    color: var(--paper);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 14px 24px;
-    border-radius: 0;
+    justify-content: center;
+    pointer-events: none;
+    margin: 20px var(--wrap-pad-x) 0;
   }
 
+  .nav-pill {
+    pointer-events: auto;
+    background: var(--ink);
+    color: var(--paper);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 6px 6px 20px;
+    border-radius: 9999px;
+    box-shadow: 0 8px 32px rgba(28, 28, 26, 0.18);
+  }
+
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+  }
   .nav-logo img {
-    height: 32px;
-    width: auto;
+    width: 24px;
+    height: 24px;
     display: block;
   }
 
   .nav-links {
     display: flex;
-    gap: 28px;
+    gap: 4px;
+    padding: 0 6px;
   }
 
   .nav-links a {
     font-family: var(--font-label);
     font-weight: 600;
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.04em;
     color: var(--paper);
-    opacity: 0.85;
-    transition: opacity 160ms ease;
+    opacity: 0.78;
+    padding: 10px 14px;
+    border-radius: 9999px;
+    transition: opacity 160ms ease, background 160ms ease;
   }
 
   .nav-links a:hover {
     opacity: 1;
+    background: rgba(246, 240, 224, 0.08);
+  }
+
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    background: var(--paper);
+    color: var(--ink);
+    transition: background 160ms ease, color 160ms ease;
+    margin-left: 4px;
+  }
+
+  .nav-cta svg {
+    display: block;
+  }
+
+  .nav-cta:hover {
+    background: var(--marmalade);
+    color: var(--paper);
   }
 
   @media (max-width: 640px) {
-    .nav-inner {
-      padding: 12px 18px;
+    .nav {
+      top: 14px;
+      margin: 14px 16px 0;
+    }
+    .nav-pill {
+      padding: 5px 5px 5px 16px;
+      gap: 4px;
     }
     .nav-links {
-      gap: 18px;
+      gap: 0;
+      padding: 0 2px;
     }
     .nav-links a {
-      font-size: 10px;
-      letter-spacing: 0.14em;
+      font-size: 11px;
+      padding: 9px 10px;
+    }
+    .nav-cta {
+      width: 36px;
+      height: 36px;
+    }
+    .nav-cta svg {
+      width: 12px;
+      height: 12px;
     }
     .nav-logo img {
-      height: 26px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .nav-logo {
+      display: none;
     }
   }
 </style>

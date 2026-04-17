@@ -4,18 +4,16 @@
 ---
 
 <section class="case" aria-label="Case study Camping de la Joie">
+  <span class="numeral-bg" aria-hidden="true">II</span>
   <div class="wrap">
     <div class="section-head">
-      <div>
-        <p class="eyebrow">
-          <span class="eyebrow-num">02</span> · Notre première réalisation
-        </p>
-        <h2 class="section-title">
-          Camping de la Joie. 25 ans d'opération. 162 emplacements. Un
-          système à la hauteur.
-        </h2>
-      </div>
-      <span class="section-roman">II</span>
+      <p class="eyebrow">
+        <span class="eyebrow-num">02</span> · Notre première réalisation
+      </p>
+      <h2 class="section-title">
+        Camping de la Joie. 25 ans d'opération. 162 emplacements. Un
+        système à la hauteur.
+      </h2>
     </div>
 
     <div class="grid">
@@ -70,14 +68,29 @@
     background: var(--fern-deep);
     color: var(--paper);
     padding: var(--section-pad-y) 0;
+    position: relative;
+    overflow: hidden;
   }
 
-  .section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 24px;
-    flex-wrap: wrap;
+  .numeral-bg {
+    position: absolute;
+    left: -8%;
+    top: -14%;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(320px, 48vw, 640px);
+    line-height: 0.78;
+    color: var(--marmalade);
+    opacity: 0.12;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
   }
 
   .eyebrow {
@@ -97,14 +110,6 @@
     letter-spacing: 0;
     font-size: 14px;
     margin-right: 2px;
-  }
-
-  .section-roman {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 500;
-    font-size: 18px;
-    color: var(--marmalade);
   }
 
   .section-title {

@@ -7,17 +7,15 @@ const PHONE: string | null = null;
 ---
 
 <section class="cta-final" id="contact" aria-label="Contact">
+  <span class="numeral-bg" aria-hidden="true">IV</span>
   <div class="wrap">
     <div class="section-head">
-      <div>
-        <p class="eyebrow">
-          <span class="eyebrow-num">04</span> · Parler
-        </p>
-        <h2 class="section-title">
-          Prêt à remplacer ce qui date de 2008 ?
-        </h2>
-      </div>
-      <span class="section-roman">IV</span>
+      <p class="eyebrow">
+        <span class="eyebrow-num">04</span> · Parler
+      </p>
+      <h2 class="section-title">
+        Prêt à remplacer ce qui date de 2008 ?
+      </h2>
     </div>
 
     <p class="subtext">
@@ -42,14 +40,29 @@ const PHONE: string | null = null;
   .cta-final {
     background: var(--paper-warm);
     padding: var(--section-pad-y) 0 clamp(100px, 14vw, 180px);
+    position: relative;
+    overflow: hidden;
   }
 
-  .section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 24px;
-    flex-wrap: wrap;
+  .numeral-bg {
+    position: absolute;
+    left: -6%;
+    top: -14%;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(320px, 48vw, 680px);
+    line-height: 0.78;
+    color: var(--marmalade);
+    opacity: 0.1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
   }
 
   .eyebrow {
@@ -69,14 +82,6 @@ const PHONE: string | null = null;
     letter-spacing: 0;
     font-size: 14px;
     margin-right: 2px;
-  }
-
-  .section-roman {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 500;
-    font-size: 18px;
-    color: var(--marmalade);
   }
 
   .section-title {

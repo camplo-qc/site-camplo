@@ -4,17 +4,15 @@
 ---
 
 <section class="services" id="travaux" aria-label="Ce qu'on fait">
+  <span class="numeral-bg" aria-hidden="true">I</span>
   <div class="wrap">
     <div class="section-head">
-      <div>
-        <p class="eyebrow">
-          <span class="eyebrow-num">01</span> · Ce qu'on fait
-        </p>
-        <h2 class="section-title">
-          Camplo, c'est <em>deux</em> choses et un système pour les porter.
-        </h2>
-      </div>
-      <span class="section-roman">I</span>
+      <p class="eyebrow">
+        <span class="eyebrow-num">01</span> · Ce qu'on fait
+      </p>
+      <h2 class="section-title">
+        Camplo, c'est <em>deux</em> choses et un système pour les porter.
+      </h2>
     </div>
 
     <p class="intro">
@@ -80,14 +78,33 @@
     background: var(--paper-warm);
     padding: var(--section-pad-y) 0;
     border-top: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
   }
 
-  .section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 24px;
-    flex-wrap: wrap;
+  .numeral-bg {
+    position: absolute;
+    right: -5%;
+    bottom: -18%;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(320px, 48vw, 640px);
+    line-height: 0.78;
+    color: var(--marmalade);
+    opacity: 0.1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-head > * {
+    display: block;
   }
 
   .eyebrow {
@@ -108,14 +125,6 @@
     text-transform: none;
     font-size: 14px;
     margin-right: 2px;
-  }
-
-  .section-roman {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 500;
-    font-size: 18px;
-    color: var(--marmalade);
   }
 
   .section-title {
