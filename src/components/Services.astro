@@ -168,6 +168,17 @@
   .card-dark {
     background: var(--fern);
     color: var(--paper);
+    position: relative;
+  }
+
+  @media (min-width: 900px) {
+    .card-light {
+      margin-right: clamp(40px, 10vw, 160px);
+    }
+    .card-dark {
+      margin-left: clamp(40px, 10vw, 160px);
+      margin-top: clamp(24px, 3vw, 48px);
+    }
   }
   .card-dark .card-body {
     color: var(--paper-soft);

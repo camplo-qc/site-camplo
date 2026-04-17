@@ -16,51 +16,49 @@
       </h2>
     </div>
 
-    <div class="grid">
-      <div class="col-copy">
-        <p>
-          Camping familial québécois, ouvert depuis 25 ans. 162 emplacements
-          — du terrain naturel au chalet tout confort. La réservation se
-          faisait par téléphone, la gestion se tenait à la main.
-        </p>
-        <p>
-          En mars 2026, on a livré un site de réservation complet avec
-          paiement intégré, et un logiciel desktop multi-utilisateur pour
-          gérer la saison. Les clients réservent en ligne, l'équipe gère en
-          interne, les données restent locales.
-        </p>
-        <p class="cta-line">
-          <a
-            href="https://delajoiequebec.com"
-            class="cta-link"
-            target="_blank"
-            rel="noopener"
-          >
-            Voir delajoiequebec.com →
-          </a>
-        </p>
-      </div>
-
-      <dl class="stats">
-        <div class="stat">
-          <dt class="stat-num">162</dt>
-          <dd class="stat-label">emplacements gérés</dd>
-        </div>
-        <div class="stat">
-          <dt class="stat-num">3</dt>
-          <dd class="stat-label">types d'hébergement</dd>
-        </div>
-        <div class="stat">
-          <dt class="stat-num">Mars 2026</dt>
-          <dd class="stat-label">en production</dd>
-        </div>
-        <div class="stat">
-          <dt class="stat-num">Saison 2026</dt>
-          <dd class="stat-label">opérationnelle</dd>
-        </div>
-      </dl>
+    <div class="col-copy">
+      <p>
+        Camping familial québécois, ouvert depuis 25 ans. 162 emplacements
+        — du terrain naturel au chalet tout confort. La réservation se
+        faisait par téléphone, la gestion se tenait à la main.
+      </p>
+      <p>
+        En mars 2026, on a livré un site de réservation complet avec
+        paiement intégré, et un logiciel desktop multi-utilisateur pour
+        gérer la saison. Les clients réservent en ligne, l'équipe gère en
+        interne, les données restent locales.
+      </p>
+      <p class="cta-line">
+        <a
+          href="https://delajoiequebec.com"
+          class="cta-link"
+          target="_blank"
+          rel="noopener"
+        >
+          Voir delajoiequebec.com →
+        </a>
+      </p>
     </div>
   </div>
+
+  <dl class="stats-strip">
+    <div class="stat">
+      <dt class="stat-num">162</dt>
+      <dd class="stat-label">emplacements gérés</dd>
+    </div>
+    <div class="stat">
+      <dt class="stat-num">3</dt>
+      <dd class="stat-label">types d'hébergement</dd>
+    </div>
+    <div class="stat">
+      <dt class="stat-num">Mars 2026</dt>
+      <dd class="stat-label">en production</dd>
+    </div>
+    <div class="stat">
+      <dt class="stat-num">Saison 2026</dt>
+      <dd class="stat-label">opérationnelle</dd>
+    </div>
+  </dl>
 </section>
 
 <style>
@@ -123,21 +121,9 @@
     max-width: 24ch;
   }
 
-  .grid {
-    margin-top: clamp(48px, 6vw, 80px);
-    display: grid;
-    grid-template-columns: minmax(0, 62ch) minmax(0, 1fr);
-    gap: clamp(40px, 6vw, 96px);
-    align-items: start;
-  }
-
-  @media (max-width: 900px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
   .col-copy {
+    margin-top: clamp(48px, 6vw, 80px);
+    max-width: 62ch;
     display: grid;
     gap: 20px;
     font-family: var(--font-body);
@@ -163,27 +149,52 @@
     color: var(--marmalade-bright);
   }
 
-  .stats {
+  .stats-strip {
+    position: relative;
+    z-index: 1;
+    margin-top: clamp(80px, 10vw, 140px);
     display: grid;
-    gap: clamp(28px, 3vw, 40px);
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--rule-paper);
+    border-bottom: 1px solid var(--rule-paper);
   }
 
   .stat {
-    border-top: 1px solid var(--rule-paper);
-    padding-top: 16px;
+    padding: clamp(40px, 5vw, 56px) clamp(16px, 3vw, 40px);
+    border-left: 1px solid var(--rule-paper);
+  }
+  .stat:first-child {
+    border-left: none;
+    padding-left: var(--wrap-pad-x);
+  }
+  .stat:last-child {
+    padding-right: var(--wrap-pad-x);
+  }
+
+  @media (max-width: 760px) {
+    .stats-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .stat:nth-child(3) {
+      border-left: none;
+      padding-left: var(--wrap-pad-x);
+    }
+    .stat:nth-child(-n+2) {
+      border-bottom: 1px solid var(--rule-paper);
+    }
   }
 
   .stat-num {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(40px, 5vw, 64px);
+    font-size: clamp(40px, 6vw, 80px);
     letter-spacing: -0.02em;
-    line-height: 1;
+    line-height: 0.95;
     color: var(--paper);
   }
 
   .stat-label {
-    margin-top: 8px;
+    margin-top: 12px;
     font-family: var(--font-label);
     font-weight: 600;
     font-size: 11px;

@@ -14,7 +14,7 @@
     </div>
 
     <ol class="principles">
-      <li class="principle">
+      <li class="principle principle-left">
         <span class="num" aria-hidden="true">I</span>
         <div class="body">
           <h3 class="title">
@@ -28,20 +28,19 @@
         </div>
       </li>
 
-      <li class="principle">
+      <li class="principle principle-center">
         <span class="num" aria-hidden="true">II</span>
-        <div class="body">
-          <h3 class="title">On parle camping, en français.</h3>
-          <p class="desc">
-            Terrains saisonniers, emplacements 50 ampères, sites de
-            passage, chalets 4 saisons. On sait le vocabulaire avant la
-            première réunion.
-          </p>
-        </div>
+        <h3 class="title title-big">
+          On parle <em>camping</em>, en français.
+        </h3>
+        <p class="desc">
+          Terrains saisonniers, emplacements 50 ampères, sites de passage,
+          chalets 4 saisons. On sait le vocabulaire avant la première
+          réunion.
+        </p>
       </li>
 
-      <li class="principle">
-        <span class="num" aria-hidden="true">III</span>
+      <li class="principle principle-right">
         <div class="body">
           <h3 class="title">Vos données restent chez vous.</h3>
           <p class="desc">
@@ -50,6 +49,7 @@
             coupé.
           </p>
         </div>
+        <span class="num" aria-hidden="true">III</span>
       </li>
     </ol>
   </div>
@@ -120,10 +120,7 @@
   }
 
   .principle {
-    display: grid;
-    grid-template-columns: 120px minmax(0, 1fr);
-    gap: clamp(24px, 4vw, 48px);
-    padding: clamp(32px, 4vw, 48px) 0;
+    padding: clamp(40px, 5vw, 72px) 0;
     border-top: 1px solid var(--rule);
   }
 
@@ -138,6 +135,7 @@
     font-size: clamp(40px, 5vw, 64px);
     color: var(--marmalade);
     line-height: 1;
+    display: block;
   }
 
   .body {
@@ -161,13 +159,66 @@
     color: var(--ink-soft);
   }
 
+  /* I — aligned left, numeral top */
+  .principle-left {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 48px);
+  }
+
+  /* II — center, massive pull-quote feel */
+  .principle-center {
+    text-align: center;
+    padding: clamp(56px, 7vw, 96px) 0;
+  }
+  .principle-center .num {
+    margin: 0 auto 24px;
+  }
+  .principle-center .title-big {
+    font-size: clamp(36px, 5vw, 64px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    max-width: 18ch;
+    margin: 0 auto;
+  }
+  .principle-center .title-big em {
+    font-style: italic;
+    color: var(--marmalade);
+  }
+  .principle-center .desc {
+    max-width: 52ch;
+    margin: 20px auto 0;
+  }
+
+  /* III — aligned right, numeral right */
+  .principle-right {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 120px;
+    gap: clamp(24px, 4vw, 48px);
+    text-align: right;
+  }
+  .principle-right .body {
+    margin-left: auto;
+  }
+  .principle-right .num {
+    text-align: left;
+  }
+
   @media (max-width: 640px) {
-    .principle {
+    .principle-left,
+    .principle-right {
       grid-template-columns: 1fr;
       gap: 12px;
+      text-align: left;
+    }
+    .principle-right .num {
+      text-align: left;
     }
     .num {
-      font-size: 36px;
+      font-size: 40px;
+    }
+    .principle-center .title-big {
+      font-size: 32px;
     }
   }
 </style>
