@@ -1,0 +1,379 @@
+---
+// Section 4 — Le logiciel de gestion
+// La section money shot : screenshots + détails concrets.
+---
+
+<section class="crm" aria-label="Le logiciel de gestion">
+  <span class="numeral-bg" aria-hidden="true">III</span>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">
+        <span class="eyebrow-num">03</span> · Le logiciel de gestion
+      </p>
+      <h2 class="section-title">
+        Ce que l'accueil ouvre le matin à 8h.
+      </h2>
+    </div>
+
+    <div class="intro">
+      <p>
+        Le logiciel est une vraie app desktop pour Mac ou Windows. Pas
+        un site web, pas un outil qui rame sur le wifi du terrain. Un
+        programme qui s'installe, qui ouvre avec un raccourci sur le
+        bureau, qui continue de fonctionner quand internet tombe en
+        plein samedi après-midi.
+      </p>
+      <p>Voici ce qu'il y a dedans.</p>
+    </div>
+  </div>
+
+  <figure class="shot shot-hero">
+    <img
+      src="/screenshots/crm-dashboard.png"
+      alt="Tableau de bord du logiciel Camplo"
+      loading="lazy"
+      width="1470"
+      height="918"
+    />
+    <figcaption>
+      <span class="fig-num">I.</span>
+      Le matin à 8h, le tableau de bord montre qui arrive, qui part,
+      qui doit encore payer. Un bouton <em>Imprimer la liste du jour</em>
+      sort un PDF qu'on scotche à côté du téléphone.
+    </figcaption>
+  </figure>
+
+  <div class="wrap">
+    <div class="feature">
+      <div class="feature-text">
+        <h3 class="feature-title">Calendrier</h3>
+        <p>
+          Une vue mensuelle, une ligne par emplacement, une cellule par
+          jour. Vert pâle pour les nuits réservées, bleu pour le jour
+          courant. On voit d'un coup les chevauchements, les trous, les
+          saisonniers qui courent tout l'été sur le même numéro.
+        </p>
+      </div>
+      <figure class="feature-shot">
+        <img
+          src="/screenshots/crm-calendrier.png"
+          alt="Calendrier mensuel avec une ligne par emplacement"
+          loading="lazy"
+          width="1470"
+          height="918"
+        />
+      </figure>
+    </div>
+
+    <div class="feature feature-reverse">
+      <div class="feature-text">
+        <h3 class="feature-title">Réservations</h3>
+        <p>
+          Toutes les réservations dans une seule table, filtrables par
+          statut : confirmée, en attente, annulée, complétée, no-show.
+          Les dates passées en rouge, les futures en vert. Chaque ligne
+          a un prix et un client.
+        </p>
+        <p>
+          Pour en créer une, un formulaire court : dates d'arrivée et
+          départ, adultes, enfants, carte de crédit (qu'on ne stocke
+          pas, elle est effacée le jour de l'arrivée), client existant
+          ou nouveau, note optionnelle.
+        </p>
+      </div>
+      <figure class="feature-shot">
+        <img
+          src="/screenshots/crm-reservations.png"
+          alt="Liste des réservations avec statuts et prix"
+          loading="lazy"
+          width="1470"
+          height="918"
+        />
+      </figure>
+    </div>
+
+    <div class="feature">
+      <div class="feature-text">
+        <h3 class="feature-title">Emplacements</h3>
+        <p>
+          Chaque emplacement a son numéro, son type de service (3
+          services 50A, 3 services 30A, 2 services, Nature, Chalet),
+          ses dimensions en pieds (longueur × largeur), son pourcentage
+          d'ensoleillement. On coche quels véhicules peuvent s'y
+          garer : motorisé, fifth-wheel, roulotte, campeur porté,
+          tente-roulotte, tente.
+        </p>
+        <p class="note">
+          162 emplacements chez Camping de la Joie. Tous catalogués
+          avec le vocabulaire que vous utilisez déjà.
+        </p>
+      </div>
+      <figure class="feature-shot">
+        <img
+          src="/screenshots/crm-emplacements.png"
+          alt="Liste des emplacements avec dimensions et véhicules acceptés"
+          loading="lazy"
+          width="1470"
+          height="918"
+        />
+      </figure>
+    </div>
+
+    <div class="feature feature-reverse">
+      <div class="feature-text">
+        <h3 class="feature-title">Clients</h3>
+        <p>
+          La fiche client garde le nom, le courriel, le téléphone, la
+          ville, l'historique des réservations. C'est tout. Pas de
+          newsletter forcée, pas de segmentation marketing, pas de
+          scoring. Juste ce qu'il faut pour savoir à qui on parle.
+        </p>
+      </div>
+      <figure class="feature-shot">
+        <img
+          src="/screenshots/crm-clients.png"
+          alt="Liste des clients avec coordonnées"
+          loading="lazy"
+          width="1470"
+          height="918"
+        />
+      </figure>
+    </div>
+
+    <div class="feature">
+      <div class="feature-text">
+        <h3 class="feature-title">Fiscalité</h3>
+        <p>
+          Revenus du mois, nombre de réservations, taux d'occupation,
+          revenu moyen par nuit. Un graphique des revenus par mois.
+          Le remplissage par type de service. Un bouton
+          <em>Exporter PDF</em> qu'on envoie à la comptable avant le
+          15 du mois suivant.
+        </p>
+        <p class="note">
+          TPS 5% et TVQ 9.975% calculées automatiquement. Le logiciel
+          fait les chiffres, vous remettez.
+        </p>
+      </div>
+      <figure class="feature-shot">
+        <img
+          src="/screenshots/crm-fiscal.png"
+          alt="Page fiscalité avec revenus mensuels et remplissage par type"
+          loading="lazy"
+          width="1470"
+          height="918"
+        />
+      </figure>
+    </div>
+
+    <div class="under-hood">
+      <h3 class="feature-title">Sous le capot</h3>
+      <ul>
+        <li>Multi-utilisateur avec deux niveaux de rôle (standard et super-admin)</li>
+        <li>Données stockées localement en SQLite, sur votre ordinateur</li>
+        <li>Fonctionne hors-ligne, se synchronise quand la connexion revient</li>
+        <li>Construit avec Tauri, Vue 3, TypeScript. Léger, rapide, audité</li>
+        <li>Mises à jour automatiques par le réseau, sans que personne ait à courir après</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .crm {
+    background: var(--paper);
+    padding: var(--section-pad-y) 0 clamp(60px, 8vw, 100px);
+    border-top: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .numeral-bg {
+    position: absolute;
+    right: -4%;
+    top: -8%;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(280px, 42vw, 560px);
+    line-height: 0.78;
+    color: var(--marmalade);
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+  }
+  .eyebrow-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    margin-right: 2px;
+  }
+
+  .section-title {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 64px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--ink);
+    max-width: 20ch;
+  }
+
+  .intro {
+    margin-top: clamp(32px, 4vw, 56px);
+    max-width: 60ch;
+    display: grid;
+    gap: 18px;
+    font-family: var(--font-body);
+    font-size: clamp(17px, 1.2vw, 19px);
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .shot-hero {
+    margin: clamp(56px, 7vw, 96px) 0 clamp(80px, 10vw, 140px);
+    display: grid;
+    gap: 18px;
+  }
+  .shot-hero img {
+    display: block;
+    width: 100%;
+    max-width: var(--wrap-max);
+    margin: 0 auto;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+  .shot-hero figcaption {
+    max-width: 62ch;
+    margin: 0 auto;
+    padding: 0 var(--wrap-pad-x);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+  .fig-num {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    color: var(--marmalade);
+    margin-right: 6px;
+    font-style: italic;
+  }
+
+  .feature {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+    padding: clamp(48px, 7vw, 96px) 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .feature-reverse {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  }
+  .feature-reverse .feature-text {
+    order: 2;
+  }
+  .feature-reverse .feature-shot {
+    order: 1;
+  }
+
+  @media (max-width: 900px) {
+    .feature,
+    .feature-reverse {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .feature-reverse .feature-text {
+      order: 1;
+    }
+    .feature-reverse .feature-shot {
+      order: 2;
+    }
+  }
+
+  .feature-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 3.2vw, 40px);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  .feature-text p {
+    margin-top: 16px;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 48ch;
+  }
+
+  .feature-text .note {
+    font-style: italic;
+    color: var(--ink-muted);
+    font-size: 15px;
+  }
+
+  .feature-shot img {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .under-hood {
+    padding: clamp(48px, 6vw, 80px) 0 0;
+    border-top: 1px solid var(--rule);
+  }
+  .under-hood ul {
+    margin-top: 20px;
+    display: grid;
+    gap: 12px;
+    list-style: none;
+    max-width: 62ch;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .under-hood li {
+    padding-left: 22px;
+    position: relative;
+  }
+  .under-hood li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--marmalade);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1;
+  }
+</style>

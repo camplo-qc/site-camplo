@@ -1,0 +1,138 @@
+---
+// Section 8 — Pour qui / Pour qui pas
+// Section qualifying : renforce confiance par l'anti-sales.
+---
+
+<section class="qualify" aria-label="Pour qui">
+  <span class="numeral-bg" aria-hidden="true">VII</span>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">
+        <span class="eyebrow-num">07</span> · Pour qui
+      </p>
+      <h2 class="section-title">
+        On travaille avec un type de camping précis.
+      </h2>
+    </div>
+
+    <div class="body">
+      <p>
+        Campings indépendants. Pas des chaînes, pas des franchises,
+        pas des complexes gérés par une entreprise de gestion
+        immobilière.
+      </p>
+
+      <p>
+        Propriétaires qui veulent garder le contrôle de leur opération.
+        Si votre plan sur cinq ans est de vendre à KOA ou à Parkbridge,
+        on est probablement pas la bonne agence à appeler.
+      </p>
+
+      <p>
+        Campings entre 30 et 300 emplacements approximativement. Plus
+        petit, le coût du setup ne se justifie pas bien. Plus gros,
+        on n'a pas encore la preuve qu'on peut supporter l'échelle,
+        et on préfère vous le dire d'avance.
+      </p>
+
+      <p>
+        Campings qui opèrent au Québec, en français. Nos fournisseurs
+        de paiement, nos taxes, notre vocabulaire, nos habitudes de
+        travail sont d'ici. Si vous êtes à Moncton ou à Ottawa, on
+        peut s'arranger mais on vous prévient qu'il va falloir
+        adapter, pas juste traduire.
+      </p>
+
+      <p class="outro">
+        Si vous vous reconnaissez, écrivez-nous. Si vous ne vous
+        reconnaissez pas tout à fait, écrivez-nous pareil. On est
+        honnêtes quand on n'est pas la bonne personne à consulter, et
+        la plupart du temps on peut vous dire vers qui aller.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .qualify {
+    background: var(--paper-warm);
+    padding: var(--section-pad-y) 0;
+    border-top: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .numeral-bg {
+    position: absolute;
+    left: -6%;
+    bottom: -18%;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(320px, 48vw, 640px);
+    line-height: 0.78;
+    color: var(--marmalade);
+    opacity: 0.1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+  }
+  .eyebrow-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    margin-right: 2px;
+  }
+
+  .section-title {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--ink);
+    max-width: 26ch;
+  }
+
+  .body {
+    margin-top: clamp(48px, 6vw, 80px);
+    max-width: 64ch;
+    display: grid;
+    gap: 22px;
+    font-family: var(--font-body);
+    font-size: clamp(17px, 1.2vw, 19px);
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .body .outro {
+    margin-top: 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.45;
+    color: var(--ink);
+  }
+</style>

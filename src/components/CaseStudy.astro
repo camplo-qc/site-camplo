@@ -1,44 +1,67 @@
 ---
-// Section 3, Case study Camping de la Joie
-// Background fern-deep (rupture sombre). 2-col: paragraphes éditoriaux + stats.
+// Section 6 — Camping de la Joie (case study long)
+// Story long : avant, pendant, après. Concret.
 ---
 
 <section class="case" aria-label="Case study Camping de la Joie">
-  <span class="numeral-bg" aria-hidden="true">II</span>
+  <span class="numeral-bg" aria-hidden="true">V</span>
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">
-        <span class="eyebrow-num">02</span> · Notre première réalisation
+        <span class="eyebrow-num">05</span> · Notre première réalisation
       </p>
       <h2 class="section-title">
-        Camping de la Joie. 25 ans d'opération. 162 emplacements. Un
-        système à la hauteur.
+        Camping de la Joie. 25 ans d'opération. 162 emplacements.
       </h2>
     </div>
 
-    <div class="col-copy">
+    <div class="body">
       <p>
-        Camping familial québécois, ouvert depuis 25 ans. 162 emplacements
-       , du terrain naturel au chalet tout confort. La réservation se
-        faisait par téléphone, la gestion se tenait à la main.
+        Camping familial québécois, dans les Laurentides. Ouvert depuis
+        2001. 162 emplacements, du terrain naturel au chalet tout
+        confort. Une saison qui court du 15 mai au début octobre.
       </p>
+
       <p>
-        En mars 2026, on a livré un site de réservation complet avec
-        paiement intégré, et un logiciel desktop multi-utilisateur pour
-        gérer la saison. Les clients réservent en ligne, l'équipe gère en
-        interne, les données restent locales.
+        Avant Camplo, la réservation se faisait surtout par téléphone.
+        Les paiements par carte passaient par une machine Moneris
+        séparée du système de gestion. Les arrivées du jour s'écrivaient
+        sur une feuille imprimée le matin et annotée au stylo au fur et
+        à mesure.
       </p>
-      <p class="cta-line">
-        <a
-          href="https://delajoiequebec.com"
-          class="cta-link"
-          target="_blank"
-          rel="noopener"
-        >
-          Voir delajoiequebec.com →
-        </a>
+
+      <p>
+        En janvier 2026, on a passé deux jours au camping. Premier jour
+        à regarder l'accueil fonctionner pendant les inscriptions au
+        saisonnier. Deuxième jour à lister tout ce qui manquait. On a
+        trouvé 34 choses.
+      </p>
+
+      <p>
+        De février à mars, on a bâti. Site public avec réservation en
+        ligne et paiement Stripe. Logiciel desktop multi-utilisateur
+        avec calendrier, fiches clients, emplacements, fiscalité. Les
+        deux se parlent : une réservation faite en ligne apparaît dans
+        le logiciel trois secondes plus tard.
+      </p>
+
+      <p>
+        Mise en production le 15 mars 2026. Saison 2026 opérationnelle.
+        Premier saisonnier qui a réservé en ligne sans appeler
+        l'accueil : le 18 mars, 14h47.
       </p>
     </div>
+
+    <p class="cta-line">
+      <a
+        href="https://delajoiequebec.com"
+        class="cta-link"
+        target="_blank"
+        rel="noopener"
+      >
+        Voir delajoiequebec.com →
+      </a>
+    </p>
   </div>
 
   <dl class="stats-strip">
@@ -47,8 +70,8 @@
       <dd class="stat-label">emplacements gérés</dd>
     </div>
     <div class="stat">
-      <dt class="stat-num">3</dt>
-      <dd class="stat-label">types d'hébergement</dd>
+      <dt class="stat-num">34</dt>
+      <dd class="stat-label">choses à changer</dd>
     </div>
     <div class="stat">
       <dt class="stat-num">Mars 2026</dt>
@@ -118,38 +141,38 @@
     letter-spacing: -0.02em;
     line-height: 1.05;
     color: var(--paper);
-    max-width: 24ch;
+    max-width: 22ch;
   }
 
-  .col-copy {
+  .body {
     margin-top: clamp(48px, 6vw, 80px);
-    max-width: 62ch;
+    max-width: 64ch;
     display: grid;
-    gap: 20px;
+    gap: 22px;
     font-family: var(--font-body);
-    font-size: 17px;
-    line-height: 1.6;
+    font-size: clamp(17px, 1.2vw, 19px);
+    line-height: 1.65;
     color: var(--paper-soft);
   }
 
-  .col-copy > p:first-child::first-letter {
+  .body > p:first-child::first-letter {
     font-family: var(--font-display);
     font-weight: 700;
     float: left;
-    font-size: 5.2em;
-    line-height: 0.82;
+    font-size: 4.6em;
+    line-height: 0.85;
     padding: 4px 12px 0 0;
     color: var(--marmalade);
   }
 
   .cta-line {
-    margin-top: 12px;
+    margin-top: clamp(32px, 4vw, 48px);
   }
 
   .cta-link {
     font-family: var(--font-body);
     font-weight: 500;
-    font-size: 16px;
+    font-size: 17px;
     color: var(--marmalade);
     border-bottom: 1px solid currentColor;
     padding-bottom: 3px;

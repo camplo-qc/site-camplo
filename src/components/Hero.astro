@@ -1,6 +1,6 @@
 ---
 // Hero, Section 1
-// Typo-only, paper background, massive Sentient headline
+// Voix v2 : honnête, spécifique, admet l'état actuel (1 client)
 ---
 
 <section class="hero" aria-label="Hero">
@@ -9,11 +9,19 @@
 
     <h1 class="headline">Un logiciel qui date <em>pas</em> de 2008.</h1>
 
-    <p class="subtext">
-      Un CRM et un site de réservation modernes, conçus pour les campings
-      indépendants du Québec. On remplace votre vieux système, on ne s'ajoute
-      pas par-dessus.
-    </p>
+    <div class="subtext">
+      <p>
+        On conçoit le site web de votre camping et le logiciel que l'accueil
+        utilise toute la saison. Si ce que vous avez là fait la job, on vous
+        laisse tranquille. Si ça vous fait crier à chaque mois de juillet,
+        on peut jaser.
+      </p>
+      <p class="status">
+        Un seul client à date : Camping de la Joie, 162 emplacements, en
+        production depuis mars. On cherche deux autres campings pour la
+        saison 2027.
+      </p>
+    </div>
 
     <div class="cta-row">
       <a href="#contact" class="btn-primary">Parler à Camplo</a>
@@ -76,6 +84,13 @@
     font-size: clamp(17px, 1.4vw, 20px);
     line-height: 1.6;
     color: var(--ink-soft);
+    display: grid;
+    gap: 18px;
+  }
+
+  .subtext .status {
+    font-style: italic;
+    color: var(--ink-muted);
   }
 
   .cta-row {

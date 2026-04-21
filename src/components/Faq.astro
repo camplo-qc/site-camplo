@@ -1,0 +1,173 @@
+---
+// Section 9 — Questions qu'on se fait poser
+// Vrais doutes, pas une FAQ générique.
+---
+
+<section class="faq" aria-label="Questions fréquentes">
+  <span class="numeral-bg" aria-hidden="true">VIII</span>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">
+        <span class="eyebrow-num">08</span> · Questions
+      </p>
+      <h2 class="section-title">Les doutes, avant qu'on y arrive.</h2>
+    </div>
+
+    <dl class="qa-list">
+      <div class="qa">
+        <dt>Et si vous fermez boutique demain matin ?</dt>
+        <dd>
+          Le code source du site et un export complet de vos données
+          vous sont livrés au moment de la mise en production. Le
+          logiciel continue de fonctionner même si on disparaît. Vous
+          perdez les mises à jour et le support, pas l'outil.
+        </dd>
+      </div>
+
+      <div class="qa">
+        <dt>Et si mon internet tombe en plein milieu d'un samedi de
+          juillet ?</dt>
+        <dd>
+          Le logiciel continue. Les réservations que vos campeurs font
+          en ligne pendant la panne s'accumulent chez Stripe et
+          apparaissent dès que la connexion revient. L'accueil peut
+          opérer hors-ligne toute la journée, enregistrer les arrivées
+          au papier, et synchroniser le soir.
+        </dd>
+      </div>
+
+      <div class="qa">
+        <dt>Et si je veux une fonction que vous n'avez pas ?</dt>
+        <dd>
+          On regarde. Si ça fait du sens et qu'on peut le construire en
+          moins de deux semaines, on vous donne un devis. Si ça demande
+          plus, on vous dit pourquoi ce serait mieux de traiter ça comme
+          un projet à part. On n'ajoute pas de fonctions juste pour
+          vendre.
+        </dd>
+      </div>
+
+      <div class="qa">
+        <dt>Est-ce que je peux changer mon nom de domaine plus tard ?</dt>
+        <dd>
+          Oui. Votre domaine est chez vous (nous on suggère de le
+          parquer chez Cloudflare). Le site se branche dessus sans
+          magie. Un changement de domaine prend environ deux heures de
+          notre côté.
+        </dd>
+      </div>
+
+      <div class="qa">
+        <dt>Est-ce que je paie une commission par réservation ?</dt>
+        <dd>
+          Non. Jamais. Vous payez Stripe 2.9% + 30¢ par transaction (et
+          c'est Stripe qui prend, pas nous), et le prix mensuel de
+          votre abonnement Camplo. C'est tout.
+        </dd>
+      </div>
+
+      <div class="qa">
+        <dt>Je veux juste le site, pas le logiciel. Possible ?</dt>
+        <dd>
+          Oui. L'inverse aussi. Les prix upfront et mensuel sont
+          ajustés à ce que vous prenez. Si vous commencez avec un et
+          ajoutez l'autre un an plus tard, la transition se fait sans
+          douleur.
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .faq {
+    background: var(--paper);
+    padding: var(--section-pad-y) 0;
+    border-top: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .numeral-bg {
+    position: absolute;
+    right: -4%;
+    top: -8%;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(280px, 42vw, 560px);
+    line-height: 0.78;
+    color: var(--marmalade);
+    opacity: 0.08;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+  }
+  .eyebrow-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    margin-right: 2px;
+  }
+
+  .section-title {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  .qa-list {
+    margin-top: clamp(48px, 6vw, 80px);
+    display: grid;
+    gap: 0;
+    max-width: 74ch;
+  }
+
+  .qa {
+    padding: clamp(28px, 3.6vw, 44px) 0;
+    border-top: 1px solid var(--rule);
+  }
+  .qa:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .qa dt {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(22px, 2.4vw, 30px);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--ink);
+    max-width: 40ch;
+  }
+
+  .qa dd {
+    margin-top: 16px;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+</style>

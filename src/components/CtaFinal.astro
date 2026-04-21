@@ -1,27 +1,37 @@
 ---
-// Section 5, CTA final
-// Background paper-warm. Mailto + tel en typographie monumentale.
+// Section 10 — Parler (CTA final)
+// Contact direct. Explique ce qui se passe après le courriel.
 
 const EMAIL = 'hello@camplo.ca';
 const PHONE: string | null = null;
 ---
 
 <section class="cta-final" id="contact" aria-label="Contact">
-  <span class="numeral-bg" aria-hidden="true">IV</span>
+  <span class="numeral-bg" aria-hidden="true">IX</span>
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">
-        <span class="eyebrow-num">04</span> · Parler
+        <span class="eyebrow-num">09</span> · Parler
       </p>
       <h2 class="section-title">
         Prêt à remplacer ce qui date de 2008 ?
       </h2>
     </div>
 
-    <p class="subtext">
-      Un courriel, un appel. La première conversation est gratuite, et
-      honnêtement c'est nous qui apprenons le plus.
-    </p>
+    <div class="body">
+      <p>
+        Un courriel, un appel. La première conversation est gratuite. On
+        vous pose des questions sur votre camping, vous nous posez les
+        vôtres. Vingt-cinq minutes en moyenne. Zéro deuxième appel de
+        vente pressé.
+      </p>
+      <p>
+        Si après cet appel on pense qu'on peut vous aider, on vous
+        envoie un plan écrit par courriel la semaine suivante. Si on
+        pense qu'on n'est pas la bonne agence pour vous, on vous le
+        dit, et la plupart du temps on vous suggère vers qui aller.
+      </p>
+    </div>
 
     <div class="contact-lines">
       <a class="contact-line" href={`mailto:${EMAIL}`}>{EMAIL}</a>
@@ -42,6 +52,7 @@ const PHONE: string | null = null;
     padding: var(--section-pad-y) 0 clamp(100px, 14vw, 180px);
     position: relative;
     overflow: hidden;
+    border-top: 1px solid var(--rule);
   }
 
   .numeral-bg {
@@ -94,12 +105,14 @@ const PHONE: string | null = null;
     max-width: 18ch;
   }
 
-  .subtext {
-    margin-top: 24px;
-    max-width: 58ch;
+  .body {
+    margin-top: 28px;
+    max-width: 62ch;
+    display: grid;
+    gap: 20px;
     font-family: var(--font-body);
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: clamp(17px, 1.2vw, 19px);
+    line-height: 1.65;
     color: var(--ink-soft);
   }
 
