@@ -1,18 +1,50 @@
 ---
 // Section 4 — Le logiciel de gestion
-// La section money shot : screenshots + détails concrets.
+// Version éventail : toutes les photos en fan, texte des features en dessous.
+
+const shots = [
+  {
+    src: '/screenshots/crm-dashboard.png',
+    alt: 'Tableau de bord du logiciel Camplo',
+    label: 'Tableau de bord',
+  },
+  {
+    src: '/screenshots/crm-calendrier.png',
+    alt: 'Calendrier mensuel avec une ligne par emplacement',
+    label: 'Calendrier',
+  },
+  {
+    src: '/screenshots/crm-reservations.png',
+    alt: 'Liste des réservations avec statuts et prix',
+    label: 'Réservations',
+  },
+  {
+    src: '/screenshots/crm-emplacements.png',
+    alt: 'Liste des emplacements avec dimensions et véhicules',
+    label: 'Emplacements',
+  },
+  {
+    src: '/screenshots/crm-clients.png',
+    alt: 'Liste des clients avec coordonnées',
+    label: 'Clients',
+  },
+  {
+    src: '/screenshots/crm-fiscal.png',
+    alt: 'Page fiscalité avec revenus mensuels',
+    label: 'Fiscalité',
+  },
+];
 ---
 
 <section class="crm" aria-label="Le logiciel de gestion">
   <span class="numeral-bg" aria-hidden="true">III</span>
+
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">
         <span class="eyebrow-num">03</span> · Le logiciel de gestion
       </p>
-      <h2 class="section-title">
-        Ce que l'accueil ouvre le matin à 8h.
-      </h2>
+      <h2 class="section-title">Ce que l'accueil ouvre le matin à 8h.</h2>
     </div>
 
     <div class="intro">
@@ -23,151 +55,103 @@
         bureau, qui continue de fonctionner quand internet tombe en
         plein samedi après-midi.
       </p>
-      <p>Voici ce qu'il y a dedans.</p>
     </div>
   </div>
 
-  <figure class="shot shot-hero">
-    <img
-      src="/screenshots/crm-dashboard.png"
-      alt="Tableau de bord du logiciel Camplo"
-      loading="lazy"
-      width="1445"
-      height="900"
-    />
-    <figcaption>
-      <span class="fig-num">I.</span>
-      Le matin à 8h, le tableau de bord montre qui arrive, qui part,
-      qui doit encore payer. Un bouton <em>Imprimer la liste du jour</em>
-      sort un PDF qu'on scotche à côté du téléphone.
-    </figcaption>
-  </figure>
+  <div class="fan-wrap">
+    <div class="fan" role="list">
+      {
+        shots.map((shot, i) => (
+          <figure class="fan-card" role="listitem" style={`--i: ${i}`}>
+            <img
+              src={shot.src}
+              alt={shot.alt}
+              loading="lazy"
+              width="1450"
+              height="900"
+            />
+            <figcaption>{shot.label}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
 
   <div class="wrap">
-    <div class="feature">
-      <div class="feature-text">
-        <h3 class="feature-title">Calendrier</h3>
-        <p>
-          Une vue mensuelle, une ligne par emplacement, une cellule par
-          jour. Vert pâle pour les nuits réservées, bleu pour le jour
-          courant. On voit d'un coup les chevauchements, les trous, les
-          saisonniers qui courent tout l'été sur le même numéro.
-        </p>
+    <dl class="features-list">
+      <div class="feature-item">
+        <dt>
+          <span class="marker" aria-hidden="true">I.</span> Tableau de bord
+        </dt>
+        <dd>
+          Le matin à 8h : qui arrive, qui part, qui doit encore payer.
+          Un bouton <em>Imprimer la liste du jour</em> sort un PDF
+          qu'on scotche à côté du téléphone.
+        </dd>
       </div>
-      <figure class="feature-shot">
-        <img
-          src="/screenshots/crm-calendrier.png"
-          alt="Calendrier mensuel avec une ligne par emplacement"
-          loading="lazy"
-          width="1445"
-          height="900"
-        />
-      </figure>
-    </div>
 
-    <div class="feature feature-reverse">
-      <div class="feature-text">
-        <h3 class="feature-title">Réservations</h3>
-        <p>
-          Toutes les réservations dans une seule table, filtrables par
-          statut : confirmée, en attente, annulée, complétée, no-show.
-          Les dates passées en rouge, les futures en vert. Chaque ligne
-          a un prix et un client.
-        </p>
-        <p>
-          Pour en créer une, un formulaire court : dates d'arrivée et
-          départ, adultes, enfants, carte de crédit (qu'on ne stocke
-          pas, elle est effacée le jour de l'arrivée), client existant
-          ou nouveau, note optionnelle.
-        </p>
+      <div class="feature-item">
+        <dt>
+          <span class="marker" aria-hidden="true">II.</span> Calendrier
+        </dt>
+        <dd>
+          Vue mensuelle, une ligne par emplacement, une cellule par
+          jour. Vert pâle pour les nuits réservées. On voit les
+          chevauchements, les trous, les saisonniers qui courent tout
+          l'été sur le même numéro.
+        </dd>
       </div>
-      <figure class="feature-shot">
-        <img
-          src="/screenshots/crm-reservations.png"
-          alt="Liste des réservations avec statuts et prix"
-          loading="lazy"
-          width="1445"
-          height="900"
-        />
-      </figure>
-    </div>
 
-    <div class="feature">
-      <div class="feature-text">
-        <h3 class="feature-title">Emplacements</h3>
-        <p>
-          Chaque emplacement a son numéro, son type de service (3
-          services 50A, 3 services 30A, 2 services, Nature, Chalet),
-          ses dimensions en pieds (longueur × largeur), son pourcentage
-          d'ensoleillement. On coche quels véhicules peuvent s'y
-          garer : motorisé, fifth-wheel, roulotte, campeur porté,
-          tente-roulotte, tente.
-        </p>
-        <p class="note">
-          162 emplacements chez Camping de la Joie. Tous catalogués
-          avec le vocabulaire que vous utilisez déjà.
-        </p>
+      <div class="feature-item">
+        <dt>
+          <span class="marker" aria-hidden="true">III.</span> Réservations
+        </dt>
+        <dd>
+          Toutes les réservations filtrables par statut (confirmée, en
+          attente, annulée, complétée, no-show). Création en quelques
+          clics, carte de crédit effacée le jour de l'arrivée, note
+          optionnelle.
+        </dd>
       </div>
-      <figure class="feature-shot">
-        <img
-          src="/screenshots/crm-emplacements.png"
-          alt="Liste des emplacements avec dimensions et véhicules acceptés"
-          loading="lazy"
-          width="1445"
-          height="900"
-        />
-      </figure>
-    </div>
 
-    <div class="feature feature-reverse">
-      <div class="feature-text">
-        <h3 class="feature-title">Clients</h3>
-        <p>
-          La fiche client garde le nom, le courriel, le téléphone, la
-          ville, l'historique des réservations. C'est tout. Pas de
+      <div class="feature-item">
+        <dt>
+          <span class="marker" aria-hidden="true">IV.</span> Emplacements
+        </dt>
+        <dd>
+          Chaque emplacement a son numéro, son service (3 services 50A,
+          30A, Nature, Chalet), ses dimensions en pieds, ses véhicules
+          acceptés. 162 emplacements chez Camping de la Joie, tous
+          catalogués.
+        </dd>
+      </div>
+
+      <div class="feature-item">
+        <dt>
+          <span class="marker" aria-hidden="true">V.</span> Clients
+        </dt>
+        <dd>
+          Nom, courriel, téléphone, ville, historique. Pas de
           newsletter forcée, pas de segmentation marketing, pas de
           scoring. Juste ce qu'il faut pour savoir à qui on parle.
-        </p>
+        </dd>
       </div>
-      <figure class="feature-shot">
-        <img
-          src="/screenshots/crm-clients.png"
-          alt="Liste des clients avec coordonnées"
-          loading="lazy"
-          width="1445"
-          height="900"
-        />
-      </figure>
-    </div>
 
-    <div class="feature">
-      <div class="feature-text">
-        <h3 class="feature-title">Fiscalité</h3>
-        <p>
-          Revenus du mois, nombre de réservations, taux d'occupation,
-          revenu moyen par nuit. Un graphique des revenus par mois.
-          Le remplissage par type de service. Un bouton
-          <em>Exporter PDF</em> qu'on envoie à la comptable avant le
-          15 du mois suivant.
-        </p>
-        <p class="note">
-          TPS 5% et TVQ 9.975% calculées automatiquement. Le logiciel
-          fait les chiffres, vous remettez.
-        </p>
+      <div class="feature-item">
+        <dt>
+          <span class="marker" aria-hidden="true">VI.</span> Fiscalité
+        </dt>
+        <dd>
+          Revenus du mois, taux d'occupation, revenu moyen par nuit.
+          Graphique annuel, remplissage par type de service. TPS 5% et
+          TVQ 9.975% calculées. Bouton <em>Exporter PDF</em> pour la
+          comptable.
+        </dd>
       </div>
-      <figure class="feature-shot">
-        <img
-          src="/screenshots/crm-fiscal.png"
-          alt="Page fiscalité avec revenus mensuels et remplissage par type"
-          loading="lazy"
-          width="1445"
-          height="900"
-        />
-      </figure>
-    </div>
+    </dl>
 
     <div class="under-hood">
-      <h3 class="feature-title">Sous le capot</h3>
+      <h3 class="under-title">Sous le capot</h3>
       <ul>
         <li>Multi-utilisateur avec deux niveaux de rôle (standard et super-admin)</li>
         <li>Données stockées localement en SQLite, sur votre ordinateur</li>
@@ -242,117 +226,190 @@
   .intro {
     margin-top: clamp(32px, 4vw, 56px);
     max-width: 60ch;
-    display: grid;
-    gap: 18px;
     font-family: var(--font-body);
     font-size: clamp(17px, 1.2vw, 19px);
     line-height: 1.65;
     color: var(--ink-soft);
   }
 
-  .shot-hero {
-    margin: clamp(56px, 7vw, 96px) 0 clamp(80px, 10vw, 140px);
-    display: grid;
-    gap: 18px;
-  }
-  .shot-hero img {
-    display: block;
-    width: 100%;
-    max-width: var(--wrap-max);
-    margin: 0 auto;
-    border: 1px solid var(--rule);
-    border-radius: 8px;
-    background: var(--paper-warm);
-    overflow: hidden;
-  }
-  .shot-hero figcaption {
-    max-width: 62ch;
-    margin: 0 auto;
+  /* ÉVENTAIL — fan des screenshots */
+  .fan-wrap {
+    position: relative;
+    z-index: 2;
+    margin: clamp(72px, 9vw, 120px) 0;
     padding: 0 var(--wrap-pad-x);
-    font-family: var(--font-body);
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--ink-muted);
-    font-style: italic;
-  }
-  .fig-num {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-style: italic;
-    color: var(--marmalade);
-    margin-right: 6px;
-    font-style: italic;
+    overflow: visible;
   }
 
-  .feature {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
-    gap: clamp(32px, 5vw, 72px);
+  .fan {
+    position: relative;
+    height: clamp(360px, 44vw, 620px);
+    max-width: var(--wrap-max);
+    margin: 0 auto;
+    display: flex;
     align-items: center;
-    padding: clamp(48px, 7vw, 96px) 0;
+    justify-content: center;
+  }
+
+  .fan-card {
+    position: absolute;
+    width: clamp(280px, 36vw, 580px);
+    aspect-ratio: 1450 / 900;
+    margin: 0;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 12px 40px rgba(28, 28, 26, 0.18), 0 2px 8px rgba(28, 28, 26, 0.08);
+    background: var(--paper-warm);
+    overflow: hidden;
+    transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 320ms ease;
+    transform-origin: 50% 110%;
+    --step: 10deg;
+    --offset: 9%;
+  }
+
+  /* Fan layout: 6 cards, indices 0 to 5
+     centered around middle-ish, rotated and horizontally offset */
+  .fan-card:nth-child(1) { transform: rotate(calc(var(--step) * -2.5)) translateX(calc(var(--offset) * -2.5)); z-index: 1; }
+  .fan-card:nth-child(2) { transform: rotate(calc(var(--step) * -1.5)) translateX(calc(var(--offset) * -1.5)); z-index: 2; }
+  .fan-card:nth-child(3) { transform: rotate(calc(var(--step) * -0.5)) translateX(calc(var(--offset) * -0.5)); z-index: 3; }
+  .fan-card:nth-child(4) { transform: rotate(calc(var(--step) *  0.5)) translateX(calc(var(--offset) *  0.5)); z-index: 4; }
+  .fan-card:nth-child(5) { transform: rotate(calc(var(--step) *  1.5)) translateX(calc(var(--offset) *  1.5)); z-index: 5; }
+  .fan-card:nth-child(6) { transform: rotate(calc(var(--step) *  2.5)) translateX(calc(var(--offset) *  2.5)); z-index: 6; }
+
+  .fan-card:hover,
+  .fan-card:focus-within {
+    transform: rotate(0deg) translateX(0) translateY(-16px) scale(1.05);
+    z-index: 20;
+    box-shadow: 0 24px 60px rgba(28, 28, 26, 0.28), 0 4px 12px rgba(28, 28, 26, 0.1);
+  }
+
+  .fan-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .fan-card figcaption {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: rgba(28, 28, 26, 0.78);
+    backdrop-filter: blur(6px);
+    padding: 8px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    text-align: center;
+  }
+
+  .fan-card:hover figcaption,
+  .fan-card:focus-within figcaption {
+    opacity: 1;
+  }
+
+  /* Mobile : fallback en stack vertical */
+  @media (max-width: 720px) {
+    .fan {
+      height: auto;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .fan-card,
+    .fan-card:nth-child(1),
+    .fan-card:nth-child(2),
+    .fan-card:nth-child(3),
+    .fan-card:nth-child(4),
+    .fan-card:nth-child(5),
+    .fan-card:nth-child(6) {
+      position: static;
+      width: 100%;
+      transform: none;
+    }
+    .fan-card:nth-child(even) {
+      transform: rotate(-1.5deg);
+    }
+    .fan-card:nth-child(odd) {
+      transform: rotate(1.5deg);
+    }
+    .fan-card figcaption {
+      opacity: 1;
+    }
+  }
+
+  /* Liste des features */
+  .features-list {
+    margin-top: clamp(48px, 7vw, 96px);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(32px, 4vw, 56px) clamp(48px, 5vw, 80px);
+  }
+
+  @media (max-width: 720px) {
+    .features-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .feature-item {
+    padding-top: 20px;
     border-top: 1px solid var(--rule);
   }
 
-  .feature-reverse {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  }
-  .feature-reverse .feature-text {
-    order: 2;
-  }
-  .feature-reverse .feature-shot {
-    order: 1;
-  }
-
-  @media (max-width: 900px) {
-    .feature,
-    .feature-reverse {
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-    .feature-reverse .feature-text {
-      order: 1;
-    }
-    .feature-reverse .feature-shot {
-      order: 2;
-    }
-  }
-
-  .feature-title {
+  .feature-item dt {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(28px, 3.2vw, 40px);
+    font-size: clamp(22px, 2.2vw, 28px);
     letter-spacing: -0.01em;
-    line-height: 1.1;
+    line-height: 1.2;
     color: var(--ink);
   }
 
-  .feature-text p {
-    margin-top: 16px;
-    font-family: var(--font-body);
-    font-size: 17px;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    max-width: 48ch;
-  }
-
-  .feature-text .note {
+  .marker {
+    font-family: var(--font-display);
     font-style: italic;
-    color: var(--ink-muted);
-    font-size: 15px;
+    font-weight: 500;
+    color: var(--marmalade);
+    margin-right: 6px;
+    font-size: 0.82em;
   }
 
-  .feature-shot img {
-    display: block;
-    width: 100%;
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    background: var(--paper-warm);
-    overflow: hidden;
+  .feature-item dd {
+    margin-top: 12px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 44ch;
   }
 
+  .feature-item dd em {
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  /* Under the hood */
   .under-hood {
     padding: clamp(48px, 6vw, 80px) 0 0;
+    margin-top: clamp(48px, 6vw, 80px);
     border-top: 1px solid var(--rule);
+  }
+  .under-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(24px, 3vw, 36px);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--ink);
   }
   .under-hood ul {
     margin-top: 20px;
