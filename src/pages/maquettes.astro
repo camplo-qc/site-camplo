@@ -1,0 +1,809 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Maquettes · Camplo">
+  <main class="page">
+    <header class="page-head">
+      <p class="eyebrow">Explorations layout · Camplo v2+</p>
+      <h1 class="page-title">Maquettes</h1>
+      <p class="page-lede">
+        Cinq directions possibles pour le site. Chaque maquette montre la
+        structure des sections en wireframe, sans contenu final. Le but :
+        voir les différences d'énergie, pas les détails.
+      </p>
+    </header>
+
+    {/* ============ A · Éditorial (actuel) ============ */}
+    <article class="mockup" id="a">
+      <div class="mockup-head">
+        <h2>A · Éditorial (actuel)</h2>
+        <p>
+          Sections full-width alternées paper / paper-warm / fern-deep.
+          Hero typo-first, chiffres romains massifs en background, cards
+          pour le logiciel, ton magazine québécois. C'est la version en
+          production.
+        </p>
+      </div>
+      <div class="mockup-frame frame-a">
+        <div class="nav-bar"><span>Camplo</span><span>Travaux · Approche · Contact</span><span>→</span></div>
+        <div class="sect">
+          <span class="ph-label">Hero</span>
+          <span class="ph-h1"></span>
+          <span class="ph-line"></span>
+          <span class="ph-line mid"></span>
+          <div class="cta-row"><span class="ph-btn"></span><span class="ph-link"></span></div>
+        </div>
+        <div class="sect warm">
+          <span class="big-roman">I</span>
+          <span class="ph-label">01 · Diagnostic</span>
+          <span class="ph-h2"></span>
+          <span class="ph-line"></span>
+          <span class="ph-line"></span>
+          <span class="ph-line mid"></span>
+        </div>
+        <div class="sect">
+          <span class="big-roman">III</span>
+          <span class="ph-label">03 · Le logiciel</span>
+          <span class="ph-h2"></span>
+          <div class="fan-mini">
+            <span class="ph-img"></span>
+            <span class="ph-img"></span>
+            <span class="ph-img"></span>
+            <span class="ph-img"></span>
+          </div>
+        </div>
+        <div class="sect deep">
+          <span class="big-roman">V</span>
+          <span class="ph-label">05 · Case study</span>
+          <span class="ph-h2 light"></span>
+          <span class="ph-line light"></span>
+          <span class="ph-line light mid"></span>
+        </div>
+        <div class="sect warm">
+          <span class="ph-label">09 · Parler</span>
+          <span class="ph-h2"></span>
+        </div>
+        <div class="footer-bar">Footer</div>
+      </div>
+    </article>
+
+    {/* ============ B · Magazine colonnes ============ */}
+    <article class="mockup" id="b">
+      <div class="mockup-head">
+        <h2>B · Magazine colonnes</h2>
+        <p>
+          Grille à 3 colonnes pour le body, style New Yorker ou Harper's.
+          Headlines centrés pleine largeur. Pull-quotes italiques qui
+          traversent les 3 colonnes. Très éditorial long-form, presque
+          imprimé.
+        </p>
+      </div>
+      <div class="mockup-frame frame-b">
+        <div class="nav-bar"><span>Camplo</span><span>Travaux · Approche · Contact</span><span>→</span></div>
+        <div class="hero-b">
+          <span class="ph-label">Hero</span>
+          <span class="ph-h1 wide"></span>
+          <span class="ph-line center mid"></span>
+        </div>
+        <div class="centered-head">
+          <span class="ph-label">01 · Diagnostic</span>
+          <span class="ph-h2 center"></span>
+        </div>
+        <div class="cols3">
+          <div class="col">
+            <span class="ph-line"></span><span class="ph-line"></span>
+            <span class="ph-line"></span><span class="ph-line mid"></span>
+          </div>
+          <div class="col">
+            <span class="ph-line"></span><span class="ph-line"></span>
+            <span class="ph-line mid"></span>
+          </div>
+          <div class="col">
+            <span class="ph-line"></span><span class="ph-line"></span>
+            <span class="ph-line"></span><span class="ph-line short"></span>
+          </div>
+        </div>
+        <div class="pull">
+          <span class="pull-txt"><em>Pull quote italique qui traverse les trois colonnes</em></span>
+        </div>
+        <div class="cols3">
+          <div class="col">
+            <span class="ph-line"></span><span class="ph-line"></span>
+            <span class="ph-line mid"></span>
+          </div>
+          <div class="col">
+            <span class="ph-line"></span><span class="ph-line"></span>
+            <span class="ph-line"></span><span class="ph-line short"></span>
+          </div>
+          <div class="col">
+            <span class="ph-line"></span><span class="ph-line mid"></span>
+          </div>
+        </div>
+        <div class="centered-head">
+          <span class="ph-label">03 · Le logiciel</span>
+          <span class="ph-h2 center"></span>
+        </div>
+        <div class="cols3">
+          <div class="col">
+            <span class="ph-line"></span><span class="ph-line mid"></span>
+          </div>
+          <div class="col">
+            <span class="ph-line"></span><span class="ph-line"></span>
+          </div>
+          <div class="col">
+            <span class="ph-line mid"></span><span class="ph-line short"></span>
+          </div>
+        </div>
+        <div class="footer-bar">Footer</div>
+      </div>
+    </article>
+
+    {/* ============ C · Swiss / grille rigide ============ */}
+    <article class="mockup" id="c">
+      <div class="mockup-head">
+        <h2>C · Swiss / grille rigide</h2>
+        <p>
+          Grille 12 colonnes visible en fond. Chiffres de section énormes
+          à gauche. Tout left-aligned, aucun centré. Numérotation comme
+          chapitres d'un livre. Sec, architectural, pas de décoration.
+          Style Bauhaus / Müller-Brockmann.
+        </p>
+      </div>
+      <div class="mockup-frame frame-c">
+        <div class="nav-c">
+          <span>CAMPLO</span>
+          <span>TRAVAUX · APPROCHE · CONTACT</span>
+        </div>
+        <div class="grid-overlay"></div>
+        <div class="body-c">
+          <div class="chapter">
+            <span class="num">I.</span>
+            <div class="content">
+              <span class="ph-h2"></span>
+              <span class="ph-line"></span>
+              <span class="ph-line"></span>
+              <span class="ph-line mid"></span>
+            </div>
+          </div>
+          <div class="chapter">
+            <span class="num">II.</span>
+            <div class="content">
+              <span class="ph-h2"></span>
+              <span class="ph-line"></span>
+              <span class="ph-line short"></span>
+            </div>
+          </div>
+          <div class="chapter">
+            <span class="num">III.</span>
+            <div class="content">
+              <span class="ph-h2"></span>
+              <span class="ph-line"></span>
+              <span class="ph-line"></span>
+              <span class="ph-line"></span>
+              <span class="ph-line mid"></span>
+            </div>
+          </div>
+          <div class="chapter">
+            <span class="num">IV.</span>
+            <div class="content">
+              <span class="ph-h2"></span>
+              <span class="ph-line"></span>
+              <span class="ph-line mid"></span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bar">Footer</div>
+      </div>
+    </article>
+
+    {/* ============ D · Split-scroll ============ */}
+    <article class="mockup" id="d">
+      <div class="mockup-head">
+        <h2>D · Split-scroll</h2>
+        <p>
+          Chaque section occupe 100% de la hauteur. Moitié gauche = typo,
+          moitié droite = visuel. Les screenshots CRM deviennent centraux,
+          un par section. Alternance gauche/droite. Portfolio moderne
+          style Linear, Stripe, Vercel. Plus SaaS mais contrôlé.
+        </p>
+      </div>
+      <div class="mockup-frame frame-d">
+        <div class="nav-bar"><span>Camplo</span><span>Travaux · Approche · Contact</span><span>→</span></div>
+        <div class="split">
+          <div class="txt">
+            <span class="ph-label">Hero</span>
+            <span class="ph-h2"></span>
+            <span class="ph-line"></span>
+            <span class="ph-line mid"></span>
+            <div class="cta-row"><span class="ph-btn"></span></div>
+          </div>
+          <div class="visual"><span class="ph-img"></span></div>
+        </div>
+        <div class="split reverse">
+          <div class="txt">
+            <span class="ph-label">01 · Le logiciel</span>
+            <span class="ph-h2"></span>
+            <span class="ph-line"></span>
+            <span class="ph-line short"></span>
+          </div>
+          <div class="visual"><span class="ph-img"></span></div>
+        </div>
+        <div class="split dark">
+          <div class="txt">
+            <span class="ph-label">02 · Case study</span>
+            <span class="ph-h2 light"></span>
+            <span class="ph-line light"></span>
+            <span class="ph-line light mid"></span>
+          </div>
+          <div class="visual"><span class="ph-img"></span></div>
+        </div>
+        <div class="split reverse">
+          <div class="txt">
+            <span class="ph-label">03 · Approche</span>
+            <span class="ph-h2"></span>
+            <span class="ph-line"></span>
+            <span class="ph-line mid"></span>
+          </div>
+          <div class="visual"><span class="ph-img"></span></div>
+        </div>
+        <div class="footer-bar">Footer</div>
+      </div>
+    </article>
+
+    {/* ============ E · Catalog / spec sheet ============ */}
+    <article class="mockup" id="e">
+      <div class="mockup-head">
+        <h2>E · Catalog / spec sheet</h2>
+        <p>
+          Document technique. Labels monospace, specs en colonnes étroites,
+          tables denses, chiffres de page. Presque un manuel d'utilisateur
+          ou une fiche technique industrielle. Très unique pour une agence
+          web, très anti-marketing. Crédibilité par densité d'information.
+        </p>
+      </div>
+      <div class="mockup-frame frame-e">
+        <div class="nav-e">
+          <span>CAMPLO / v2.26</span>
+          <span>§ 01 · 02 · 03 · 04</span>
+        </div>
+        <div class="hero-e">
+          <span class="num">§ 01 · Présentation</span>
+          <span class="ph-h1"></span>
+          <span class="ph-line mid"></span>
+        </div>
+        <div class="specs">
+          <div class="spec-row">
+            <div class="k">Type</div>
+            <div class="v">
+              <span class="ph-line"></span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <div class="k">Langue</div>
+            <div class="v">
+              <span class="ph-line short"></span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <div class="k">Clients</div>
+            <div class="v">
+              <span class="ph-line short"></span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <div class="k">§ 02 · Site</div>
+            <div class="v">
+              <span class="ph-line"></span>
+              <span class="ph-line mid"></span>
+              <span class="ph-line"></span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <div class="k">§ 03 · CRM</div>
+            <div class="v">
+              <span class="ph-line"></span>
+              <span class="ph-line"></span>
+              <span class="ph-line mid"></span>
+              <span class="ph-line"></span>
+              <span class="ph-line short"></span>
+            </div>
+          </div>
+          <div class="spec-row">
+            <div class="k">§ 04 · Contact</div>
+            <div class="v">
+              <span class="ph-line short"></span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bar mono">CAMPLO / © 2026 / Conçu au QC</div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: clamp(48px, 6vw, 96px) clamp(24px, 5vw, 64px) clamp(80px, 10vw, 160px);
+  }
+
+  .page-head {
+    margin-bottom: clamp(56px, 7vw, 112px);
+    max-width: 60ch;
+  }
+
+  .page-head .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+  }
+
+  .page-title {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(48px, 8vw, 96px);
+    letter-spacing: -0.025em;
+    line-height: 0.98;
+    color: var(--ink);
+  }
+
+  .page-lede {
+    margin-top: 20px;
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 58ch;
+  }
+
+  .mockup {
+    display: grid;
+    grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 72px);
+    padding: clamp(48px, 6vw, 96px) 0;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .mockup {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .mockup-head {
+    position: sticky;
+    top: 24px;
+  }
+
+  .mockup-head h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(24px, 3vw, 32px);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  .mockup-head p {
+    margin-top: 14px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* Frame commune : simule un browser viewport */
+  .mockup-frame {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(28, 28, 26, 0.08);
+    font-family: var(--font-body);
+    font-size: 10px;
+    color: var(--ink);
+    position: relative;
+    min-height: 560px;
+  }
+
+  /* Placeholder primitives */
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 5px 12px 5px 8px;
+    margin: 10px auto 0;
+    border-radius: 9999px;
+    width: fit-content;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    z-index: 10;
+  }
+  .nav-bar :first-child {
+    display: inline-block;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    font-size: 6px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .nav-bar :last-child {
+    display: inline-block;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    line-height: 14px;
+    text-align: center;
+    font-size: 10px;
+    padding: 0;
+    letter-spacing: 0;
+  }
+
+  .ph-label {
+    display: block;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fern);
+    margin-bottom: 6px;
+  }
+  .ph-h1 {
+    display: block;
+    background: var(--ink);
+    height: 18px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+  .ph-h1.wide { width: 80%; margin-left: auto; margin-right: auto; }
+  .ph-h2 {
+    display: block;
+    background: var(--ink);
+    height: 10px;
+    border-radius: 2px;
+    margin-bottom: 6px;
+  }
+  .ph-h2.center { margin-left: auto; margin-right: auto; width: 60%; }
+  .ph-h2.light { background: var(--paper); }
+  .ph-line {
+    display: block;
+    background: var(--ink-muted);
+    height: 4px;
+    border-radius: 2px;
+    margin-bottom: 4px;
+  }
+  .ph-line.short { width: 35%; }
+  .ph-line.mid { width: 65%; }
+  .ph-line.center { margin-left: auto; margin-right: auto; }
+  .ph-line.light { background: rgba(246, 240, 224, 0.4); }
+
+  .cta-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .ph-btn {
+    display: inline-block;
+    background: var(--marmalade);
+    width: 50px;
+    height: 14px;
+    border-radius: 2px;
+  }
+  .ph-link {
+    display: inline-block;
+    background: var(--fern);
+    width: 60px;
+    height: 4px;
+    border-radius: 2px;
+    align-self: center;
+  }
+
+  .ph-img {
+    display: block;
+    background:
+      linear-gradient(135deg, var(--paper-warm) 0%, var(--paper) 100%);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    position: relative;
+  }
+  .ph-img::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    bottom: 20%;
+    background: linear-gradient(to bottom,
+      var(--fern) 0%,
+      var(--fern) 25%,
+      var(--paper-warm) 25%,
+      var(--paper-warm) 100%);
+    opacity: 0.25;
+    border-radius: 2px;
+  }
+
+  .footer-bar {
+    background: var(--fern-deep);
+    color: var(--paper);
+    padding: 12px 20px;
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: auto;
+  }
+  .footer-bar.mono { font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace; text-transform: none; background: var(--ink); }
+
+  /* ---------- FRAME A : éditorial ---------- */
+  .frame-a { display: flex; flex-direction: column; padding-bottom: 0; }
+  .frame-a .sect {
+    padding: 26px 28px;
+    position: relative;
+    border-top: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .frame-a .sect:first-of-type {
+    border-top: none;
+    padding-top: 50px;
+  }
+  .frame-a .sect.warm { background: var(--paper-warm); }
+  .frame-a .sect.deep { background: var(--fern-deep); color: var(--paper); }
+  .frame-a .sect.deep .ph-label { color: var(--marmalade); }
+  .frame-a .big-roman {
+    position: absolute;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 140px;
+    line-height: 0.8;
+    color: var(--marmalade);
+    opacity: 0.14;
+    right: -8px;
+    bottom: -34px;
+    pointer-events: none;
+  }
+  .frame-a .fan-mini {
+    margin-top: 10px;
+    height: 70px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .frame-a .fan-mini .ph-img {
+    position: absolute;
+    width: 70px;
+    height: 44px;
+  }
+  .frame-a .fan-mini .ph-img:nth-child(1) { transform: rotate(-12deg) translateX(-70px); z-index: 1; }
+  .frame-a .fan-mini .ph-img:nth-child(2) { transform: rotate(-4deg) translateX(-22px); z-index: 2; }
+  .frame-a .fan-mini .ph-img:nth-child(3) { transform: rotate(4deg) translateX(26px); z-index: 3; }
+  .frame-a .fan-mini .ph-img:nth-child(4) { transform: rotate(12deg) translateX(74px); z-index: 4; }
+
+  /* ---------- FRAME B : magazine ---------- */
+  .frame-b { display: flex; flex-direction: column; padding: 50px 28px 0; }
+  .frame-b .hero-b {
+    text-align: center;
+    padding: 14px 0 26px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .frame-b .hero-b .ph-label { text-align: center; }
+  .frame-b .centered-head {
+    text-align: center;
+    padding: 22px 0 14px;
+  }
+  .frame-b .centered-head .ph-label { text-align: center; }
+  .frame-b .cols3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .frame-b .cols3 .col { display: flex; flex-direction: column; gap: 0; }
+  .frame-b .pull {
+    text-align: center;
+    padding: 26px 30px;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    margin: 14px 0;
+  }
+  .frame-b .pull-txt {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .frame-b .footer-bar { margin-top: 18px; margin-left: -28px; margin-right: -28px; }
+
+  /* ---------- FRAME C : Swiss ---------- */
+  .frame-c { display: flex; flex-direction: column; padding: 0; position: relative; }
+  .frame-c .grid-overlay {
+    position: absolute;
+    inset: 40px 0 0;
+    background: repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent calc(100% / 12 - 1px),
+      rgba(28, 28, 26, 0.05) calc(100% / 12 - 1px),
+      rgba(28, 28, 26, 0.05) calc(100% / 12)
+    );
+    pointer-events: none;
+  }
+  .frame-c .nav-c {
+    padding: 12px 24px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .frame-c .body-c {
+    padding: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .frame-c .chapter {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 16px;
+    padding: 22px 0;
+    border-top: 1px solid var(--ink);
+    align-items: start;
+  }
+  .frame-c .chapter:first-child { border-top: none; padding-top: 8px; }
+  .frame-c .chapter .num {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: 34px;
+    line-height: 0.9;
+    color: var(--marmalade);
+  }
+  .frame-c .chapter .content { display: flex; flex-direction: column; gap: 4px; }
+  .frame-c .chapter .content .ph-h2 { width: 70%; }
+
+  /* ---------- FRAME D : split ---------- */
+  .frame-d { display: flex; flex-direction: column; padding: 0; }
+  .frame-d .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 120px;
+    border-top: 1px solid var(--rule);
+  }
+  .frame-d .split:first-of-type {
+    border-top: none;
+    padding-top: 40px;
+    min-height: 140px;
+  }
+  .frame-d .split .txt {
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+  }
+  .frame-d .split .visual {
+    background: var(--paper-warm);
+    border-left: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+  }
+  .frame-d .split .visual .ph-img {
+    width: 85%;
+    height: 85%;
+    max-height: 120px;
+    border-radius: 4px;
+  }
+  .frame-d .split.reverse .txt { order: 2; }
+  .frame-d .split.reverse .visual { order: 1; border-left: none; border-right: 1px solid var(--rule); }
+  .frame-d .split.dark {
+    background: var(--fern-deep);
+    color: var(--paper);
+  }
+  .frame-d .split.dark .visual {
+    background: rgba(246, 240, 224, 0.06);
+    border-color: rgba(246, 240, 224, 0.18);
+  }
+  .frame-d .split.dark .ph-label { color: var(--marmalade); }
+
+  /* ---------- FRAME E : catalog ---------- */
+  .frame-e { display: flex; flex-direction: column; padding: 0; font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace; }
+  .frame-e .nav-e {
+    padding: 10px 20px;
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--ink);
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .frame-e .hero-e {
+    padding: 24px 24px 28px;
+    border-bottom: 1px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .frame-e .hero-e .num {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fern);
+    font-weight: 600;
+  }
+  .frame-e .hero-e .ph-h1 {
+    height: 22px;
+    width: 75%;
+    background: var(--ink);
+    margin: 0;
+  }
+  .frame-e .hero-e .ph-line { background: var(--ink-muted); height: 4px; }
+  .frame-e .specs {
+    display: flex;
+    flex-direction: column;
+  }
+  .frame-e .spec-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    border-top: 1px solid var(--rule);
+  }
+  .frame-e .spec-row .k {
+    padding: 12px 18px;
+    background: var(--paper-warm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--ink-soft);
+    font-size: 9px;
+    border-right: 1px solid var(--rule);
+  }
+  .frame-e .spec-row .v {
+    padding: 12px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .frame-e .spec-row .v .ph-line {
+    background: var(--ink);
+    height: 3px;
+  }
+</style>
