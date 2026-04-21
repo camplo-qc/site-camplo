@@ -1,0 +1,322 @@
+---
+// Section 2 — Ce qu'on fait (site + CRM en un seul bloc)
+// Court intro, éventail des screenshots CRM, liste des features.
+
+const shots = [
+  { src: '/screenshots/crm-dashboard.png', alt: 'Tableau de bord', label: 'Tableau de bord' },
+  { src: '/screenshots/crm-calendrier.png', alt: 'Calendrier mensuel', label: 'Calendrier' },
+  { src: '/screenshots/crm-reservations.png', alt: 'Liste des réservations', label: 'Réservations' },
+  { src: '/screenshots/crm-emplacements.png', alt: 'Liste des emplacements', label: 'Emplacements' },
+  { src: '/screenshots/crm-clients.png', alt: 'Liste des clients', label: 'Clients' },
+  { src: '/screenshots/crm-fiscal.png', alt: 'Page fiscalité', label: 'Fiscalité' },
+];
+---
+
+<section class="ce-quon-fait" id="travaux" aria-label="Ce qu'on fait">
+  <span class="numeral-bg" aria-hidden="true">I</span>
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">
+        <span class="eyebrow-num">01</span> · Ce qu'on fait
+      </p>
+      <h2 class="section-title">
+        Un site pour vos campeurs. Un logiciel pour vous.
+      </h2>
+    </div>
+
+    <div class="blurbs">
+      <div class="blurb">
+        <h3>Le site public</h3>
+        <p>
+          Vos campeurs réservent en ligne, paient par carte, reçoivent
+          une confirmation. Aucun intermédiaire, aucune commission.
+        </p>
+      </div>
+      <div class="blurb">
+        <h3>Le logiciel de gestion</h3>
+        <p>
+          Une app desktop Mac et Windows. Calendrier, réservations,
+          clients, emplacements, fiscalité. Fonctionne hors-ligne.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="fan-wrap">
+    <div class="fan" role="list">
+      {
+        shots.map((shot, i) => (
+          <figure class="fan-card" role="listitem" style={`--i: ${i}`}>
+            <img
+              src={shot.src}
+              alt={shot.alt}
+              loading="lazy"
+              width="1445"
+              height="900"
+            />
+            <figcaption>{shot.label}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="wrap">
+    <dl class="features">
+      <div class="feat">
+        <dt><span class="m">I.</span> Tableau de bord</dt>
+        <dd>Arrivées, départs, paiements à surveiller. PDF du jour en un clic.</dd>
+      </div>
+      <div class="feat">
+        <dt><span class="m">II.</span> Calendrier</dt>
+        <dd>Vue mensuelle, une ligne par emplacement. On voit les trous, les chevauchements.</dd>
+      </div>
+      <div class="feat">
+        <dt><span class="m">III.</span> Réservations</dt>
+        <dd>Filtrables par statut. Création en quelques clics. Factures en PDF.</dd>
+      </div>
+      <div class="feat">
+        <dt><span class="m">IV.</span> Emplacements</dt>
+        <dd>Services 50A/30A, dimensions, véhicules acceptés. Le vocabulaire que vous utilisez.</dd>
+      </div>
+      <div class="feat">
+        <dt><span class="m">V.</span> Clients</dt>
+        <dd>Nom, courriel, téléphone, historique. Pas de scoring, pas de newsletter forcée.</dd>
+      </div>
+      <div class="feat">
+        <dt><span class="m">VI.</span> Fiscalité</dt>
+        <dd>TPS 5%, TVQ 9.975%, rapports mensuels en PDF pour la comptable.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .ce-quon-fait {
+    background: var(--paper-warm);
+    padding: var(--section-pad-y) 0 clamp(60px, 8vw, 100px);
+    border-top: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .numeral-bg {
+    position: absolute;
+    right: -5%;
+    top: -10%;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(320px, 48vw, 640px);
+    line-height: 0.78;
+    color: var(--marmalade);
+    opacity: 0.1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .wrap { position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+  }
+  .eyebrow-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+    margin-right: 2px;
+  }
+
+  .section-title {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--ink);
+    max-width: 22ch;
+  }
+
+  .blurbs {
+    margin-top: clamp(40px, 5vw, 64px);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(32px, 4vw, 56px);
+    max-width: 74ch;
+  }
+
+  @media (max-width: 720px) {
+    .blurbs { grid-template-columns: 1fr; }
+  }
+
+  .blurb h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(20px, 2vw, 24px);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .blurb p {
+    margin-top: 10px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  /* Éventail */
+  .fan-wrap {
+    position: relative;
+    z-index: 2;
+    margin: clamp(56px, 7vw, 96px) 0 clamp(40px, 5vw, 64px);
+    padding: 0 var(--wrap-pad-x);
+  }
+
+  .fan {
+    position: relative;
+    height: clamp(340px, 42vw, 600px);
+    max-width: var(--wrap-max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fan-card {
+    position: absolute;
+    width: clamp(280px, 36vw, 580px);
+    aspect-ratio: 1445 / 900;
+    margin: 0;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+    box-shadow: 0 12px 40px rgba(28, 28, 26, 0.18), 0 2px 8px rgba(28, 28, 26, 0.08);
+    background: var(--paper);
+    overflow: hidden;
+    transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 320ms ease;
+    transform-origin: 50% 110%;
+    --step: 10deg;
+    --offset: 9%;
+  }
+
+  .fan-card:nth-child(1) { transform: rotate(calc(var(--step) * -2.5)) translateX(calc(var(--offset) * -2.5)); z-index: 1; }
+  .fan-card:nth-child(2) { transform: rotate(calc(var(--step) * -1.5)) translateX(calc(var(--offset) * -1.5)); z-index: 2; }
+  .fan-card:nth-child(3) { transform: rotate(calc(var(--step) * -0.5)) translateX(calc(var(--offset) * -0.5)); z-index: 3; }
+  .fan-card:nth-child(4) { transform: rotate(calc(var(--step) *  0.5)) translateX(calc(var(--offset) *  0.5)); z-index: 4; }
+  .fan-card:nth-child(5) { transform: rotate(calc(var(--step) *  1.5)) translateX(calc(var(--offset) *  1.5)); z-index: 5; }
+  .fan-card:nth-child(6) { transform: rotate(calc(var(--step) *  2.5)) translateX(calc(var(--offset) *  2.5)); z-index: 6; }
+
+  .fan-card:hover,
+  .fan-card:focus-within {
+    transform: rotate(0deg) translateX(0) translateY(-16px) scale(1.05);
+    z-index: 20;
+    box-shadow: 0 24px 60px rgba(28, 28, 26, 0.28), 0 4px 12px rgba(28, 28, 26, 0.1);
+  }
+
+  .fan-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .fan-card figcaption {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: rgba(28, 28, 26, 0.78);
+    padding: 8px 10px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 200ms ease;
+    text-align: center;
+  }
+
+  .fan-card:hover figcaption,
+  .fan-card:focus-within figcaption { opacity: 1; }
+
+  @media (max-width: 720px) {
+    .fan {
+      height: auto;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .fan-card,
+    .fan-card:nth-child(1),
+    .fan-card:nth-child(2),
+    .fan-card:nth-child(3),
+    .fan-card:nth-child(4),
+    .fan-card:nth-child(5),
+    .fan-card:nth-child(6) {
+      position: static;
+      width: 100%;
+      transform: none;
+    }
+    .fan-card:nth-child(even) { transform: rotate(-1.5deg); }
+    .fan-card:nth-child(odd) { transform: rotate(1.5deg); }
+    .fan-card figcaption { opacity: 1; }
+  }
+
+  /* Features list */
+  .features {
+    margin-top: clamp(40px, 5vw, 64px);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(24px, 3vw, 40px) clamp(40px, 5vw, 72px);
+  }
+
+  @media (max-width: 720px) {
+    .features { grid-template-columns: 1fr; }
+  }
+
+  .feat {
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .feat dt {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(18px, 1.8vw, 22px);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .m {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+    margin-right: 4px;
+    font-size: 0.85em;
+  }
+
+  .feat dd {
+    margin-top: 8px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    max-width: 42ch;
+  }
+</style>

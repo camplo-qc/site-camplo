@@ -1,37 +1,24 @@
 ---
-// Section 10 — Parler (CTA final)
-// Contact direct. Explique ce qui se passe après le courriel.
+// Section 4 — CTA final
 
 const EMAIL = 'hello@camplo.ca';
 const PHONE: string | null = null;
 ---
 
 <section class="cta-final" id="contact" aria-label="Contact">
-  <span class="numeral-bg" aria-hidden="true">IX</span>
+  <span class="numeral-bg" aria-hidden="true">III</span>
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">
-        <span class="eyebrow-num">09</span> · Parler
+        <span class="eyebrow-num">03</span> · Parler
       </p>
-      <h2 class="section-title">
-        Prêt à remplacer ce qui date de 2008 ?
-      </h2>
+      <h2 class="section-title">Prêt ?</h2>
     </div>
 
-    <div class="body">
-      <p>
-        Un courriel, un appel. La première conversation est gratuite. On
-        vous pose des questions sur votre camping, vous nous posez les
-        vôtres. Vingt-cinq minutes en moyenne. Zéro deuxième appel de
-        vente pressé.
-      </p>
-      <p>
-        Si après cet appel on pense qu'on peut vous aider, on vous
-        envoie un plan écrit par courriel la semaine suivante. Si on
-        pense qu'on n'est pas la bonne agence pour vous, on vous le
-        dit, et la plupart du temps on vous suggère vers qui aller.
-      </p>
-    </div>
+    <p class="lede">
+      Un courriel. On répond dans 48h. Si ça match, un appel de 25
+      minutes. Pas de deuxième appel de vente pressé.
+    </p>
 
     <div class="contact-lines">
       <a class="contact-line" href={`mailto:${EMAIL}`}>{EMAIL}</a>
@@ -49,15 +36,15 @@ const PHONE: string | null = null;
 <style>
   .cta-final {
     background: var(--paper-warm);
-    padding: var(--section-pad-y) 0 clamp(100px, 14vw, 180px);
+    padding: var(--section-pad-y) 0;
+    border-top: 1px solid var(--rule);
     position: relative;
     overflow: hidden;
-    border-top: 1px solid var(--rule);
   }
 
   .numeral-bg {
     position: absolute;
-    left: -6%;
+    right: -6%;
     top: -14%;
     font-family: var(--font-display);
     font-style: italic;
@@ -71,10 +58,7 @@ const PHONE: string | null = null;
     z-index: 0;
   }
 
-  .wrap {
-    position: relative;
-    z-index: 1;
-  }
+  .wrap { position: relative; z-index: 1; }
 
   .eyebrow {
     font-family: var(--font-label);
@@ -99,25 +83,22 @@ const PHONE: string | null = null;
     margin-top: 16px;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(36px, 6vw, 72px);
+    font-size: clamp(48px, 7vw, 96px);
     letter-spacing: -0.02em;
-    line-height: 1.05;
-    max-width: 18ch;
+    line-height: 1;
   }
 
-  .body {
-    margin-top: 28px;
-    max-width: 62ch;
-    display: grid;
-    gap: 20px;
+  .lede {
+    margin-top: 24px;
+    max-width: 52ch;
     font-family: var(--font-body);
     font-size: clamp(17px, 1.2vw, 19px);
-    line-height: 1.65;
+    line-height: 1.6;
     color: var(--ink-soft);
   }
 
   .contact-lines {
-    margin-top: clamp(48px, 6vw, 80px);
+    margin-top: clamp(40px, 5vw, 72px);
     display: grid;
     gap: clamp(16px, 2vw, 28px);
   }
