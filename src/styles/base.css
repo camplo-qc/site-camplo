@@ -8,9 +8,18 @@
 
 html {
   scroll-behavior: smooth;
+  /* Décalage pour que la nav sticky ne recouvre pas le haut des sections
+     quand on jump via ancre. Nav ≈ 72px desktop / 60px mobile + marge. */
+  scroll-padding-top: 96px;
   /* Permet aux transitions sur height: auto ou grid-template-rows: 1fr
      d'animer proprement (Chrome 129+, Safari 18.2+). Fallback gracieux. */
   interpolate-size: allow-keywords;
+}
+
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 84px;
+  }
 }
 
 body {
