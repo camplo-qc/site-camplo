@@ -17,7 +17,7 @@ const PHONE = '5817480161';
         />
       </span>
       <span class="footer-copy">
-        © {YEAR} Camplo · Conçu au Québec
+        © {YEAR} Camplo<span class="footer-copy-suffix"> · Conçu au Québec</span>
       </span>
     </div>
 
@@ -146,6 +146,14 @@ const PHONE = '5817480161';
     .footer-icon svg {
       width: 14px;
       height: 14px;
+    }
+  }
+
+  /* Sur écran étroit, supprime « · Conçu au Québec » pour laisser place
+     aux icônes contact qui étaient poussées hors de la pill. */
+  @media (max-width: 480px) {
+    .footer-copy-suffix {
+      display: none;
     }
   }
 
