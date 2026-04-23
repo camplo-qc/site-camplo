@@ -40,7 +40,8 @@ svg = svg.replace(
     </h1>
 
     <p class="tagline">
-      Un site qui <em>encaisse</em>. Un logiciel qui <em>opère</em>.
+      Un site qui <em>encaisse</em>.<br class="tagline-break" />
+      Un logiciel qui <em>opère</em>.
     </p>
 
     <div class="stats" aria-label="Statistiques">
@@ -173,24 +174,39 @@ svg = svg.replace(
     color: var(--marmalade);
   }
 
+  /* Le <br> force 2 lignes uniquement en mobile ; caché sur desktop
+     où le nowrap garde tout sur une ligne. */
+  .tagline-break {
+    display: none;
+  }
+  @media (max-width: 640px) {
+    .tagline {
+      white-space: normal;
+    }
+    .tagline-break {
+      display: block;
+    }
+  }
+
   /* ───── Stats : 1 camping · 162 empl. · 0 commission.
-     Ancrées au bas du hero (absolute bottom) pour séparer visuellement du
-     bloc wordmark+tagline qui reste centré verticalement. Keyframe dédiée
-     car cm-letter-in utilise translateY qui écraserait le translateX(-50%). */
+     Ancrées au bas du hero (absolute bottom). Contraintes latérales
+     avec left/right = var(--wrap-pad-x) pour pas toucher les bords. */
   .stats {
     position: absolute;
-    left: 50%;
+    left: var(--wrap-pad-x);
+    right: var(--wrap-pad-x);
     bottom: var(--section-pad-y);
-    transform: translate(-50%, 14px);
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: clamp(20px, 3vw, 40px);
     opacity: 0;
+    transform: translateY(14px);
     animation: stats-in 600ms cubic-bezier(0.2, 0.7, 0.1, 1) 1700ms forwards;
   }
   @keyframes stats-in {
-    from { opacity: 0; transform: translate(-50%, 14px); }
-    to   { opacity: 1; transform: translate(-50%, 0); }
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .stat {
@@ -221,6 +237,39 @@ svg = svg.replace(
     background: var(--rule);
   }
 
+  /* Mobile : stats compactes pour rester dans l'écran */
+  @media (max-width: 640px) {
+    .stats {
+      gap: 10px;
+    }
+    .stat {
+      gap: 4px;
+    }
+    .stat-num {
+      font-size: 18px;
+    }
+    .stat-label {
+      font-size: 7.5px;
+      letter-spacing: 0.08em;
+    }
+    .stat-sep {
+      height: 18px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .stats {
+      gap: 8px;
+    }
+    .stat-num {
+      font-size: 16px;
+    }
+    .stat-label {
+      font-size: 7px;
+      letter-spacing: 0.06em;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .wordmark-svg :global(.cm-letter),
     .wordmark-svg :global(.cm-tree),
@@ -230,11 +279,10 @@ svg = svg.replace(
       opacity: 1;
       transform: none;
     }
-    /* Stats : on retire l'animation mais on préserve translateX(-50%) pour le centrage */
     .stats {
       animation: none;
       opacity: 1;
-      transform: translateX(-50%);
+      transform: none;
     }
   }
 </style>
