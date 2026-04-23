@@ -1,44 +1,157 @@
 ---
+// Footer, large pill noire centrée
 const YEAR = new Date().getFullYear();
-const EMAIL = 'hello@camplo.ca';
+const EMAIL = 'adamauger872@gmail.com';
+const PHONE = '5817480161';
 ---
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="inner">
-      <span>© {YEAR} Camplo · Conçu au Québec</span>
-      <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+<footer class="footer" role="contentinfo">
+  <div class="footer-pill">
+    <div class="footer-left">
+      <span class="footer-logo" aria-hidden="true">
+        <img
+          src="/brand/camplo-mark.svg"
+          alt=""
+          width="24"
+          height="24"
+        />
+      </span>
+      <span class="footer-copy">
+        © {YEAR} Camplo · Conçu au Québec
+      </span>
+    </div>
+
+    <div class="footer-actions">
+      <a
+        class="footer-icon"
+        href={`mailto:${EMAIL}`}
+        aria-label="Nous écrire par courriel"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+          <path d="m3 6 9 6 9-6" />
+        </svg>
+      </a>
+
+      <a
+        class="footer-icon"
+        href={`tel:${PHONE}`}
+        aria-label="Nous appeler par téléphone"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+      </a>
     </div>
   </div>
 </footer>
 
 <style>
   .footer {
-    background: var(--fern-deep);
-    color: var(--paper-muted);
-    padding: 48px 0;
+    background: var(--paper);
+    display: flex;
+    justify-content: center;
+    padding: 0 var(--wrap-pad-x) 20px;
   }
 
-  .inner {
+  .footer-pill {
+    background: var(--ink);
+    color: var(--paper);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 20px 32px;
+    border-radius: 9999px;
+    width: 100%;
+    max-width: var(--wrap-max);
+    box-shadow: 0 8px 32px rgba(28, 28, 26, 0.18);
+  }
+
+  .footer-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+  .footer-logo img {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+
+  .footer-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    color: var(--paper);
+    opacity: 0.7;
+    transition: opacity 160ms ease, background-color 160ms ease,
+                color 160ms ease;
+    flex-shrink: 0;
+  }
+  .footer-icon svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+  .footer-icon:hover {
+    opacity: 1;
+    background: var(--marmalade);
+    color: var(--paper);
+  }
+
+  .footer-copy {
     font-family: var(--font-label);
     font-weight: 500;
     font-size: 12px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
+    color: var(--paper);
+    opacity: 0.7;
+    white-space: nowrap;
   }
 
-  .inner a {
-    color: var(--paper);
-    opacity: 0.78;
-    transition: opacity 160ms ease;
-    border-bottom: 1px solid var(--rule-paper);
-    padding-bottom: 2px;
+  .footer-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
-  .inner a:hover {
-    opacity: 1;
+
+  @media (max-width: 640px) {
+    .footer {
+      padding: 0 16px 14px;
+    }
+    .footer-pill {
+      gap: 10px;
+      padding: 16px 22px;
+    }
+    .footer-copy {
+      font-size: 11px;
+    }
+    .footer-icon {
+      width: 28px;
+      height: 28px;
+    }
+    .footer-icon svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .footer-logo {
+      display: none;
+    }
   }
 </style>

@@ -1,0 +1,493 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const EMAIL = 'adamauger872@gmail.com';
+const PHONE = '5817480161';
+
+// Variations du concept "conversation/chat bubble" pour la section Contact.
+// Pas besoin de toujours montrer l'email et le numéro — on privilégie
+// des CTAs et des actions embedded dans les bulles.
+---
+
+<Layout>
+  <main class="page">
+    <header class="page-head">
+      <p class="eyebrow">Exploration · Contact conversationnel</p>
+      <h1>5 variations sur le thème chat-bubble.</h1>
+      <p class="lede">
+        Tous reprennent l'idée de la conversation entre vous et Camplo,
+        mais sans nécessairement afficher l'email/téléphone en clair.
+      </p>
+    </header>
+
+    {/* ══════════════════════════════════════════════════════════════════
+        V4a — CTAs EMBEDDED (bulles + action pills dans la réponse)
+        ══════════════════════════════════════════════════════════════════ */}
+    <section class="demo">
+      <div class="demo-label">V4a · CTAs embedded</div>
+      <div class="chat">
+        <div class="bubble them">
+          <span class="who">Vous</span>
+          <p>Est-ce que Camplo marcherait pour mon camping ?</p>
+        </div>
+        <div class="bubble us">
+          <span class="who">Camplo</span>
+          <p>Probablement. On en parle ?</p>
+          <div class="actions">
+            <a class="pill pill--primary" href={`mailto:${EMAIL}`}>
+              Écrivez-nous
+              <span class="pill-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="pill pill--ghost" href={`tel:${PHONE}`}>
+              Appelez-nous
+              <span class="pill-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ══════════════════════════════════════════════════════════════════
+        V4b — THREAD LONG (3-4 bulles qui guident vers l'action)
+        ══════════════════════════════════════════════════════════════════ */}
+    <section class="demo">
+      <div class="demo-label">V4b · Thread long</div>
+      <div class="chat">
+        <div class="bubble them">
+          <span class="who">Vous</span>
+          <p>J'ai un camping de 80 emplacements. Est-ce que c'est trop petit ?</p>
+        </div>
+        <div class="bubble us">
+          <span class="who">Camplo</span>
+          <p>Non. Notre premier client en a 162, mais Camplo est pensé pour tous les tailles.</p>
+        </div>
+        <div class="bubble them">
+          <span class="who">Vous</span>
+          <p>Combien ça coûte ?</p>
+        </div>
+        <div class="bubble us">
+          <span class="who">Camplo</span>
+          <p>Ça dépend. On fait un appel de 25 min pour comprendre, puis on vous revient avec un prix honnête.</p>
+          <div class="actions">
+            <a class="pill pill--primary" href={`mailto:${EMAIL}`}>
+              Prendre 25 min
+              <span class="pill-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ══════════════════════════════════════════════════════════════════
+        V4c — TYPING INDICATOR (animation "en train d'écrire" → réponse)
+        ══════════════════════════════════════════════════════════════════ */}
+    <section class="demo">
+      <div class="demo-label">V4c · Typing indicator animé</div>
+      <div class="chat">
+        <div class="bubble them">
+          <span class="who">Vous</span>
+          <p>Bonjour, j'ai des questions sur Camplo.</p>
+        </div>
+        <div class="bubble us bubble--typing">
+          <span class="who">Camplo</span>
+          <div class="typing" aria-label="En train d'écrire">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <div class="bubble us bubble--reveal">
+          <span class="who">Camplo</span>
+          <p>Allô ! On répond à tout. Écrivez-nous ou appelez-nous quand ça vous va.</p>
+          <div class="actions">
+            <a class="pill pill--primary" href={`mailto:${EMAIL}`}>Démarrer</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ══════════════════════════════════════════════════════════════════
+        V4d — BULLE UNIQUE (single big "us" bubble avec CTA intégré)
+        ══════════════════════════════════════════════════════════════════ */}
+    <section class="demo">
+      <div class="demo-label">V4d · Bulle unique</div>
+      <div class="chat chat--single">
+        <div class="bubble us bubble--big">
+          <span class="who">Un message de Camplo</span>
+          <p class="big-line">
+            Une question, un devis, une discussion ? On répond sous 48h.
+          </p>
+          <div class="actions actions--split">
+            <a class="pill pill--primary" href={`mailto:${EMAIL}`}>
+              Écrivez-nous un mot
+              <span class="pill-arrow" aria-hidden="true">↗</span>
+            </a>
+            <span class="divider-text">ou</span>
+            <a class="pill pill--ghost-light" href={`tel:${PHONE}`}>
+              Appelez-nous
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ══════════════════════════════════════════════════════════════════
+        V4e — STYLE SMS AVEC TIMESTAMP (mimique un fil iMessage)
+        ══════════════════════════════════════════════════════════════════ */}
+    <section class="demo">
+      <div class="demo-label">V4e · Style SMS complet</div>
+      <div class="chat chat--sms">
+        <div class="sms-header">
+          <span class="sms-avatar" aria-hidden="true">
+            <img src="/brand/camplo-mark.svg" alt="" />
+          </span>
+          <div class="sms-meta">
+            <span class="sms-name">Camplo</span>
+            <span class="sms-status"><span class="sms-dot"></span> Actif</span>
+          </div>
+        </div>
+
+        <div class="sms-timestamp">Hier, 14:22</div>
+
+        <div class="bubble them bubble--sms">
+          <p>Hey, est-ce que ça vaut la peine pour un camping comme le mien ?</p>
+        </div>
+        <div class="bubble us bubble--sms">
+          <p>On aime ça les "ça dépend". Écrivez-nous, on comprend mieux en 5 minutes.</p>
+        </div>
+
+        <a class="sms-cta" href={`mailto:${EMAIL}`}>
+          <span>Écrivez à Camplo</span>
+          <span class="pill-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* ───── Page shell ───── */
+  .page {
+    padding: clamp(48px, 7vw, 96px) 0 clamp(64px, 8vw, 120px);
+  }
+  .page-head {
+    max-width: 880px;
+    margin: 0 auto clamp(48px, 6vw, 80px);
+    padding: 0 var(--wrap-pad-x);
+  }
+  .page-head .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--marmalade);
+    margin: 0;
+  }
+  .page-head h1 {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(30px, 4vw, 48px);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+  .page-head .lede {
+    margin-top: 14px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(15px, 1.2vw, 18px);
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 54ch;
+  }
+
+  .demo {
+    margin-bottom: clamp(48px, 6vw, 80px);
+    padding: 0 var(--wrap-pad-x);
+  }
+  .demo-label {
+    display: inline-block;
+    padding: 6px 14px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--ink);
+    border-radius: 9999px;
+    margin-bottom: 24px;
+  }
+
+  /* ───── Chat base ───── */
+  .chat {
+    display: grid;
+    gap: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: clamp(32px, 4vw, 56px) clamp(20px, 2.5vw, 32px);
+  }
+  .bubble {
+    padding: 16px 22px;
+    border-radius: 22px;
+    max-width: 82%;
+  }
+  .bubble p {
+    margin: 8px 0 0;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: clamp(14.5px, 1.1vw, 16.5px);
+    line-height: 1.55;
+  }
+  .who {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .bubble.them {
+    background: var(--paper-warm);
+    border-top-left-radius: 4px;
+    color: var(--ink);
+  }
+  .bubble.us {
+    background: var(--ink);
+    color: var(--paper);
+    margin-left: auto;
+    border-top-right-radius: 4px;
+  }
+
+  /* ───── Action pills inside bubbles ───── */
+  .actions {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .actions--split {
+    align-items: center;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background-color 200ms ease, color 200ms ease, transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .pill-arrow {
+    font-family: var(--font-display);
+    font-style: italic;
+    display: inline-block;
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .pill:hover .pill-arrow {
+    transform: translate(2px, -2px);
+  }
+  .pill--primary {
+    background: var(--marmalade);
+    color: var(--paper);
+  }
+  .pill--primary:hover {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .pill--ghost {
+    background: transparent;
+    color: var(--paper-warm);
+    border: 1px solid rgba(246, 240, 224, 0.3);
+  }
+  .pill--ghost:hover {
+    border-color: var(--paper);
+    color: var(--paper);
+  }
+  .pill--ghost-light {
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid rgba(246, 240, 224, 0.3);
+  }
+  .pill--ghost-light:hover {
+    background: rgba(246, 240, 224, 0.1);
+  }
+  .divider-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--paper-warm);
+    opacity: 0.6;
+    font-size: 13px;
+  }
+
+  /* ═══════════════════════════════════════════
+     V4c — TYPING INDICATOR
+     ═══════════════════════════════════════════ */
+  .bubble--typing {
+    padding: 14px 22px 16px;
+  }
+  .typing {
+    display: inline-flex;
+    gap: 5px;
+    margin-top: 8px;
+    padding: 4px 0;
+  }
+  .typing .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--paper-warm);
+    opacity: 0.5;
+    animation: typing-bounce 1.4s ease-in-out infinite;
+  }
+  .typing .dot:nth-child(2) { animation-delay: 0.15s; }
+  .typing .dot:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+  .bubble--reveal {
+    animation: bubble-slide-in 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes bubble-slide-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ═══════════════════════════════════════════
+     V4d — BULLE UNIQUE GRANDE
+     ═══════════════════════════════════════════ */
+  .chat--single {
+    max-width: 560px;
+  }
+  .bubble--big {
+    max-width: none;
+    padding: clamp(24px, 3vw, 36px);
+    border-top-right-radius: 22px;
+  }
+  .big-line {
+    margin-top: 12px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(18px, 1.8vw, 24px);
+    line-height: 1.35;
+  }
+
+  /* ═══════════════════════════════════════════
+     V4e — STYLE SMS
+     ═══════════════════════════════════════════ */
+  .chat--sms {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    padding: 20px clamp(16px, 2vw, 24px);
+    max-width: 440px;
+  }
+  .sms-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 20px;
+  }
+  .sms-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .sms-avatar img {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+  .sms-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .sms-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .sms-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .sms-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4aaf4c;
+  }
+  .sms-timestamp {
+    text-align: center;
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 14px;
+  }
+  .bubble--sms {
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 86%;
+    margin-bottom: 8px;
+  }
+  .bubble--sms p {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .bubble--sms.them {
+    border-top-left-radius: 4px;
+  }
+  .bubble--sms.us {
+    border-top-right-radius: 4px;
+  }
+  .sms-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 12px 18px;
+    background: var(--marmalade);
+    color: var(--paper);
+    text-decoration: none;
+    border-radius: 9999px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background-color 200ms ease, transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .sms-cta:hover {
+    background: var(--fern);
+    transform: translateY(-1px);
+  }
+</style>

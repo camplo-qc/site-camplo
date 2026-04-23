@@ -26,7 +26,7 @@ const {
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://api.fontshare.com/v2/css?f[]=sentient@800,700,500&f[]=satoshi@700,500&f[]=general-sans@600,500&display=swap"
+      href="https://api.fontshare.com/v2/css?f[]=sentient@500,700,800,500i,700i&f[]=satoshi@500,700&f[]=general-sans@500,600&display=swap"
     />
 
     <meta property="og:title" content={title} />
@@ -35,8 +35,87 @@ const {
     <meta property="og:locale" content="fr_CA" />
 
     <title>{title}</title>
+
+    <script is:inline>
+      // Sur reload avec un hash dans l'URL (#faq, #contact, etc.), rediriger
+      // vers la racine sans hash. Inline dans <head> pour s'exécuter AVANT que
+      // le browser scrolle vers l'ancre.
+      (() => {
+        const navEntry = performance.getEntriesByType('navigation')[0];
+        if (navEntry && navEntry.type === 'reload' && window.location.hash) {
+          window.location.replace(window.location.pathname + window.location.search);
+        }
+      })();
+    </script>
+
+    <style is:global>
+      /* ───── Scroll reveal system ─────
+         [data-reveal]         → fade + slide up (A1) sur l'élément entier
+         [data-reveal-stagger] → les enfants staggerent via --i (A2)
+         !important sur les props critiques pour battre la spécificité des
+         styles scopés Astro qui overrident le transition shorthand. */
+      [data-reveal] {
+        opacity: 0 !important;
+        transform: translateY(24px) !important;
+        transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 700ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+        transition-delay: var(--reveal-delay, 0ms) !important;
+      }
+      [data-reveal].is-revealed {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+
+      [data-reveal-stagger] > * {
+        opacity: 0 !important;
+        transform: translateY(20px) !important;
+        transition: opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+                    transform 640ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+        transition-delay: calc(var(--i, 0) * 90ms) !important;
+      }
+      [data-reveal-stagger].is-revealed > * {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        [data-reveal],
+        [data-reveal-stagger] > * {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
   </head>
   <body>
     <slot />
+
+    <script is:inline>
+      (() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.querySelectorAll('[data-reveal], [data-reveal-stagger]').forEach((el) => {
+            el.classList.add('is-revealed');
+          });
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+        );
+
+        document.querySelectorAll('[data-reveal], [data-reveal-stagger]').forEach((el) => {
+          observer.observe(el);
+        });
+      })();
+    </script>
   </body>
 </html>

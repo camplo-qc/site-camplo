@@ -5,7 +5,7 @@
 
 <header class="nav" role="banner">
   <div class="nav-pill">
-    <a href="#top" class="nav-logo" aria-label="Camplo, accueil">
+    <a href="#top" class="nav-logo" aria-label="Camplo, accueil" data-scroll-top>
       <img
         src="/brand/camplo-mark.svg"
         alt="Camplo"
@@ -15,12 +15,12 @@
     </a>
 
     <nav class="nav-links" aria-label="Navigation principale">
-      <a href="#travaux">Travaux</a>
-      <a href="#approche">Approche</a>
+      <a href="#produits">Produits</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
 
-    <a href="#contact" class="nav-cta" aria-label="Écrire à Camplo">
+    <a href="#present-dans" class="nav-pin" aria-label="Voir où Camplo est déployé">
       <svg
         width="14"
         height="14"
@@ -29,16 +29,33 @@
         aria-hidden="true"
       >
         <path
-          d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5"
+          d="M7 13s4.5-4.2 4.5-7.5a4.5 4.5 0 1 0-9 0C2.5 8.8 7 13 7 13Z"
           stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="square"
-          stroke-linejoin="miter"
+          stroke-width="1.4"
+          stroke-linejoin="round"
+        />
+        <circle
+          cx="7"
+          cy="5.5"
+          r="1.6"
+          stroke="currentColor"
+          stroke-width="1.4"
         />
       </svg>
     </a>
   </div>
 </header>
+
+<script is:inline>
+  document.querySelectorAll('[data-scroll-top]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.scrollY === 0) return;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', window.location.pathname);
+    });
+  });
+</script>
 
 <style>
   .nav {
@@ -99,25 +116,25 @@
     background: rgba(246, 240, 224, 0.08);
   }
 
-  .nav-cta {
+  .nav-pin {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
     border-radius: 9999px;
-    background: var(--paper);
-    color: var(--ink);
+    background: var(--marmalade);
+    color: var(--paper);
     transition: background 160ms ease, color 160ms ease;
     margin-left: 4px;
   }
 
-  .nav-cta svg {
+  .nav-pin svg {
     display: block;
   }
 
-  .nav-cta:hover {
-    background: var(--marmalade);
+  .nav-pin:hover {
+    background: var(--fern);
     color: var(--paper);
   }
 
@@ -138,11 +155,11 @@
       font-size: 11px;
       padding: 9px 10px;
     }
-    .nav-cta {
+    .nav-pin {
       width: 36px;
       height: 36px;
     }
-    .nav-cta svg {
+    .nav-pin svg {
       width: 12px;
       height: 12px;
     }

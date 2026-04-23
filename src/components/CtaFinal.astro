@@ -1,37 +1,101 @@
 ---
-// Section 4 — CTA final
-
-const EMAIL = 'hello@camplo.ca';
-const PHONE: string | null = null;
+// Section 4 — Contact. Conversationnel : question du visiteur visible d'emblée,
+// bulle "Camplo en train d'écrire" (dots qui bouncent), puis au scroll dans
+// le viewport → délai de ~2.2s → le vrai message apparaît avec ses CTAs.
+const EMAIL = 'adamauger872@gmail.com';
+const PHONE = '5817480161';
 ---
 
 <section class="cta-final" id="contact" aria-label="Contact">
   <span class="numeral-bg" aria-hidden="true">III</span>
+
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">
-        <span class="eyebrow-num">03</span> · Parler
+    <div class="cta-head">
+      <p class="eyebrow" data-reveal>
+        <span class="eyebrow-num">03</span> · Contact
       </p>
-      <h2 class="section-title">Prêt ?</h2>
+      <h2 class="cta-title" data-reveal style="--reveal-delay: 100ms">D'autres <em>questions</em> ?</h2>
     </div>
 
-    <p class="lede">
-      Un courriel. On répond dans 48h. Si ça match, un appel de 25
-      minutes. Pas de deuxième appel de vente pressé.
-    </p>
+    <div class="chat" data-chat>
+      <div class="bubble them">
+        <span class="who">Vous</span>
+        <p>Est-ce que Camplo marcherait pour mon camping ?</p>
+      </div>
 
-    <div class="contact-lines">
-      <a class="contact-line" href={`mailto:${EMAIL}`}>{EMAIL}</a>
-      {
-        PHONE && (
-          <a class="contact-line" href={`tel:${PHONE.replace(/\s|-/g, '')}`}>
-            {PHONE}
-          </a>
-        )
-      }
+      <div class="us-slot">
+        <div class="bubble us bubble--typing" data-typing>
+          <span class="who">Camplo</span>
+          <div class="typing" aria-label="En train d'écrire">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+
+        <div class="bubble us bubble--answer" data-answer aria-hidden="true">
+          <span class="who">Camplo</span>
+          <p>Bien sûr, nous serions ravis d'en discuter avec vous !</p>
+          <div class="actions">
+            <a class="pill pill--primary" href={`mailto:${EMAIL}`}>
+              Écrivez-nous
+              <span class="pill-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="pill pill--ghost" href={`tel:${PHONE}`}>
+              Appelez-nous
+              <span class="pill-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (() => {
+    const chat = document.querySelector('[data-chat]');
+    if (!chat) return;
+
+    const typing = chat.querySelector('[data-typing]');
+    const answer = chat.querySelector('[data-answer]');
+    if (!typing || !answer) return;
+
+    const reveal = () => {
+      if (chat.dataset.revealed === 'true') return;
+      chat.dataset.revealed = 'true';
+      // 1. Typing s'en va. 2. Answer fade/slide-in à sa taille fixe.
+      setTimeout(() => {
+        typing.classList.add('is-leaving');
+      }, 2200);
+      setTimeout(() => {
+        answer.classList.add('is-visible');
+        answer.setAttribute('aria-hidden', 'false');
+      }, 2380);
+    };
+
+    // Respect reduced-motion : révéler immédiatement sans suspense
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      typing.classList.add('is-leaving');
+      answer.classList.add('is-visible');
+      answer.setAttribute('aria-hidden', 'false');
+      chat.dataset.revealed = 'true';
+      return;
+    }
+
+    // Trigger uniquement quand le bubble answer (sa boîte réservée) est
+    // complètement dans le viewport.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio >= 1) reveal();
+        });
+      },
+      { threshold: 1.0 }
+    );
+    observer.observe(answer);
+  })();
+</script>
 
 <style>
   .cta-final {
@@ -44,15 +108,15 @@ const PHONE: string | null = null;
 
   .numeral-bg {
     position: absolute;
-    right: -6%;
-    top: -14%;
+    right: -0.04em;
+    top: -0.14em;
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 500;
-    font-size: clamp(320px, 48vw, 680px);
+    font-size: clamp(280px, 40vw, 520px);
     line-height: 0.78;
     color: var(--marmalade);
-    opacity: 0.1;
+    opacity: 0.09;
     pointer-events: none;
     user-select: none;
     z-index: 0;
@@ -60,6 +124,11 @@ const PHONE: string | null = null;
 
   .wrap { position: relative; z-index: 1; }
 
+  /* ───── Header ───── */
+  .cta-head {
+    max-width: 720px;
+    margin-bottom: clamp(40px, 5vw, 64px);
+  }
   .eyebrow {
     font-family: var(--font-label);
     font-weight: 600;
@@ -67,6 +136,7 @@ const PHONE: string | null = null;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--fern);
+    margin: 0;
   }
   .eyebrow-num {
     font-family: var(--font-display);
@@ -78,45 +148,221 @@ const PHONE: string | null = null;
     font-size: 14px;
     margin-right: 2px;
   }
-
-  .section-title {
-    margin-top: 16px;
+  .cta-title {
+    margin: 16px 0 0;
     font-family: var(--font-display);
     font-weight: 700;
     font-size: clamp(48px, 7vw, 96px);
     letter-spacing: -0.02em;
     line-height: 1;
+    color: var(--ink);
   }
-
-  .lede {
-    margin-top: 24px;
-    max-width: 52ch;
-    font-family: var(--font-body);
-    font-size: clamp(17px, 1.2vw, 19px);
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-
-  .contact-lines {
-    margin-top: clamp(40px, 5vw, 72px);
-    display: grid;
-    gap: clamp(16px, 2vw, 28px);
-  }
-
-  .contact-line {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(32px, 5vw, 64px);
-    letter-spacing: -0.02em;
+  .cta-title em {
+    font-style: italic;
+    font-weight: 500;
     color: var(--fern);
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 12px;
-    transition: color 160ms ease, border-color 160ms ease;
-    word-break: break-word;
   }
 
-  .contact-line:hover {
-    color: var(--fern-deep);
-    border-bottom-color: var(--fern);
+  /* ───── Chat ───── */
+  .chat {
+    display: grid;
+    gap: 16px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .bubble {
+    padding: 16px 22px;
+    border-radius: 22px;
+    max-width: 82%;
+    animation: bubble-in 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .bubble p {
+    margin: 8px 0 0;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: clamp(15px, 1.1vw, 17px);
+    line-height: 1.55;
+  }
+  .who {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .bubble.them {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top-left-radius: 4px;
+    color: var(--ink);
+  }
+  .bubble.us {
+    background: var(--ink);
+    color: var(--paper);
+    margin-left: auto;
+    border-top-right-radius: 4px;
+  }
+
+  /* Slot qui contient typing + answer stackés dans la même cellule grid.
+     La cellule se dimensionne dès le départ au bubble le plus grand (answer)
+     — la section a sa hauteur finale dès le premier rendu, plus de layout
+     shift quand l'answer apparaît. align-items: start empêche le typing de
+     s'étirer. */
+  .us-slot {
+    display: grid;
+    justify-items: end;
+    align-items: start;
+  }
+  .us-slot > .bubble {
+    grid-area: 1 / 1;
+    margin-left: 0;
+    align-self: start;
+  }
+
+  @keyframes bubble-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ───── Typing indicator ───── */
+  .bubble--typing {
+    padding: 14px 22px 16px;
+    opacity: 1;
+    transform-origin: bottom right;
+    transition: opacity 340ms cubic-bezier(0.4, 0, 1, 0.6),
+                transform 340ms cubic-bezier(0.4, 0, 1, 0.6);
+  }
+  /* Le typing se rétracte vers son coin (origin bottom right) en fondant —
+     sensation de "ça finit d'écrire et disparaît". */
+  .bubble--typing.is-leaving {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.82);
+    pointer-events: none;
+  }
+  .typing {
+    display: inline-flex;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 4px 0;
+  }
+  .typing .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--paper-warm);
+    opacity: 0.5;
+    animation: typing-bounce 1.4s ease-in-out infinite;
+  }
+  .typing .dot:nth-child(2) { animation-delay: 0.15s; }
+  .typing .dot:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  /* ───── Answer bubble — l'espace est réservé dès le départ dans la
+     cellule grid (= section fixe). La bulle elle-même s'agrandit depuis
+     un point (top-right = son coin d'attache) jusqu'à sa taille finale,
+     avec un easing spring pour un petit overshoot cinématique. */
+  .bubble--answer {
+    opacity: 0;
+    transform: scale(0.35);
+    transform-origin: top right;
+    transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 640ms cubic-bezier(0.34, 1.42, 0.64, 1);
+    pointer-events: none;
+    animation: none;
+  }
+  .bubble--answer.is-visible {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+
+  /* Stagger interne des éléments. */
+  .bubble--answer > .who,
+  .bubble--answer > p,
+  .bubble--answer > .actions {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 360ms ease, transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .bubble--answer.is-visible > .who {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 180ms;
+  }
+  .bubble--answer.is-visible > p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 260ms;
+  }
+  .bubble--answer.is-visible > .actions {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 360ms;
+  }
+
+  /* ───── Action pills ───── */
+  .actions {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: background-color 200ms ease, color 200ms ease,
+                transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .pill-arrow {
+    font-family: var(--font-display);
+    font-style: italic;
+    display: inline-block;
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .pill:hover .pill-arrow {
+    transform: translate(2px, -2px);
+  }
+  .pill--primary {
+    background: var(--marmalade);
+    color: var(--paper);
+  }
+  .pill--primary:hover {
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .pill--ghost {
+    background: transparent;
+    color: var(--paper-warm);
+    border: 1px solid rgba(246, 240, 224, 0.3);
+  }
+  .pill--ghost:hover {
+    border-color: var(--paper);
+    color: var(--paper);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bubble,
+    .bubble--typing,
+    .bubble--answer,
+    .typing .dot,
+    .pill,
+    .pill-arrow {
+      animation: none;
+      transition: none;
+    }
   }
 </style>

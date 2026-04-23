@@ -1,93 +1,133 @@
 ---
-// Section 3 — Questions fréquentes
-// Vrais doutes, pas une FAQ générique.
+// Section 3 — FAQ, éditorial. Button + div avec grid-template-rows pour une
+// animation reveal smooth et mutex JS-contrôlé.
+const questions = [
+  {
+    q: 'Je veux juste le site, ou juste le logiciel. Possible ?',
+    a: "Oui à l'un comme à l'autre. Les deux s'emboîtent bien, mais rien ne vous oblige à prendre les deux. Le prix initial et le mensuel s'ajustent à ce que vous prenez.",
+  },
+  {
+    q: 'Est-ce que je paie une commission par réservation ?',
+    a: "Non. Jamais. Aucune commission, aucun frais de transaction. Votre seul coût récurrent, c'est l'abonnement mensuel au logiciel. Un montant fixe que vous connaissez d'avance, peu importe le volume de réservations.",
+  },
+  {
+    q: "Et si je veux une fonction que vous n'avez pas ?",
+    a: "Ça nous fait plaisir. Vous nous décrivez ce qui manque, on regarde si ça colle à l'esprit du produit, on revient avec un chemin et un devis. Les meilleures idées viennent des campings qu'on écoute.",
+  },
+  {
+    q: 'Que se passe-t-il après la livraison ?',
+    a: "On reste à vos côtés. Mises à jour, ajustements, questions un mardi soir, panne un samedi matin. On ne disparaît pas une fois le site en ligne.",
+  },
+];
 ---
 
-<section class="faq" aria-label="Questions fréquentes">
-  <span class="numeral-bg" aria-hidden="true">II</span>
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">
-        <span class="eyebrow-num">02</span> · Questions
-      </p>
-      <h2 class="section-title">Les doutes.</h2>
+<section class="faq" id="faq" aria-label="Questions fréquentes">
+  <div class="section-top">
+    <span class="numeral-bg" aria-hidden="true">II</span>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>
+          <span class="eyebrow-num">02</span> · FAQ
+        </p>
+        <h2 class="section-title" data-reveal style="--reveal-delay: 100ms">Les <em>doutes</em>.</h2>
+        <p class="section-note" data-reveal style="--reveal-delay: 200ms">Quatre vraies questions qu'on nous pose. Quatre vraies réponses.</p>
+      </div>
     </div>
+  </div>
 
-    <dl class="qa-list">
-      <div class="qa">
-        <dt>Et si vous fermez boutique demain matin ?</dt>
-        <dd>
-          Le code source du site et un export complet de vos données vous
-          sont livrés au moment de la mise en production. Le logiciel
-          continue de fonctionner même si on disparaît.
-        </dd>
-      </div>
-
-      <div class="qa">
-        <dt>Et si mon internet tombe un samedi de juillet ?</dt>
-        <dd>
-          Le logiciel continue. Les réservations faites en ligne pendant
-          la panne s'accumulent chez Stripe et apparaissent dès que la
-          connexion revient.
-        </dd>
-      </div>
-
-      <div class="qa">
-        <dt>Est-ce que je paie une commission par réservation ?</dt>
-        <dd>
-          Non. Jamais. Vous payez Stripe 2.9% + 30¢ par transaction (c'est
-          Stripe qui prend, pas nous), et le prix mensuel de votre
-          abonnement Camplo. C'est tout.
-        </dd>
-      </div>
-
-      <div class="qa">
-        <dt>Je veux juste le site, pas le logiciel. Possible ?</dt>
-        <dd>
-          Oui. L'inverse aussi. Les prix upfront et mensuel sont ajustés
-          à ce que vous prenez.
-        </dd>
-      </div>
-
-      <div class="qa">
-        <dt>Et si je veux une fonction que vous n'avez pas ?</dt>
-        <dd>
-          On regarde. Si ça fait du sens et qu'on peut le construire en
-          moins de deux semaines, on vous donne un devis. On n'ajoute
-          pas de fonctions juste pour vendre.
-        </dd>
-      </div>
-
-      <div class="qa">
-        <dt>Est-ce que je peux changer de domaine plus tard ?</dt>
-        <dd>
-          Oui. Votre domaine est chez vous. Un changement prend environ
-          deux heures de notre côté.
-        </dd>
-      </div>
-    </dl>
+  <div class="qa-list" role="list" data-reveal-stagger>
+    {questions.map(({ q, a }, i) => {
+      const id = `faq-${i + 1}`;
+      return (
+        <div class="qa" role="listitem" style={`--i: ${i}`}>
+          <button
+            class="qa-head"
+            type="button"
+            aria-expanded="false"
+            aria-controls={id}
+          >
+            <span class="qa-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span class="qa-q">{q}</span>
+            <span class="qa-rail" aria-hidden="true"></span>
+          </button>
+          <div class="qa-body-wrap" id={id} role="region" aria-hidden="true">
+            <div class="qa-body">
+              <p>{a}</p>
+            </div>
+          </div>
+        </div>
+      );
+    })}
   </div>
 </section>
+
+<script is:inline>
+  (() => {
+    const open = (el) => {
+      el.classList.add('is-open');
+      el.querySelector('.qa-head').setAttribute('aria-expanded', 'true');
+      el.querySelector('.qa-body-wrap').setAttribute('aria-hidden', 'false');
+    };
+    const close = (el) => {
+      el.classList.remove('is-open');
+      el.querySelector('.qa-head').setAttribute('aria-expanded', 'false');
+      el.querySelector('.qa-body-wrap').setAttribute('aria-hidden', 'true');
+    };
+
+    // Un seul handler sur .qa → toute la rangée (header, padding, body) est cliquable.
+    // Le bouton .qa-head garde la sémantique a11y (Enter/Space bubble vers .qa).
+    document.querySelectorAll('.qa').forEach((el) => {
+      el.addEventListener('click', () => {
+        // Ne pas toggle si l'utilisateur est en train de sélectionner du texte
+        if (window.getSelection().toString()) return;
+
+        if (el.classList.contains('is-open')) {
+          close(el);
+          return;
+        }
+        // Mutex : un seul ouvert à la fois
+        document.querySelectorAll('.qa.is-open').forEach((other) => {
+          if (other !== el) close(other);
+        });
+        open(el);
+      });
+    });
+  })();
+</script>
 
 <style>
   .faq {
     background: var(--paper);
-    padding: var(--section-pad-y) 0;
+    padding: 0 0 var(--section-pad-y);
     border-top: 1px solid var(--rule);
     position: relative;
     overflow: hidden;
   }
 
+  /* Wrapper du header : contient le numéral "II" qui colle au top de la section
+     et le clippe pile au début de la liste des questions. */
+  .section-top {
+    position: relative;
+    overflow: clip;
+    contain: paint;
+    padding-top: clamp(48px, 6vw, 80px);
+    padding-bottom: clamp(48px, 6vw, 80px);
+  }
+
   .numeral-bg {
     position: absolute;
-    left: -6%;
-    top: -8%;
+    /* Ancré par le bas. Le bottom négatif compense le leading sous la
+       baseline pour que le pied des "I" (serif + empattement visible) se
+       pose naturellement sur le border-top de la première question,
+       SANS coupe nette. */
+    right: -0.04em;
+    bottom: 0.08em;
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 500;
-    font-size: clamp(320px, 48vw, 640px);
+    font-size: clamp(320px, 36vw, 500px);
     line-height: 0.78;
-    color: var(--marmalade);
+    color: var(--fern);
     opacity: 0.08;
     pointer-events: none;
     user-select: none;
@@ -95,6 +135,10 @@
   }
 
   .wrap { position: relative; z-index: 1; }
+
+  .section-head {
+    max-width: 960px;
+  }
 
   .eyebrow {
     font-family: var(--font-label);
@@ -119,40 +163,212 @@
     margin-top: 16px;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(32px, 5vw, 56px);
-    letter-spacing: -0.02em;
-    line-height: 1.05;
+    font-size: clamp(40px, 6vw, 72px);
+    letter-spacing: -0.025em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .section-title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+  }
+
+  .section-note {
+    margin-top: 18px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(17px, 1.4vw, 20px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 32ch;
   }
 
   .qa-list {
-    margin-top: clamp(48px, 6vw, 80px);
-    display: grid;
-    gap: 0;
-    max-width: 72ch;
+    position: relative;
+    z-index: 1;
+    /* Alignement du contenu avec le titre (.wrap inner edge) même >1280px */
+    --qa-indent: max(var(--wrap-pad-x), calc((100% - var(--wrap-max)) / 2 + var(--wrap-pad-x)));
   }
 
+  /* ───── Row ───── */
   .qa {
-    padding: clamp(24px, 3vw, 36px) 0;
+    position: relative;
     border-top: 1px solid var(--rule);
+    transition: background-color 320ms ease;
+    cursor: pointer;
   }
-  .qa:last-child { border-bottom: 1px solid var(--rule); }
+  .qa:last-of-type {
+    border-bottom: 1px solid var(--rule);
+  }
+  .qa.is-open {
+    background-color: rgba(238, 228, 204, 0.34);
+  }
 
-  .qa dt {
+  /* Head (bouton plein-largeur, cliquable).
+     padding horizontal = alignement avec .wrap's inner edge (titre) même sur
+     écrans >1280px, sinon fallback sur --wrap-pad-x. */
+  .qa-head {
+    all: unset;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(14px, 2vw, 28px);
+    align-items: baseline;
+    width: 100%;
+    padding-top: clamp(12px, 1.3vw, 18px);
+    padding-bottom: clamp(12px, 1.3vw, 18px);
+    padding-left: var(--qa-indent);
+    padding-right: var(--qa-indent);
+    position: relative;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+  }
+  .qa-head:focus-visible {
+    outline: none;
+  }
+  .qa-head:focus-visible::after {
+    content: '';
+    position: absolute;
+    inset: 8px -4px 8px -12px;
+    border: 1.5px dashed var(--fern);
+    pointer-events: none;
+  }
+
+  .qa-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(24px, 2.8vw, 36px);
+    letter-spacing: -0.03em;
+    line-height: 0.9;
+    color: var(--marmalade);
+    font-variant-numeric: lining-nums;
+    min-width: clamp(40px, 4.5vw, 56px);
+    transition: color 280ms ease;
+  }
+  .qa:hover .qa-num,
+  .qa.is-open .qa-num {
+    color: var(--fern);
+  }
+
+  .qa-q {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(20px, 2.2vw, 26px);
-    letter-spacing: -0.01em;
-    line-height: 1.2;
+    font-size: clamp(15px, 1.1vw, 17px);
+    letter-spacing: -0.005em;
+    line-height: 1.35;
     color: var(--ink);
-    max-width: 42ch;
+    max-width: 58ch;
+    transition: color 220ms ease;
+    padding-top: 4px;
+  }
+  .qa:hover .qa-q {
+    color: var(--fern);
   }
 
-  .qa dd {
-    margin-top: 12px;
+  /* Rail marmalade gauche (aligné 14px avant le texte) */
+  .qa-rail {
+    position: absolute;
+    left: calc(var(--qa-indent) - 14px);
+    top: -1px;
+    bottom: 0;
+    width: 3px;
+    background: var(--marmalade);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 420ms cubic-bezier(0.25, 0.8, 0.3, 1);
+  }
+  .qa:hover .qa-rail {
+    transform: scaleY(0.3);
+  }
+  .qa.is-open .qa-rail {
+    transform: scaleY(1);
+  }
+
+  /* Answer — grid-template-rows 0fr ↔ 1fr pour reveal smooth.
+     Transition définie par état : fermeture rapide (ease-in court),
+     ouverture smooth (ease-out plus long) → feeling naturel. */
+  .qa-body-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 320ms cubic-bezier(0.5, 0, 0.75, 0);
+    cursor: pointer;
+    will-change: grid-template-rows;
+  }
+  .qa.is-open .qa-body-wrap {
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 480ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .qa-body {
+    min-height: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: clamp(40px, 4.5vw, 56px) 1fr;
+    gap: clamp(14px, 2vw, 28px);
+    padding-top: 0;
+    padding-bottom: clamp(24px, 3vw, 40px);
+    padding-left: var(--qa-indent);
+    padding-right: var(--qa-indent);
+  }
+
+  .qa-body p {
+    /* Aligné avec le texte de la question au-dessus (colonne 2 du grid) */
+    grid-column: 2;
     font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
+    font-weight: 500;
+    font-size: clamp(14px, 0.95vw, 15.5px);
+    line-height: 1.65;
     color: var(--ink-soft);
-    max-width: 60ch;
+    max-width: 62ch;
+    opacity: 0;
+    transform: translateY(4px);
+    /* Fermeture : fade-out rapide synchro avec le collapse */
+    transition: opacity 200ms ease, transform 260ms cubic-bezier(0.5, 0, 0.75, 0);
+  }
+  .qa.is-open .qa-body p {
+    opacity: 1;
+    transform: translateY(0);
+    /* Ouverture : le texte apparaît pendant la seconde moitié du reveal */
+    transition: opacity 380ms ease 180ms, transform 480ms cubic-bezier(0.22, 1, 0.36, 1) 180ms;
+  }
+
+  @media (max-width: 640px) {
+    .qa-head {
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      padding-top: 11px;
+      padding-bottom: 11px;
+    }
+    .qa-num {
+      font-size: 22px;
+      min-width: 36px;
+    }
+    .qa-q {
+      font-size: 14px;
+    }
+    .qa-body {
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      padding-bottom: 20px;
+    }
+    .qa-body p {
+      font-size: 13.5px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .qa,
+    .qa-num,
+    .qa-q,
+    .qa-rail,
+    .qa-body-wrap,
+    .qa-body p {
+      transition: none;
+    }
   }
 </style>

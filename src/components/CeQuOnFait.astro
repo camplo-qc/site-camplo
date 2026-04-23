@@ -1,100 +1,153 @@
 ---
-// Section 2 — Ce qu'on fait (site + CRM en un seul bloc)
-// Court intro, éventail des screenshots CRM, liste des features.
+// Section 1 — Produits. Template tabs interactif : un toggle Site|CRM qui
+// bascule entre les deux vues du produit avec un fade animé.
 
-const shots = [
-  { src: '/screenshots/crm-dashboard.png', alt: 'Tableau de bord', label: 'Tableau de bord' },
-  { src: '/screenshots/crm-calendrier.png', alt: 'Calendrier mensuel', label: 'Calendrier' },
-  { src: '/screenshots/crm-reservations.png', alt: 'Liste des réservations', label: 'Réservations' },
-  { src: '/screenshots/crm-emplacements.png', alt: 'Liste des emplacements', label: 'Emplacements' },
-  { src: '/screenshots/crm-clients.png', alt: 'Liste des clients', label: 'Clients' },
-  { src: '/screenshots/crm-fiscal.png', alt: 'Page fiscalité', label: 'Fiscalité' },
+const siteFeatures = [
+  'Réservation en ligne',
+  'Paiement par carte (Stripe)',
+  'Confirmation automatique',
+  'Aucune commission',
+];
+
+const crmFeatures = [
+  'Tableau de bord',
+  'Calendrier mensuel',
+  'Réservations filtrables',
+  'Emplacements + services',
+  'Clients + historique',
+  'Fiscalité TPS/TVQ',
 ];
 ---
 
-<section class="ce-quon-fait" id="travaux" aria-label="Ce qu'on fait">
+<section class="ce-quon-fait" id="produits" aria-label="Produits">
   <span class="numeral-bg" aria-hidden="true">I</span>
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">
-        <span class="eyebrow-num">01</span> · Ce qu'on fait
-      </p>
-      <h2 class="section-title">
-        Un site pour vos campeurs. Un logiciel pour vous.
-      </h2>
-    </div>
-
-    <div class="blurbs">
-      <div class="blurb">
-        <h3>Le site public</h3>
-        <p>
-          Vos campeurs réservent en ligne, paient par carte, reçoivent
-          une confirmation. Aucun intermédiaire, aucune commission.
-        </p>
-      </div>
-      <div class="blurb">
-        <h3>Le logiciel de gestion</h3>
-        <p>
-          Une app desktop Mac et Windows. Calendrier, réservations,
-          clients, emplacements, fiscalité. Fonctionne hors-ligne.
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="fan-wrap">
-    <div class="fan" role="list">
-      {
-        shots.map((shot, i) => (
-          <figure class="fan-card" role="listitem" style={`--i: ${i}`}>
-            <img
-              src={shot.src}
-              alt={shot.alt}
-              loading="lazy"
-              width="1445"
-              height="900"
-            />
-            <figcaption>{shot.label}</figcaption>
-          </figure>
-        ))
-      }
-    </div>
-  </div>
 
   <div class="wrap">
-    <dl class="features">
-      <div class="feat">
-        <dt><span class="m">I.</span> Tableau de bord</dt>
-        <dd>Arrivées, départs, paiements à surveiller. PDF du jour en un clic.</dd>
+    <div class="cqf-head">
+      <div class="cqf-heading">
+        <p class="eyebrow" data-reveal>
+          <span class="eyebrow-num">01</span> · Produits
+        </p>
+        <h2 class="cqf-title" data-reveal style="--reveal-delay: 100ms">Pour les campings d'ici. <em>Conçu au Québec.</em></h2>
       </div>
-      <div class="feat">
-        <dt><span class="m">II.</span> Calendrier</dt>
-        <dd>Vue mensuelle, une ligne par emplacement. On voit les trous, les chevauchements.</dd>
+
+      <div class="cqf-tabs" role="tablist" aria-label="Choisir un produit" data-reveal style="--reveal-delay: 200ms">
+        <button
+          type="button"
+          role="tab"
+          class="cqf-tab is-active"
+          data-target="cqf-site"
+          id="cqf-tab-site"
+          aria-controls="cqf-site"
+          aria-selected="true"
+        >
+          <span class="cqf-tab-num">01</span>
+          <span class="cqf-tab-label">Site</span>
+        </button>
+        <button
+          type="button"
+          role="tab"
+          class="cqf-tab"
+          data-target="cqf-crm"
+          id="cqf-tab-crm"
+          aria-controls="cqf-crm"
+          aria-selected="false"
+        >
+          <span class="cqf-tab-num">02</span>
+          <span class="cqf-tab-label">CRM</span>
+        </button>
       </div>
-      <div class="feat">
-        <dt><span class="m">III.</span> Réservations</dt>
-        <dd>Filtrables par statut. Création en quelques clics. Factures en PDF.</dd>
+    </div>
+
+    <div class="cqf-stage" data-reveal style="--reveal-delay: 300ms">
+      <div
+        class="cqf-panel is-active"
+        id="cqf-site"
+        role="tabpanel"
+        aria-labelledby="cqf-tab-site"
+      >
+        <div class="cqf-copy">
+          <p class="cqf-kicker">Pour vos campeurs</p>
+          <h3 class="cqf-headline">Ils arrivent, ils réservent, <em>ils paient</em>.</h3>
+          <p class="cqf-sub">
+            Pas de formulaire de 12 pages, pas d'intermédiaire qui prend
+            une commission. Un site qui transforme la curiosité en
+            réservation confirmée, paiement encaissé, courriel envoyé.
+          </p>
+          <ul class="cqf-features">
+            {siteFeatures.map((f) => <li>{f}</li>)}
+          </ul>
+        </div>
+        <div class="cqf-visual">
+          <div class="cqf-visual-placeholder">
+            <span class="cqf-visual-label">Aperçu du site public</span>
+            <span class="cqf-visual-url">delajoiequebec.com</span>
+          </div>
+        </div>
       </div>
-      <div class="feat">
-        <dt><span class="m">IV.</span> Emplacements</dt>
-        <dd>Services 50A/30A, dimensions, véhicules acceptés. Le vocabulaire que vous utilisez.</dd>
+
+      <div
+        class="cqf-panel"
+        id="cqf-crm"
+        role="tabpanel"
+        aria-labelledby="cqf-tab-crm"
+        hidden
+      >
+        <div class="cqf-copy">
+          <p class="cqf-kicker">Pour vous</p>
+          <h3 class="cqf-headline">Votre camping, <em>sans le navigateur</em>.</h3>
+          <p class="cqf-sub">
+            Une app desktop qui tourne localement. Vos données restent
+            chez vous. Tout ce qu'il faut pour opérer une saison.
+          </p>
+          <ul class="cqf-features">
+            {crmFeatures.map((f) => <li>{f}</li>)}
+          </ul>
+        </div>
+        <div class="cqf-visual">
+          <img
+            src="/screenshots/crm-dashboard.png"
+            alt="CRM Camplo · Tableau de bord"
+            loading="lazy"
+            width="1445"
+            height="900"
+          />
+        </div>
       </div>
-      <div class="feat">
-        <dt><span class="m">V.</span> Clients</dt>
-        <dd>Nom, courriel, téléphone, historique. Pas de scoring, pas de newsletter forcée.</dd>
-      </div>
-      <div class="feat">
-        <dt><span class="m">VI.</span> Fiscalité</dt>
-        <dd>TPS 5%, TVQ 9.975%, rapports mensuels en PDF pour la comptable.</dd>
-      </div>
-    </dl>
+    </div>
   </div>
 </section>
+
+<script is:inline>
+  (() => {
+    const tabs = document.querySelectorAll('.cqf-tab');
+    const panels = document.querySelectorAll('.cqf-panel');
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const target = tab.getAttribute('data-target');
+        tabs.forEach((t) => {
+          const active = t === tab;
+          t.classList.toggle('is-active', active);
+          t.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        panels.forEach((p) => {
+          const active = p.id === target;
+          p.classList.toggle('is-active', active);
+          if (active) {
+            p.removeAttribute('hidden');
+          } else {
+            p.setAttribute('hidden', '');
+          }
+        });
+      });
+    });
+  })();
+</script>
 
 <style>
   .ce-quon-fait {
     background: var(--paper-warm);
-    padding: var(--section-pad-y) 0 clamp(60px, 8vw, 100px);
+    padding: var(--section-pad-y) 0;
     border-top: 1px solid var(--rule);
     position: relative;
     overflow: hidden;
@@ -102,21 +155,35 @@ const shots = [
 
   .numeral-bg {
     position: absolute;
-    right: -5%;
-    top: -10%;
+    right: -0.04em;
+    top: -0.14em;
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 500;
-    font-size: clamp(320px, 48vw, 640px);
+    font-size: clamp(320px, 44vw, 580px);
     line-height: 0.78;
     color: var(--marmalade);
-    opacity: 0.1;
+    opacity: 0.08;
     pointer-events: none;
     user-select: none;
     z-index: 0;
   }
 
   .wrap { position: relative; z-index: 1; }
+
+  /* ───── Head ───── */
+  .cqf-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: clamp(24px, 4vw, 48px);
+    flex-wrap: wrap;
+    margin-bottom: clamp(40px, 5vw, 72px);
+  }
+
+  .cqf-heading {
+    max-width: 640px;
+  }
 
   .eyebrow {
     font-family: var(--font-label);
@@ -137,186 +204,212 @@ const shots = [
     margin-right: 2px;
   }
 
-  .section-title {
+  .cqf-title {
     margin-top: 16px;
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(32px, 5vw, 56px);
-    letter-spacing: -0.02em;
-    line-height: 1.05;
-    color: var(--ink);
-    max-width: 22ch;
-  }
-
-  .blurbs {
-    margin-top: clamp(40px, 5vw, 64px);
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(32px, 4vw, 56px);
-    max-width: 74ch;
-  }
-
-  @media (max-width: 720px) {
-    .blurbs { grid-template-columns: 1fr; }
-  }
-
-  .blurb h3 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(20px, 2vw, 24px);
-    letter-spacing: -0.01em;
+    font-size: clamp(40px, 6vw, 72px);
+    letter-spacing: -0.025em;
+    line-height: 1;
     color: var(--ink);
   }
-
-  .blurb p {
-    margin-top: 10px;
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--ink-soft);
+  .cqf-title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--fern);
   }
 
-  /* Éventail */
-  .fan-wrap {
-    position: relative;
-    z-index: 2;
-    margin: clamp(56px, 7vw, 96px) 0 clamp(40px, 5vw, 64px);
-    padding: 0 var(--wrap-pad-x);
-  }
-
-  .fan {
-    position: relative;
-    height: clamp(340px, 42vw, 600px);
-    max-width: var(--wrap-max);
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .fan-card {
-    position: absolute;
-    width: clamp(280px, 36vw, 580px);
-    aspect-ratio: 1445 / 900;
-    margin: 0;
-    border-radius: 8px;
-    border: 1px solid var(--rule);
-    box-shadow: 0 12px 40px rgba(28, 28, 26, 0.18), 0 2px 8px rgba(28, 28, 26, 0.08);
+  /* ───── Tabs ───── */
+  .cqf-tabs {
+    display: inline-flex;
     background: var(--paper);
-    overflow: hidden;
-    transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 320ms ease;
-    transform-origin: 50% 110%;
-    --step: 10deg;
-    --offset: 9%;
+    border: 1px solid var(--rule);
+    border-radius: 9999px;
+    padding: 4px;
+    gap: 2px;
+    align-self: center;
   }
 
-  .fan-card:nth-child(1) { transform: rotate(calc(var(--step) * -2.5)) translateX(calc(var(--offset) * -2.5)); z-index: 1; }
-  .fan-card:nth-child(2) { transform: rotate(calc(var(--step) * -1.5)) translateX(calc(var(--offset) * -1.5)); z-index: 2; }
-  .fan-card:nth-child(3) { transform: rotate(calc(var(--step) * -0.5)) translateX(calc(var(--offset) * -0.5)); z-index: 3; }
-  .fan-card:nth-child(4) { transform: rotate(calc(var(--step) *  0.5)) translateX(calc(var(--offset) *  0.5)); z-index: 4; }
-  .fan-card:nth-child(5) { transform: rotate(calc(var(--step) *  1.5)) translateX(calc(var(--offset) *  1.5)); z-index: 5; }
-  .fan-card:nth-child(6) { transform: rotate(calc(var(--step) *  2.5)) translateX(calc(var(--offset) *  2.5)); z-index: 6; }
-
-  .fan-card:hover,
-  .fan-card:focus-within {
-    transform: rotate(0deg) translateX(0) translateY(-16px) scale(1.05);
-    z-index: 20;
-    box-shadow: 0 24px 60px rgba(28, 28, 26, 0.28), 0 4px 12px rgba(28, 28, 26, 0.1);
-  }
-
-  .fan-card img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-  }
-
-  .fan-card figcaption {
-    position: absolute;
-    bottom: 10px;
-    left: 12px;
-    right: 12px;
+  .cqf-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
     font-family: var(--font-label);
     font-weight: 600;
-    font-size: 10px;
-    letter-spacing: 0.16em;
+    font-size: 12px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--paper);
-    background: rgba(28, 28, 26, 0.78);
-    padding: 8px 10px;
-    border-radius: 4px;
-    opacity: 0;
-    transition: opacity 200ms ease;
-    text-align: center;
+    color: var(--ink-muted);
+    background: transparent;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 240ms ease, color 240ms ease;
   }
-
-  .fan-card:hover figcaption,
-  .fan-card:focus-within figcaption { opacity: 1; }
-
-  @media (max-width: 720px) {
-    .fan {
-      height: auto;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .fan-card,
-    .fan-card:nth-child(1),
-    .fan-card:nth-child(2),
-    .fan-card:nth-child(3),
-    .fan-card:nth-child(4),
-    .fan-card:nth-child(5),
-    .fan-card:nth-child(6) {
-      position: static;
-      width: 100%;
-      transform: none;
-    }
-    .fan-card:nth-child(even) { transform: rotate(-1.5deg); }
-    .fan-card:nth-child(odd) { transform: rotate(1.5deg); }
-    .fan-card figcaption { opacity: 1; }
-  }
-
-  /* Features list */
-  .features {
-    margin-top: clamp(40px, 5vw, 64px);
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(24px, 3vw, 40px) clamp(40px, 5vw, 72px);
-  }
-
-  @media (max-width: 720px) {
-    .features { grid-template-columns: 1fr; }
-  }
-
-  .feat {
-    padding-top: 16px;
-    border-top: 1px solid var(--rule);
-  }
-
-  .feat dt {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(18px, 1.8vw, 22px);
-    letter-spacing: -0.01em;
-    line-height: 1.2;
+  .cqf-tab:hover:not(.is-active) {
     color: var(--ink);
   }
 
-  .m {
+  .cqf-tab-num {
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 500;
+    font-size: 14px;
     color: var(--marmalade);
-    margin-right: 4px;
-    font-size: 0.85em;
+  }
+  .cqf-tab.is-active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .cqf-tab.is-active .cqf-tab-num {
+    color: var(--marmalade);
   }
 
-  .feat dd {
-    margin-top: 8px;
+  /* ───── Stage & panels ───── */
+  .cqf-stage {
+    position: relative;
+  }
+  .cqf-panel {
+    display: none;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+    animation: cqf-fade 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cqf-panel.is-active {
+    display: grid;
+  }
+  @keyframes cqf-fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .cqf-kicker {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+  }
+
+  .cqf-headline {
+    margin: 14px 0 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(30px, 3.6vw, 48px);
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: var(--ink);
+  }
+  .cqf-headline em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+  }
+
+  .cqf-sub {
+    margin-top: 18px;
     font-family: var(--font-body);
-    font-size: 15px;
-    line-height: 1.55;
+    font-weight: 500;
+    font-size: clamp(15px, 1.1vw, 17px);
+    line-height: 1.6;
     color: var(--ink-soft);
-    max-width: 42ch;
+    max-width: 44ch;
+  }
+
+  .cqf-features {
+    list-style: none;
+    margin: clamp(24px, 3vw, 32px) 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .cqf-features li {
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cqf-features li::before {
+    content: '';
+    width: 8px;
+    height: 1px;
+    background: var(--marmalade);
+    flex-shrink: 0;
+  }
+
+  .cqf-visual {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: var(--paper);
+  }
+  .cqf-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .cqf-visual-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--paper),
+      var(--paper) 12px,
+      var(--paper-warm) 12px,
+      var(--paper-warm) 24px
+    );
+  }
+  .cqf-visual-label {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--ink-muted);
+    font-size: clamp(16px, 1.5vw, 20px);
+  }
+  .cqf-visual-url {
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--marmalade);
+  }
+
+  @media (max-width: 860px) {
+    .cqf-head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .cqf-tabs {
+      align-self: flex-start;
+    }
+    .cqf-panel.is-active {
+      grid-template-columns: 1fr;
+    }
+    .cqf-features {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cqf-panel,
+    .cqf-tab {
+      animation: none;
+      transition: none;
+    }
   }
 </style>

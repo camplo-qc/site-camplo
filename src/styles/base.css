@@ -8,6 +8,9 @@
 
 html {
   scroll-behavior: smooth;
+  /* Permet aux transitions sur height: auto ou grid-template-rows: 1fr
+     d'animer proprement (Chrome 129+, Safari 18.2+). Fallback gracieux. */
+  interpolate-size: allow-keywords;
 }
 
 body {

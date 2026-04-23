@@ -1,0 +1,464 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Exploration : 6 styles d'animation au scroll. Chaque section déclenche son
+// propre pattern via IntersectionObserver quand elle entre dans le viewport.
+---
+
+<Layout>
+  <header class="page-head">
+    <p class="eyebrow">Exploration · Scroll animations</p>
+    <h1>6 façons d'animer au scroll.</h1>
+    <p class="lede">
+      Scroll doucement pour voir chaque pattern se déclencher. Chaque animation
+      ne joue qu'une fois (once triggered), respecte <code>prefers-reduced-motion</code>,
+      et reste subtile pour ne pas fatiguer au défilement.
+    </p>
+  </header>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      A1 — FADE + SLIDE UP (basic, le plus polyvalent)
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="demo">
+    <div class="demo-label">A1 · Fade + slide up</div>
+    <div class="demo-note">
+      Le plus commun. Element : opacity 0 + translateY(24px) → opacity 1 + translateY(0).
+      Durée 700ms, ease-out.
+    </div>
+
+    <div class="canvas" data-reveal data-reveal-type="fade-up">
+      <p class="kicker">Section exemple</p>
+      <h2 class="title">Titre qui apparaît smoothly.</h2>
+      <p class="body">
+        Ce texte fade in avec un léger slide vers le haut. Discret, efficace.
+        Le genre de pattern qu'on peut appliquer à presque tout sans
+        fatiguer le visiteur.
+      </p>
+    </div>
+  </section>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      A2 — STAGGER (plusieurs éléments en cascade)
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="demo">
+    <div class="demo-label">A2 · Stagger cascade</div>
+    <div class="demo-note">
+      Les enfants s'enchaînent avec un décalage de 100ms. Idéal pour listes,
+      grilles de cartes, features.
+    </div>
+
+    <div class="canvas canvas--stagger" data-reveal data-reveal-type="stagger">
+      <div class="card" style="--i: 0"><span>01</span><p>Première carte</p></div>
+      <div class="card" style="--i: 1"><span>02</span><p>Deuxième</p></div>
+      <div class="card" style="--i: 2"><span>03</span><p>Troisième</p></div>
+      <div class="card" style="--i: 3"><span>04</span><p>Quatrième</p></div>
+    </div>
+  </section>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      A3 — BLUR IN (moderne, iOS-feel)
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="demo">
+    <div class="demo-label">A3 · Blur in</div>
+    <div class="demo-note">
+      Le contenu arrive flou puis se met au point. Moderne, cinématique.
+      À utiliser avec parcimonie — ça peut saturer.
+    </div>
+
+    <div class="canvas" data-reveal data-reveal-type="blur-in">
+      <p class="kicker">Mise au point</p>
+      <h2 class="title">La caméra fait le focus.</h2>
+      <p class="body">
+        Blur de 12px → 0 avec opacity 0 → 1. Donne un effet de profondeur,
+        comme un sujet qui devient net en approchant.
+      </p>
+    </div>
+  </section>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      A4 — SPLIT TEXT (chaque ligne/mot entre séparément)
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="demo">
+    <div class="demo-label">A4 · Split text (par ligne)</div>
+    <div class="demo-note">
+      Chaque ligne du titre entre avec un petit décalage. Très éditorial,
+      rappelle les magazines imprimés. Fonctionne mieux sur les gros titres.
+    </div>
+
+    <div class="canvas canvas--split" data-reveal data-reveal-type="split-text">
+      <p class="kicker">Titre éditorial</p>
+      <h2 class="title-split">
+        <span class="line"><span class="line-inner">Une ligne qui monte.</span></span>
+        <span class="line"><span class="line-inner">Puis une autre.</span></span>
+        <span class="line"><span class="line-inner"><em>Puis une italique.</em></span></span>
+      </h2>
+    </div>
+  </section>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      A5 — CLIP-PATH WIPE (révélation horizontale)
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="demo">
+    <div class="demo-label">A5 · Clip wipe (gauche → droite)</div>
+    <div class="demo-note">
+      Le contenu est révélé via clip-path qui s'ouvre de gauche à droite.
+      Dramatique, bon pour des images ou des sections à fort impact.
+    </div>
+
+    <div class="canvas" data-reveal data-reveal-type="clip-wipe">
+      <div class="wipe-block">
+        <span class="wipe-num">04</span>
+        <span class="wipe-text">Revealed par un wipe</span>
+      </div>
+    </div>
+  </section>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      A6 — SCALE + FADE (subtle pop)
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="demo">
+    <div class="demo-label">A6 · Scale + fade</div>
+    <div class="demo-note">
+      Pop subtil à scale 0.94 → 1 avec opacity. Parfait pour les cartes
+      et les éléments UI sans être agressif.
+    </div>
+
+    <div class="canvas canvas--stagger" data-reveal data-reveal-type="scale-fade">
+      <div class="tile" style="--i: 0"><span>Site</span></div>
+      <div class="tile" style="--i: 1"><span>CRM</span></div>
+      <div class="tile" style="--i: 2"><span>Québec</span></div>
+    </div>
+  </section>
+
+  <div class="end-marker">Fin de l'exploration</div>
+</Layout>
+
+<script is:inline>
+  (() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('[data-reveal]').forEach((el) => {
+        el.classList.add('is-revealed');
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+  })();
+</script>
+
+<style>
+  .page-head {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: clamp(48px, 7vw, 96px) var(--wrap-pad-x) clamp(32px, 5vw, 56px);
+  }
+  .page-head .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--marmalade);
+    margin: 0;
+  }
+  .page-head h1 {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(30px, 4.5vw, 56px);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+  .page-head .lede {
+    margin-top: 16px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(15px, 1.3vw, 18px);
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .page-head code {
+    font-family: 'SF Mono', Menlo, monospace;
+    font-size: 0.92em;
+    background: var(--paper-warm);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* ───── Demo sections : 80vh chacune pour forcer le scroll trigger ───── */
+  .demo {
+    min-height: 80vh;
+    padding: clamp(48px, 6vw, 96px) var(--wrap-pad-x);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  .demo:nth-child(even) { background: var(--paper-warm); }
+  .demo:nth-child(odd) { background: var(--paper); }
+
+  .demo-label {
+    display: inline-block;
+    padding: 6px 14px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--ink);
+    border-radius: 9999px;
+    margin-bottom: 16px;
+  }
+  .demo-note {
+    max-width: 52ch;
+    margin: 0 auto clamp(40px, 5vw, 72px);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  .canvas {
+    max-width: 720px;
+    width: 100%;
+  }
+
+  /* ───── Styles de base (état avant reveal + final) ───── */
+  .kicker {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+    margin: 0;
+  }
+  .title {
+    margin: 14px 0 18px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 4vw, 48px);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+  .body {
+    max-width: 44ch;
+    margin: 0 auto;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* ═══════════════════════════════════════════
+     A1 — FADE + SLIDE UP
+     ═══════════════════════════════════════════ */
+  [data-reveal-type="fade-up"] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-reveal-type="fade-up"].is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ═══════════════════════════════════════════
+     A2 — STAGGER
+     ═══════════════════════════════════════════ */
+  .canvas--stagger {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    padding: 32px 20px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    text-align: center;
+  }
+  :global(.demo:nth-child(even)) .card { background: var(--paper); }
+  .card span {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--marmalade);
+    font-weight: 500;
+  }
+  .card p {
+    margin: 8px 0 0;
+    font-family: var(--font-label);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  [data-reveal-type="stagger"] > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: calc(var(--i, 0) * 100ms);
+  }
+  [data-reveal-type="stagger"].is-revealed > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ═══════════════════════════════════════════
+     A3 — BLUR IN
+     ═══════════════════════════════════════════ */
+  [data-reveal-type="blur-in"] {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(8px);
+    transition: opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+                filter 860ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-reveal-type="blur-in"].is-revealed {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+
+  /* ═══════════════════════════════════════════
+     A4 — SPLIT TEXT
+     ═══════════════════════════════════════════ */
+  .title-split {
+    margin: 14px 0 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(28px, 4.5vw, 56px);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+  }
+  .title-split em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+  }
+  .line {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.1em;
+  }
+  .line-inner {
+    display: block;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  [data-reveal-type="split-text"].is-revealed .line:nth-child(1) .line-inner {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 100ms;
+  }
+  [data-reveal-type="split-text"].is-revealed .line:nth-child(2) .line-inner {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 200ms;
+  }
+  [data-reveal-type="split-text"].is-revealed .line:nth-child(3) .line-inner {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 300ms;
+  }
+
+  /* ═══════════════════════════════════════════
+     A5 — CLIP WIPE
+     ═══════════════════════════════════════════ */
+  .wipe-block {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 24px;
+    padding: 32px 48px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 4px;
+  }
+  .wipe-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 700;
+    color: var(--marmalade);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .wipe-text {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(18px, 2vw, 28px);
+    letter-spacing: -0.01em;
+  }
+  [data-reveal-type="clip-wipe"] {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 900ms cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  [data-reveal-type="clip-wipe"].is-revealed {
+    clip-path: inset(0 0 0 0);
+  }
+
+  /* ═══════════════════════════════════════════
+     A6 — SCALE + FADE
+     ═══════════════════════════════════════════ */
+  .tile {
+    padding: 40px 20px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 9999px;
+    text-align: center;
+  }
+  .tile span {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  [data-reveal-type="scale-fade"] > * {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 540ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 620ms cubic-bezier(0.34, 1.25, 0.64, 1);
+    transition-delay: calc(var(--i, 0) * 90ms);
+  }
+  [data-reveal-type="scale-fade"].is-revealed > * {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .end-marker {
+    padding: 80px 20px;
+    text-align: center;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+</style>

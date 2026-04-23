@@ -1,0 +1,594 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Exploration : 7 façons de présenter les stats "1 camping · 162 empl. · 0 commission"
+// dans le hero. Chaque concept prend 100vh pour être jugé à sa vraie taille.
+---
+
+<Layout>
+  <nav class="explorer-nav" aria-label="Navigation">
+    <a href="#s1">01</a>
+    <a href="#s2">02</a>
+    <a href="#s3">03</a>
+    <a href="#s4">04</a>
+    <a href="#s5">05</a>
+    <a href="#s6">06</a>
+    <a href="#s7">07</a>
+  </nav>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      S1 — HORIZONTAL AVEC SÉPARATEURS (baseline)
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="hero s1" id="s1">
+    <span class="concept-tag">01 · Horizontal séparateurs (baseline)</span>
+    <div class="hero-inner">
+      <h1 class="wordmark"><img src="/brand/camplo-wordmark.svg" alt="Camplo" /></h1>
+      <p class="tagline">
+        Un site qui <em>encaisse</em>. Un logiciel qui <em>opère</em>.
+      </p>
+      <div class="s1-row">
+        <div class="s1-stat">
+          <span class="s1-num">1</span>
+          <span class="s1-label">Camping équipé</span>
+        </div>
+        <span class="s1-sep" aria-hidden="true"></span>
+        <div class="s1-stat">
+          <span class="s1-num">162</span>
+          <span class="s1-label">Emplacements</span>
+        </div>
+        <span class="s1-sep" aria-hidden="true"></span>
+        <div class="s1-stat">
+          <span class="s1-num">0</span>
+          <span class="s1-label">Commission</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      S2 — CHIFFRES XXL, LABELS MINUSCULES
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="hero s2" id="s2">
+    <span class="concept-tag">02 · Chiffres XXL</span>
+    <div class="hero-inner">
+      <h1 class="wordmark"><img src="/brand/camplo-wordmark.svg" alt="Camplo" /></h1>
+      <p class="tagline">
+        Un site qui <em>encaisse</em>. Un logiciel qui <em>opère</em>.
+      </p>
+      <div class="s2-row">
+        <div class="s2-stat">
+          <span class="s2-label">Campings équipés</span>
+          <span class="s2-num">01</span>
+        </div>
+        <div class="s2-stat">
+          <span class="s2-label">Emplacements gérés</span>
+          <span class="s2-num">162</span>
+        </div>
+        <div class="s2-stat">
+          <span class="s2-label">Commission par résa</span>
+          <span class="s2-num">0 %</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      S3 — LISTE VERTICALE (style spec sheet)
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="hero s3" id="s3">
+    <span class="concept-tag">03 · Spec sheet vertical</span>
+    <div class="hero-inner">
+      <h1 class="wordmark"><img src="/brand/camplo-wordmark.svg" alt="Camplo" /></h1>
+      <p class="tagline">
+        Un site qui <em>encaisse</em>. Un logiciel qui <em>opère</em>.
+      </p>
+      <dl class="s3-list">
+        <div class="s3-row">
+          <dt>Campings équipés</dt>
+          <dd>01</dd>
+        </div>
+        <div class="s3-row">
+          <dt>Emplacements gérés</dt>
+          <dd>162</dd>
+        </div>
+        <div class="s3-row">
+          <dt>Commission par réservation</dt>
+          <dd>0 %</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      S4 — PILLS / BADGES
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="hero s4" id="s4">
+    <span class="concept-tag">04 · Pills badges</span>
+    <div class="hero-inner">
+      <h1 class="wordmark"><img src="/brand/camplo-wordmark.svg" alt="Camplo" /></h1>
+      <p class="tagline">
+        Un site qui <em>encaisse</em>. Un logiciel qui <em>opère</em>.
+      </p>
+      <div class="s4-row">
+        <span class="s4-pill">
+          <span class="s4-num">1</span>
+          <span class="s4-label">camping équipé</span>
+        </span>
+        <span class="s4-pill">
+          <span class="s4-num">162</span>
+          <span class="s4-label">emplacements</span>
+        </span>
+        <span class="s4-pill">
+          <span class="s4-num">0</span>
+          <span class="s4-label">commission</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      S5 — RUNNING PHRASE (les chiffres sont dans une phrase)
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="hero s5" id="s5">
+    <span class="concept-tag">05 · Running phrase</span>
+    <div class="hero-inner">
+      <h1 class="wordmark"><img src="/brand/camplo-wordmark.svg" alt="Camplo" /></h1>
+      <p class="tagline">
+        Un site qui <em>encaisse</em>. Un logiciel qui <em>opère</em>.
+      </p>
+      <p class="s5-line">
+        <strong>1</strong> camping,
+        <strong>162</strong> emplacements,
+        <strong>0</strong> commission.
+      </p>
+    </div>
+  </section>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      S6 — HERO STAT + SUPPORTING STATS
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="hero s6" id="s6">
+    <span class="concept-tag">06 · Hero stat + supports</span>
+    <div class="hero-inner">
+      <h1 class="wordmark"><img src="/brand/camplo-wordmark.svg" alt="Camplo" /></h1>
+      <p class="tagline">
+        Un site qui <em>encaisse</em>. Un logiciel qui <em>opère</em>.
+      </p>
+      <div class="s6-block">
+        <div class="s6-hero">
+          <span class="s6-num">162</span>
+          <span class="s6-label">emplacements actifs sur Camplo</span>
+        </div>
+        <div class="s6-sub">
+          <div>
+            <span class="s6-sub-num">01</span>
+            <span class="s6-sub-label">camping</span>
+          </div>
+          <span class="s6-sub-sep" aria-hidden="true"></span>
+          <div>
+            <span class="s6-sub-num">0 %</span>
+            <span class="s6-sub-label">commission</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* ══════════════════════════════════════════════════════════════════
+      S7 — ÉDITORIAL TABLE (comme un encart magazine)
+      ══════════════════════════════════════════════════════════════════ */}
+  <section class="hero s7" id="s7">
+    <span class="concept-tag">07 · Éditorial magazine</span>
+    <div class="hero-inner">
+      <h1 class="wordmark"><img src="/brand/camplo-wordmark.svg" alt="Camplo" /></h1>
+      <p class="tagline">
+        Un site qui <em>encaisse</em>. Un logiciel qui <em>opère</em>.
+      </p>
+      <div class="s7-table">
+        <div class="s7-cell">
+          <span class="s7-kicker">I.</span>
+          <span class="s7-num">01</span>
+          <span class="s7-label">Camping équipé</span>
+        </div>
+        <div class="s7-cell">
+          <span class="s7-kicker">II.</span>
+          <span class="s7-num">162</span>
+          <span class="s7-label">Emplacements</span>
+        </div>
+        <div class="s7-cell">
+          <span class="s7-kicker">III.</span>
+          <span class="s7-num">0 %</span>
+          <span class="s7-label">Commission</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .explorer-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6px;
+    border-radius: 9999px;
+  }
+  .explorer-nav a {
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 10px;
+    color: var(--paper);
+    text-decoration: none;
+    border-radius: 9999px;
+    opacity: 0.6;
+    transition: opacity 200ms ease, background-color 200ms ease;
+  }
+  .explorer-nav a:hover {
+    opacity: 1;
+    background: rgba(246, 240, 224, 0.1);
+  }
+
+  .hero {
+    position: relative;
+    background: var(--paper);
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(48px, 8vw, 120px) var(--wrap-pad-x);
+    text-align: center;
+    box-sizing: border-box;
+    border-bottom: 2px dashed var(--rule);
+    overflow: hidden;
+  }
+
+  .concept-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 6px 12px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--marmalade);
+    border-radius: 9999px;
+    z-index: 10;
+  }
+
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(28px, 4vw, 56px);
+    max-width: 960px;
+    width: 100%;
+  }
+
+  .wordmark {
+    margin: 0;
+    width: 100%;
+    max-width: 720px;
+    padding: 0 clamp(24px, 5vw, 64px);
+    line-height: 0;
+  }
+  .wordmark img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .tagline {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(18px, 2.2vw, 28px);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: var(--ink-soft);
+  }
+  .tagline em {
+    font-style: italic;
+    color: var(--marmalade);
+  }
+
+  /* ═══════════════════════════════════════════
+     S1 — HORIZONTAL SÉPARATEURS
+     ═══════════════════════════════════════════ */
+  .s1-row {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(20px, 3vw, 40px);
+  }
+  .s1-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .s1-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 52px);
+    letter-spacing: -0.02em;
+    color: var(--fern);
+    line-height: 1;
+  }
+  .s1-label {
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .s1-sep { width: 1px; height: 28px; background: var(--rule); }
+
+  /* ═══════════════════════════════════════════
+     S2 — CHIFFRES XXL
+     ═══════════════════════════════════════════ */
+  .s2-row {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: clamp(32px, 5vw, 80px);
+  }
+  .s2-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .s2-label {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .s2-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(64px, 9vw, 120px);
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    color: var(--fern);
+  }
+
+  /* ═══════════════════════════════════════════
+     S3 — SPEC SHEET
+     ═══════════════════════════════════════════ */
+  .s3-list {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    width: 100%;
+    max-width: 520px;
+    text-align: left;
+  }
+  .s3-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .s3-row:first-child { border-top: 1px solid var(--rule); }
+  .s3-row dt {
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .s3-row dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(24px, 2.8vw, 36px);
+    letter-spacing: -0.02em;
+    color: var(--fern);
+    line-height: 1;
+  }
+
+  /* ═══════════════════════════════════════════
+     S4 — PILLS BADGES
+     ═══════════════════════════════════════════ */
+  .s4-row {
+    display: inline-flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .s4-pill {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 1px solid var(--rule);
+    border-radius: 9999px;
+    background: transparent;
+  }
+  .s4-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(22px, 2.4vw, 30px);
+    color: var(--fern);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .s4-label {
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* ═══════════════════════════════════════════
+     S5 — RUNNING PHRASE
+     ═══════════════════════════════════════════ */
+  .s5-line {
+    margin: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(20px, 2.4vw, 32px);
+    color: var(--ink-soft);
+    letter-spacing: -0.01em;
+  }
+  .s5-line strong {
+    font-family: var(--font-display);
+    font-style: normal;
+    font-weight: 700;
+    color: var(--fern);
+    font-size: 1.15em;
+    letter-spacing: -0.02em;
+    margin: 0 4px;
+  }
+
+  /* ═══════════════════════════════════════════
+     S6 — HERO STAT + SUPPORTS
+     ═══════════════════════════════════════════ */
+  .s6-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .s6-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .s6-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(72px, 12vw, 160px);
+    letter-spacing: -0.05em;
+    line-height: 0.82;
+    color: var(--fern);
+  }
+  .s6-label {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(15px, 1.3vw, 18px);
+    color: var(--ink-soft);
+    max-width: 26ch;
+  }
+  .s6-sub {
+    display: inline-flex;
+    align-items: center;
+    gap: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+  .s6-sub > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .s6-sub-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(20px, 2vw, 28px);
+    color: var(--marmalade);
+    letter-spacing: -0.02em;
+    font-style: italic;
+    line-height: 1;
+  }
+  .s6-sub-label {
+    font-family: var(--font-label);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .s6-sub-sep {
+    width: 1px;
+    height: 24px;
+    background: var(--rule);
+  }
+
+  /* ═══════════════════════════════════════════
+     S7 — ÉDITORIAL TABLE
+     ═══════════════════════════════════════════ */
+  .s7-table {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--rule);
+    max-width: 760px;
+    width: 100%;
+  }
+  .s7-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 28px 20px;
+    border-left: 1px solid var(--rule);
+    position: relative;
+  }
+  .s7-cell:first-child { border-left: none; }
+  .s7-kicker {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--marmalade);
+    letter-spacing: -0.01em;
+  }
+  .s7-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--fern);
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    font-style: italic;
+  }
+  .s7-label {
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+
+  @media (max-width: 720px) {
+    .s7-table {
+      grid-template-columns: 1fr;
+    }
+    .s7-cell {
+      border-left: none;
+      border-top: 1px solid var(--rule);
+    }
+    .s7-cell:first-child { border-top: none; }
+  }
+</style>

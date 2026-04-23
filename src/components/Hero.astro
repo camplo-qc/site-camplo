@@ -1,112 +1,171 @@
 ---
-// Hero v3.1 — wordmark reconstruit en texte + SVG inline (crisp à tout zoom)
+// Hero v4 — wordmark SVG inline + stagger animation (C → arbre → m p l o → tente)
+import fs from 'node:fs';
+import path from 'node:path';
+
+const svgRaw = fs.readFileSync(
+  path.resolve('public/brand/camplo-wordmark.svg'),
+  'utf-8'
+);
+
+// 1. Wrap chaque lettre (C, m, p, l, o) dans un <g class="cm-letter cm-lN"> externe
+//    pour ne pas écraser le transform="translate(x,0) scale(1,-1)" qui positionne
+let letterIdx = 0;
+let svg = svgRaw.replace(
+  /<g transform="translate\([^)]+\) scale\(1,-1\)"><path[^/]+\/><\/g>/g,
+  (match) => `<g class="cm-letter cm-l${letterIdx++}">${match}</g>`
+);
+
+// 2. Classes sur arbre et tente pour animation séparée
+svg = svg
+  .replace('<path d="M 29.25 3', '<path class="cm-tree" d="M 29.25 3')
+  .replace('<path d="M 29.5 27', '<path class="cm-tent" d="M 29.5 27');
+
+// 3. Restructure : arbre hors de la clipPath, tente + fente beige (paper)
+//    wrappés ensemble dans .cm-tent-move pour animer comme une unité.
+const DOOR_PATH =
+  '<path class="cm-door" d="M 32.5 40 L 33.5 40 L 36 54.5 L 30 54.5 Z" fill="#F6F0E0"/>';
+svg = svg.replace(
+  /<g clip-path="url\(#door\)">\s*<g transform="translate\(3, 0\)">\s*(<path[^>]*cm-tree[^>]*\/>)\s*(<path[^>]*cm-tent[^>]*\/>)\s*<\/g>\s*<\/g>/,
+  (_, tree, tent) =>
+    `<g transform="translate(3, 0)">${tree}</g>` +
+    `<g class="cm-tent-move">${DOOR_PATH}<g clip-path="url(#door)"><g transform="translate(3, 0)">${tent}</g></g></g>`
+);
 ---
 
-<section class="hero" aria-label="Hero">
+<section class="hero" id="hero" aria-label="Hero">
   <div class="wrap">
     <h1 class="wordmark" aria-label="Camplo">
-      <span aria-hidden="true">C</span>
-      <span class="logomark" aria-hidden="true">
-        <svg
-          viewBox="0 -5.5 66 66"
-          xmlns="http://www.w3.org/2000/svg"
-          shape-rendering="geometricPrecision"
-        >
-          <defs>
-            <clipPath id="hero-door-cutout">
-              <path
-                clip-rule="evenodd"
-                fill-rule="evenodd"
-                d="M 0 -10 H 66 V 66 H 0 Z M 32.5 40 L 33.5 40 L 36 54.5 L 30 54.5 Z"
-              ></path>
-            </clipPath>
-          </defs>
-          <g clip-path="url(#hero-door-cutout)">
-            <g transform="translate(3, 0)">
-              <path
-                d="M 29.25 3 L 30.75 3 L 47.43 19.44 L 47.2 20 L 40 20 L 57.49 41.38 L 57.2 42 L 2.8 42 L 2.51 41.38 L 20 20 L 12.8 20 L 12.57 19.44 Z"
-                fill="#3e6b31"
-                stroke="#3e6b31"
-                stroke-width="3.5"
-                stroke-linejoin="miter"
-                stroke-miterlimit="4"
-              ></path>
-              <path
-                d="M 29.5 27 L 30.5 27 L 45.60 53.31 L 45.2 54 L 14.8 54 L 14.40 53.31 Z"
-                fill="#e8853b"
-              ></path>
-            </g>
-          </g>
-        </svg>
-      </span>
-      <span aria-hidden="true">mplo</span>
+      <div class="wordmark-svg" set:html={svg} aria-hidden="true" />
     </h1>
 
     <p class="tagline">
-      Un logiciel qui <em>ne date pas</em> de 2008.
+      Un site qui <em>encaisse</em>. Un logiciel qui <em>opère</em>.
     </p>
 
-    <p class="meta">
-      <span>Français</span>
-      <span>·</span>
-      <span>Conçu au Québec</span>
-      <span>·</span>
-      <span>Depuis 2026</span>
-    </p>
+    <div class="stats" aria-label="Statistiques">
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Camping équipé</span>
+      </div>
+      <span class="stat-sep" aria-hidden="true"></span>
+      <div class="stat">
+        <span class="stat-num">162</span>
+        <span class="stat-label">Emplacements</span>
+      </div>
+      <span class="stat-sep" aria-hidden="true"></span>
+      <div class="stat">
+        <span class="stat-num">0</span>
+        <span class="stat-label">Commission</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <style>
   .hero {
     background: var(--paper);
-    padding: clamp(80px, 12vw, 160px) 0 clamp(72px, 9vw, 120px);
+    /* Exactement la hauteur du viewport, pas plus. */
+    height: 100vh;
+    height: 100dvh;
+    /* Pull up sous la nav (margin 20px + pill ~52px) pour que le bas du hero
+       tombe pile à 100vh, pas à 100vh + nav. Matché en mobile via media. */
+    margin-top: -72px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(48px, 8vw, 120px) 0;
     text-align: center;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      /* Nav mobile plus petite : margin 14 + pill ~46 = 60px */
+      margin-top: -60px;
+    }
   }
 
   .wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .wordmark {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(80px, 16vw, 240px);
-    line-height: 1;
-    letter-spacing: -0.035em;
-    color: var(--ink);
     margin: 0;
-    display: inline-flex;
-    align-items: baseline;
-    white-space: nowrap;
+    line-height: 0;
+    width: 100%;
+    max-width: 920px;
+    padding: 0 clamp(24px, 5vw, 64px);
   }
 
-  .logomark {
-    display: inline-block;
-    width: 0.86em;
-    height: 0.86em;
-    vertical-align: baseline;
-    position: relative;
-    top: 0.02em;
-    margin: 0 -0.02em;
-  }
-
-  .logomark svg {
+  .wordmark-svg {
     display: block;
     width: 100%;
-    height: 100%;
+  }
+
+  .wordmark-svg :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  /* Stagger : lettres + arbre invisibles au départ, tente wrapper invisible */
+  .wordmark-svg :global(.cm-letter),
+  .wordmark-svg :global(.cm-tree),
+  .wordmark-svg :global(.cm-tent-move) {
+    opacity: 0;
+  }
+  .wordmark-svg :global(.cm-tent-move) {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+  }
+
+  .wordmark-svg :global(.cm-letter),
+  .wordmark-svg :global(.cm-tree) {
+    animation: cm-letter-in 520ms cubic-bezier(0.2, 0.7, 0.1, 1) both;
+  }
+  /* Ordre : C — arbre — m — p — l — o — tente */
+  .wordmark-svg :global(.cm-l0)   { animation-delay: 120ms; }
+  .wordmark-svg :global(.cm-tree) { animation-delay: 240ms; }
+  .wordmark-svg :global(.cm-l1)   { animation-delay: 360ms; }
+  .wordmark-svg :global(.cm-l2)   { animation-delay: 480ms; }
+  .wordmark-svg :global(.cm-l3)   { animation-delay: 600ms; }
+  .wordmark-svg :global(.cm-l4)   { animation-delay: 720ms; }
+
+  .wordmark-svg :global(.cm-tent-move) {
+    animation: cm-tent-in 820ms cubic-bezier(0.25, 0.8, 0.35, 1) 900ms forwards;
+  }
+
+  @keyframes cm-letter-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes cm-tent-in {
+    0%   { opacity: 0; transform: translateY(22px); animation-timing-function: cubic-bezier(0.3, 0, 0.2, 1); }
+    45%  { opacity: 1; }
+    55%  { transform: translateY(-4px); animation-timing-function: cubic-bezier(0.33, 0, 0.4, 1); }
+    100% { opacity: 1; transform: translateY(0); }
   }
 
   .tagline {
     margin-top: clamp(32px, 5vw, 64px);
     font-family: var(--font-display);
     font-weight: 500;
-    font-size: clamp(20px, 2.6vw, 36px);
+    font-size: clamp(18px, 2.2vw, 32px);
     letter-spacing: -0.01em;
     line-height: 1.25;
-    color: var(--ink-soft);
-    max-width: 28ch;
+    color: var(--ink);
+    white-space: nowrap;
+    max-width: none;
+    opacity: 0;
+    animation: cm-letter-in 600ms cubic-bezier(0.2, 0.7, 0.1, 1) 1400ms forwards;
   }
 
   .tagline em {
@@ -114,16 +173,68 @@
     color: var(--marmalade);
   }
 
-  .meta {
-    margin-top: clamp(48px, 6vw, 80px);
+  /* ───── Stats : 1 camping · 162 empl. · 0 commission.
+     Ancrées au bas du hero (absolute bottom) pour séparer visuellement du
+     bloc wordmark+tagline qui reste centré verticalement. Keyframe dédiée
+     car cm-letter-in utilise translateY qui écraserait le translateX(-50%). */
+  .stats {
+    position: absolute;
+    left: 50%;
+    bottom: var(--section-pad-y);
+    transform: translate(-50%, 14px);
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(20px, 3vw, 40px);
+    opacity: 0;
+    animation: stats-in 600ms cubic-bezier(0.2, 0.7, 0.1, 1) 1700ms forwards;
+  }
+  @keyframes stats-in {
+    from { opacity: 0; transform: translate(-50%, 14px); }
+    to   { opacity: 1; transform: translate(-50%, 0); }
+  }
+
+  .stat {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(32px, 4vw, 52px);
+    letter-spacing: -0.02em;
+    color: var(--fern);
+    line-height: 1;
+  }
+  .stat-label {
     font-family: var(--font-label);
     font-weight: 500;
-    font-size: 12px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     color: var(--ink-muted);
-    letter-spacing: 0.02em;
+  }
+  .stat-sep {
+    width: 1px;
+    height: 28px;
+    background: var(--rule);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wordmark-svg :global(.cm-letter),
+    .wordmark-svg :global(.cm-tree),
+    .wordmark-svg :global(.cm-tent-move),
+    .tagline {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    /* Stats : on retire l'animation mais on préserve translateX(-50%) pour le centrage */
+    .stats {
+      animation: none;
+      opacity: 1;
+      transform: translateX(-50%);
+    }
   }
 </style>

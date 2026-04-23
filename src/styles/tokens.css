@@ -18,7 +18,7 @@
   --font-body: 'Satoshi', -apple-system, system-ui, sans-serif;
   --font-label: 'General Sans', -apple-system, system-ui, sans-serif;
 
-  --section-pad-y: clamp(80px, 10vw, 140px);
+  --section-pad-y: clamp(48px, 6vw, 88px);
   --wrap-pad-x: clamp(24px, 5vw, 64px);
   --wrap-max: 1280px;
 }
