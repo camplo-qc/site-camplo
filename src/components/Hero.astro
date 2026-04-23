@@ -77,7 +77,10 @@ svg = svg.replace(
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: clamp(48px, 8vw, 120px) 0;
+    /* Padding top = zone nav (72px) ; padding bottom = zone stats
+       (section-pad-y + ~70px de hauteur des stats) → contenu centré
+       visuellement entre la nav et les stats. */
+    padding: 72px 0 calc(var(--section-pad-y) + 70px);
     text-align: center;
     box-sizing: border-box;
   }
@@ -86,6 +89,7 @@ svg = svg.replace(
     .hero {
       /* Nav mobile plus petite : margin 14 + pill ~46 = 60px */
       margin-top: -60px;
+      padding-top: 60px;
     }
   }
 
@@ -179,7 +183,7 @@ svg = svg.replace(
   .tagline-break {
     display: none;
   }
-  @media (max-width: 640px) {
+  @media (max-width: 480px) {
     .tagline {
       white-space: normal;
     }
@@ -237,8 +241,9 @@ svg = svg.replace(
     background: var(--rule);
   }
 
-  /* Mobile : stats compactes pour rester dans l'écran */
-  @media (max-width: 640px) {
+  /* Phone uniquement : stats compactes pour rester dans l'écran.
+     Tablettes et desktop gardent les tailles clamp() par défaut. */
+  @media (max-width: 480px) {
     .stats {
       gap: 10px;
     }
@@ -246,18 +251,18 @@ svg = svg.replace(
       gap: 4px;
     }
     .stat-num {
-      font-size: 18px;
+      font-size: 20px;
     }
     .stat-label {
-      font-size: 7.5px;
+      font-size: 8px;
       letter-spacing: 0.08em;
     }
     .stat-sep {
-      height: 18px;
+      height: 20px;
     }
   }
 
-  @media (max-width: 380px) {
+  @media (max-width: 360px) {
     .stats {
       gap: 8px;
     }
