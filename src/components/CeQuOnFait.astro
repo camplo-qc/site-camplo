@@ -36,25 +36,25 @@ const crmFeatures = [
           type="button"
           role="tab"
           class="cqf-tab is-active"
-          data-target="cqf-site"
-          id="cqf-tab-site"
-          aria-controls="cqf-site"
+          data-target="cqf-crm"
+          id="cqf-tab-crm"
+          aria-controls="cqf-crm"
           aria-selected="true"
         >
           <span class="cqf-tab-num">01</span>
-          <span class="cqf-tab-label">Site</span>
+          <span class="cqf-tab-label">CRM</span>
         </button>
         <button
           type="button"
           role="tab"
           class="cqf-tab"
-          data-target="cqf-crm"
-          id="cqf-tab-crm"
-          aria-controls="cqf-crm"
+          data-target="cqf-site"
+          id="cqf-tab-site"
+          aria-controls="cqf-site"
           aria-selected="false"
         >
           <span class="cqf-tab-num">02</span>
-          <span class="cqf-tab-label">CRM</span>
+          <span class="cqf-tab-label">Site</span>
         </button>
       </div>
     </div>
@@ -62,9 +62,37 @@ const crmFeatures = [
     <div class="cqf-stage" data-reveal style="--reveal-delay: 300ms">
       <div
         class="cqf-panel is-active"
+        id="cqf-crm"
+        role="tabpanel"
+        aria-labelledby="cqf-tab-crm"
+      >
+        <div class="cqf-copy">
+          <p class="cqf-kicker">Pour vous</p>
+          <h3 class="cqf-headline">Votre camping, <em>sans le navigateur</em>.</h3>
+          <p class="cqf-sub">
+            Une app desktop qui tourne localement. Vos données restent
+            chez vous. Tout ce qu'il faut pour opérer une saison.
+          </p>
+          <ul class="cqf-features">
+            {crmFeatures.map((f) => <li>{f}</li>)}
+          </ul>
+        </div>
+        <div class="cqf-visual">
+          <img
+            src="/product/crm.png"
+            alt="Camplo CRM — liste des réservations avec arrivées et départs par date"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <div
+        class="cqf-panel"
         id="cqf-site"
         role="tabpanel"
         aria-labelledby="cqf-tab-site"
+        hidden
       >
         <div class="cqf-copy">
           <p class="cqf-kicker">Pour vos campeurs</p>
@@ -79,36 +107,12 @@ const crmFeatures = [
           </ul>
         </div>
         <div class="cqf-visual">
-          <div class="cqf-visual-placeholder">
-            <span class="cqf-visual-label">Aperçu du site public</span>
-            <span class="cqf-visual-url">delajoiequebec.com</span>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="cqf-panel"
-        id="cqf-crm"
-        role="tabpanel"
-        aria-labelledby="cqf-tab-crm"
-        hidden
-      >
-        <div class="cqf-copy">
-          <p class="cqf-kicker">Pour vous</p>
-          <h3 class="cqf-headline">Votre camping, <em>sans le navigateur</em>.</h3>
-          <p class="cqf-sub">
-            Une app desktop qui tourne localement. Vos données restent
-            chez vous. Tout ce qu'il faut pour opérer une saison.
-          </p>
-          <ul class="cqf-features">
-            {crmFeatures.map((f) => <li>{f}</li>)}
-          </ul>
-        </div>
-        <div class="cqf-visual">
-          <div class="cqf-visual-placeholder">
-            <span class="cqf-visual-label">Vidéo du logiciel</span>
-            <span class="cqf-visual-url">à venir</span>
-          </div>
+          <img
+            src="/product/site.png"
+            alt="Aperçu du site public Camping de la Joie — compte à rebours saison et fiches d'emplacements"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </div>
