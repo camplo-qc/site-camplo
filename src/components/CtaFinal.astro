@@ -87,15 +87,16 @@ const PHONE = '5817480161';
       return;
     }
 
-    // Trigger uniquement quand le bubble answer (sa boîte réservée) est
-    // complètement dans le viewport.
+    // Trigger quand la bulle answer est largement visible. Ancien seuil à 1.0
+    // ne déclenchait jamais sur un viewport plus court que la bulle (laptop
+    // 13", zoom navigateur, etc.) — les dots bouncaient à l'infini.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.intersectionRatio >= 1) reveal();
+          if (entry.isIntersecting) reveal();
         });
       },
-      { threshold: 1.0 }
+      { threshold: 0.6 }
     );
     observer.observe(answer);
   })();

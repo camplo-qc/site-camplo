@@ -3,6 +3,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+const EMAIL = 'adamauger872@gmail.com';
+const PHONE = '5817480161';
+
 const svgRaw = fs.readFileSync(
   path.resolve('public/brand/camplo-wordmark.svg'),
   'utf-8'
@@ -34,6 +37,20 @@ svg = svg.replace(
 ---
 
 <section class="hero" id="hero" aria-label="Hero">
+  <div class="hero-contact" aria-label="Nous contacter">
+    <a class="hero-contact-btn" href={`mailto:${EMAIL}`} aria-label="Nous écrire par courriel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
+        <path d="m3 6 9 6 9-6" />
+      </svg>
+    </a>
+    <a class="hero-contact-btn" href={`tel:${PHONE}`} aria-label="Nous appeler par téléphone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.92z" />
+      </svg>
+    </a>
+  </div>
+
   <div class="wrap">
     <h1 class="wordmark" aria-label="Camplo">
       <div class="wordmark-svg" set:html={svg} aria-hidden="true" />
@@ -98,6 +115,44 @@ svg = svg.replace(
     flex-direction: column;
     align-items: center;
     width: 100%;
+  }
+
+  /* Icônes contact top-right, alignées verticalement avec la nav pill
+     (viewport y=20, height 52px). Pas de fond — juste les icônes stroke. */
+  .hero-contact {
+    position: absolute;
+    top: 20px;
+    right: var(--wrap-pad-x);
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 52px;
+  }
+  .hero-contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    color: var(--ink);
+    opacity: 0.78;
+    transition: opacity 160ms ease, background-color 160ms ease,
+                color 160ms ease;
+  }
+  .hero-contact-btn svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+  .hero-contact-btn:hover {
+    opacity: 1;
+    color: var(--marmalade);
+  }
+
+  @media (max-width: 640px) {
+    .hero-contact { display: none; }
   }
 
   .wordmark {
