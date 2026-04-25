@@ -76,11 +76,15 @@ const crmFeatures = [
           <ul class="cqf-features">
             {crmFeatures.map((f) => <li>{f}</li>)}
           </ul>
+          <a class="cqf-link" href="/logiciel-gestion-camping/">
+            En savoir plus sur le logiciel de gestion camping
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
         <div class="cqf-visual">
           <img
             src="/product/crm.webp"
-            alt="Camplo CRM — liste des réservations avec arrivées et départs par date"
+            alt="Camplo CRM — logiciel de gestion camping desktop affichant la liste des réservations avec arrivées et départs par date"
             width="1600"
             height="994"
             loading="eager"
@@ -112,7 +116,7 @@ const crmFeatures = [
         <div class="cqf-visual">
           <img
             src="/product/site.webp"
-            alt="Aperçu du site public Camping de la Joie — compte à rebours saison et fiches d'emplacements"
+            alt="Site de réservation en ligne Camping de la Joie propulsé par Camplo — compte à rebours saison, fiches d'emplacements et paiement par carte sans commission"
             width="1600"
             height="898"
             loading="eager"
@@ -350,6 +354,28 @@ const crmFeatures = [
     height: 1px;
     background: var(--marmalade);
     flex-shrink: 0;
+  }
+
+  /* Lien contextuel "En savoir plus" sous la liste de features.
+     Texte vert fern, soulignement marmalade, hover marmalade. Renforce
+     le maillage interne home → /logiciel-gestion-camping/. */
+  .cqf-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: clamp(20px, 2vw, 28px);
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--fern);
+    border-bottom: 1px solid var(--marmalade);
+    padding-bottom: 3px;
+    transition: color 160ms ease, border-color 160ms ease;
+    align-self: flex-start;
+  }
+  .cqf-link:hover {
+    color: var(--marmalade);
   }
 
   .cqf-visual {

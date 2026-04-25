@@ -6,6 +6,10 @@ const PHONE = '5817480161';
 ---
 
 <footer class="footer" role="contentinfo">
+  <nav class="footer-nav" aria-label="Pages détail">
+    <a href="/logiciel-gestion-camping/">Logiciel de gestion camping</a>
+  </nav>
+
   <div class="footer-pill">
     <div class="footer-left">
       <span class="footer-logo" aria-hidden="true">
@@ -50,8 +54,32 @@ const PHONE = '5817480161';
   .footer {
     background: var(--paper);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 0 var(--wrap-pad-x) 20px;
+  }
+
+  /* Nav discrète au-dessus de la pill : liens vers les pages détail.
+     Fond paper, texte gris, hover vert fern. Touche minimale au design. */
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 22px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .footer-nav a {
+    font-family: var(--font-label);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    transition: color 160ms ease;
+  }
+  .footer-nav a:hover {
+    color: var(--fern);
   }
 
   .footer-pill {

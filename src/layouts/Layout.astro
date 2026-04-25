@@ -1,16 +1,120 @@
 ---
 import '../styles/tokens.css';
 import '../styles/base.css';
+import { faqQuestions } from '../data/faq';
+import { SITE_URL } from '../data/schema';
 
 interface Props {
   title?: string;
   description?: string;
+  canonicalPath?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  includeFaqJsonLd?: boolean;
+  includeProductPreloads?: boolean;
+  pageJsonLd?: object[];
 }
 
 const {
-  title = 'Camplo',
-  description = "Camplo conçoit des sites de réservation et des logiciels de gestion pour les campings indépendants du Québec. Modernes, fiables, québécois.",
+  title = 'Camplo — Logiciel de gestion et réservation pour campings au Québec',
+  description = "Camplo est le logiciel de gestion camping (CRM) et le système de réservation en ligne sans commission, conçu au Québec pour les campings indépendants. Zéro commission, vos données restent chez vous.",
+  canonicalPath = Astro.url.pathname,
+  ogImage = '/og-image.png',
+  ogImageAlt = 'Camplo — Logiciel de gestion et réservation pour campings au Québec',
+  includeFaqJsonLd = true,
+  includeProductPreloads = true,
+  pageJsonLd = [],
 } = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, SITE_URL).href;
+const ogImageUrl = new URL(ogImage, SITE_URL).href;
+const EMAIL = 'adamauger872@gmail.com';
+const PHONE_E164 = '+15817480161';
+
+// Site-wide description (constante — décorrélée de la description de page).
+// Utilisée pour l'entité WebSite (qui décrit le site, pas la page courante).
+const SITE_DESCRIPTION =
+  "Logiciel de gestion camping (CRM) et système de réservation en ligne sans commission, conçu au Québec pour les campings indépendants.";
+
+// Bloc 1 : Organization + WebSite (entités VRAIMENT site-wide).
+// SoftwareApplication retirées : injectées par chaque page via pageJsonLd.
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'Camplo',
+      url: SITE_URL,
+      logo: `${SITE_URL}/brand/camplo-wordmark.svg`,
+      description: SITE_DESCRIPTION,
+      email: EMAIL,
+      telephone: PHONE_E164,
+      foundingLocation: {
+        '@type': 'Place',
+        address: {
+          '@type': 'PostalAddress',
+          addressCountry: 'CA',
+          addressRegion: 'QC',
+        },
+      },
+      areaServed: {
+        '@type': 'AdministrativeArea',
+        name: 'Québec, Canada',
+      },
+      sameAs: [],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: 'Camplo',
+      description: SITE_DESCRIPTION,
+      inLanguage: 'fr-CA',
+      publisher: { '@id': `${SITE_URL}/#organization` },
+    },
+  ],
+};
+
+// Bloc 2 : LocalBusiness (signal local pour Google Maps / pack local QC).
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'ProfessionalService'],
+  '@id': `${SITE_URL}/#localbusiness`,
+  name: 'Camplo',
+  url: SITE_URL,
+  email: EMAIL,
+  telephone: PHONE_E164,
+  priceRange: '$$',
+  currenciesAccepted: 'CAD',
+  paymentAccepted: 'Carte de crédit, virement',
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'QC',
+    addressCountry: 'CA',
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Québec, Canada',
+  },
+};
+
+// Bloc 3 : FAQPage (rich snippets — questions dépliables dans Google).
+// Google exige que les Q/R du JSON-LD apparaissent visiblement sur la page :
+// on lit donc depuis src/data/faq.ts (même source que <Faq />).
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${canonicalUrl}#faq`,
+  mainEntity: faqQuestions.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: a,
+    },
+  })),
+};
 ---
 
 <!doctype html>
@@ -19,9 +123,14 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="generator" content="" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#3E6B31" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="fr-CA" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
 
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link
@@ -29,15 +138,39 @@ const {
       href="https://api.fontshare.com/v2/css?f[]=sentient@500,700,800,500i,700i&f[]=satoshi@500,700&f[]=general-sans@500,600&display=swap"
     />
 
-    <link rel="preload" as="image" href="/product/crm.webp" type="image/webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/product/site.webp" type="image/webp" />
+    {includeProductPreloads && (
+      <>
+        <link rel="preload" as="image" href="/product/crm.webp" type="image/webp" fetchpriority="high" />
+        <link rel="preload" as="image" href="/product/site.webp" type="image/webp" />
+      </>
+    )}
 
+    <meta property="og:site_name" content="Camplo" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_CA" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
 
     <title>{title}</title>
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
+    {includeFaqJsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+    )}
+    {pageJsonLd.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
 
     <script is:inline>
       // Sur reload avec un hash dans l'URL (#faq, #contact, etc.), rediriger

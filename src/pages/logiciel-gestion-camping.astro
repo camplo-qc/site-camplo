@@ -1,0 +1,323 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import {
+  SITE_URL,
+  crmSoftwareApplication,
+  buildBreadcrumb,
+  buildWebPage,
+} from '../data/schema';
+
+const title = 'Logiciel de gestion camping au Québec — Camplo CRM';
+const description =
+  "Camplo est un logiciel de gestion camping (CRM / PMS) conçu au Québec : tableau de bord, calendrier, réservations, clients, fiscalité TPS/TVQ. Application desktop, vos données restent chez vous.";
+const pageUrl = `${SITE_URL}/logiciel-gestion-camping/`;
+
+// Schémas spécifiques à cette page :
+// - SoftwareApplication CRM uniquement (pas le booking site)
+// - WebPage : entité page-level reliée à #website + #crm
+// - BreadcrumbList : Camplo > Logiciel de gestion camping
+const pageJsonLd = [
+  crmSoftwareApplication,
+  buildWebPage({
+    url: pageUrl,
+    name: title,
+    description,
+    about: `${SITE_URL}/#crm`,
+    dateModified: '2026-04-25',
+  }),
+  buildBreadcrumb([
+    { name: 'Camplo', url: `${SITE_URL}/` },
+    { name: 'Logiciel de gestion camping', url: pageUrl },
+  ]),
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/logiciel-gestion-camping/"
+  ogImageAlt="Camplo CRM — logiciel de gestion camping desktop pour campings québécois"
+  includeFaqJsonLd={false}
+  includeProductPreloads={false}
+  pageJsonLd={pageJsonLd}
+>
+  <header class="subpage-header">
+    <a href="/" class="subpage-back" aria-label="Retour à l'accueil Camplo">
+      <img src="/brand/camplo-mark.svg" alt="" width="22" height="22" />
+      <span>Camplo</span>
+    </a>
+  </header>
+
+  <main class="subpage">
+    <article class="article">
+      <p class="eyebrow">Produit · Logiciel de gestion camping</p>
+      <h1 class="title">
+        Le <em>logiciel de gestion camping</em> conçu pour les campings québécois
+      </h1>
+
+      <p class="lede">
+        Camplo CRM est l'application desktop qui remplace vos cahiers, vos
+        chiffriers Excel et les logiciels génériques pas faits pour le camping.
+        Réservations, emplacements, clients, taxes TPS/TVQ — tout ce qu'il faut
+        pour opérer une saison, sans navigateur, sans nuage, sans commission.
+      </p>
+
+      <section class="section">
+        <h2>Un logiciel de gestion camping (CRM) pensé pour le Québec</h2>
+        <p>
+          La plupart des logiciels de gestion camping (PMS — Property Management
+          System) sont des outils américains traduits à moitié, ou des SaaS
+          génériques qui ne comprennent rien aux saisons courtes, aux
+          emplacements saisonniers, aux taxes québécoises ni à la réalité d'un
+          camping indépendant. Camplo a été conçu ici, par et pour des
+          opérateurs de camping du Québec.
+        </p>
+        <ul class="features">
+          <li>Tableau de bord temps réel — arrivées, départs, occupation</li>
+          <li>Calendrier mensuel avec drag-and-drop</li>
+          <li>Réservations filtrables par date, statut, emplacement</li>
+          <li>Gestion d'emplacements et de services (eau, électricité, égout)</li>
+          <li>Fichiers clients avec historique complet</li>
+          <li>Fiscalité TPS/TVQ intégrée et conforme</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Vos données restent chez vous</h2>
+        <p>
+          Camplo CRM est une <strong>application desktop</strong>, pas un SaaS
+          dans le nuage. Le logiciel s'installe sur votre poste à la
+          réception. Vos réservations, vos clients, votre historique vivent
+          sur votre machine. Pas de fournisseur tiers qui peut couper le
+          service, pas de fuite possible, pas de dépendance à une connexion
+          internet en pleine saison.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Aucune commission, jamais</h2>
+        <p>
+          Contrairement aux plateformes de réservation qui prennent 10 à 20 %
+          par transaction, Camplo fonctionne avec un <strong>abonnement
+          mensuel fixe</strong>. Vous savez d'avance ce que vous payez, peu
+          importe le volume. Sur 200 réservations à 200 $, ça fait la
+          différence entre payer 8 000 $ de commissions ou un montant fixe
+          mensuel.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Couplé avec un site de réservation en ligne</h2>
+        <p>
+          Camplo CRM se branche directement sur le site de réservation en
+          ligne Camplo. Vos campeurs réservent et paient en ligne, la
+          réservation apparaît dans votre tableau de bord, le courriel de
+          confirmation part automatiquement. Aucune double saisie, aucun
+          oubli, zéro frottement.
+        </p>
+        <p>
+          <a class="inline-cta" href="/">Voir tous les produits Camplo →</a>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Discutons de votre camping</h2>
+        <p>
+          Chaque camping est différent. Nous adaptons Camplo à votre
+          opération : nombre d'emplacements, saisonniers vs voyageurs,
+          services particuliers. Écrivez-nous, on en discute.
+        </p>
+        <div class="cta-row">
+          <a class="pill pill--primary" href="mailto:adamauger872@gmail.com">
+            Écrivez-nous
+          </a>
+          <a class="pill pill--ghost" href="tel:5817480161">
+            581-748-0161
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .subpage-header {
+    display: flex;
+    justify-content: flex-start;
+    padding: 28px var(--wrap-pad-x) 0;
+  }
+
+  .subpage-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.78;
+    padding: 8px 14px 8px 10px;
+    border-radius: 9999px;
+    transition: opacity 160ms ease, background-color 160ms ease;
+  }
+  .subpage-back:hover {
+    opacity: 1;
+    background-color: rgba(28, 28, 26, 0.05);
+  }
+
+  .subpage {
+    background: var(--paper);
+    padding: clamp(40px, 6vw, 80px) 0 clamp(60px, 8vw, 120px);
+    min-height: 60vh;
+  }
+
+  .article {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 var(--wrap-pad-x);
+  }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+    margin-bottom: 18px;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 60px);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: var(--ink);
+    margin: 0 0 28px;
+  }
+  .title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+  }
+
+  .lede {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 48px;
+    max-width: 60ch;
+  }
+
+  .section {
+    margin-top: clamp(40px, 5vw, 64px);
+  }
+
+  .section h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(24px, 2.6vw, 32px);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0 0 16px;
+  }
+
+  .section p {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: clamp(15px, 1.05vw, 17px);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+    max-width: 62ch;
+  }
+
+  .section p strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .features {
+    list-style: none;
+    margin: 18px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .features li {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .features li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px;
+    height: 1px;
+    background: var(--marmalade);
+    transform: translateY(-4px);
+  }
+
+  .inline-cta {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--fern);
+    border-bottom: 1px solid var(--marmalade);
+    padding-bottom: 2px;
+    transition: color 160ms ease;
+  }
+  .inline-cta:hover {
+    color: var(--marmalade);
+  }
+
+  .cta-row {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 22px;
+    border-radius: 9999px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+  }
+  .pill--primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .pill--primary:hover {
+    background: var(--marmalade);
+  }
+  .pill--ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+  }
+  .pill--ghost:hover {
+    background: rgba(28, 28, 26, 0.05);
+  }
+</style>
