@@ -1,0 +1,333 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import {
+  SITE_URL,
+  siteSoftwareApplication,
+  buildBreadcrumb,
+  buildWebPage,
+} from '../data/schema';
+
+const title = 'Site de réservation camping en ligne sans commission — Camplo';
+const description =
+  "Camplo crée des sites de réservation en ligne pour campings indépendants du Québec. Paiement par carte Stripe intégré, confirmation automatique, aucune commission par réservation.";
+const pageUrl = `${SITE_URL}/site-reservation-camping/`;
+
+// Schémas spécifiques à cette page :
+// - SoftwareApplication du site de réservation uniquement (pas le CRM)
+// - WebPage : entité page-level reliée à #website + #site
+// - BreadcrumbList : Camplo > Site de réservation camping
+const pageJsonLd = [
+  siteSoftwareApplication,
+  buildWebPage({
+    url: pageUrl,
+    name: title,
+    description,
+    about: `${SITE_URL}/#site`,
+    dateModified: '2026-04-25',
+  }),
+  buildBreadcrumb([
+    { name: 'Camplo', url: `${SITE_URL}/` },
+    { name: 'Site de réservation camping', url: pageUrl },
+  ]),
+];
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonicalPath="/site-reservation-camping/"
+  ogImageAlt="Camplo — site de réservation camping en ligne sans commission pour campings québécois"
+  includeFaqJsonLd={false}
+  includeProductPreloads={false}
+  pageJsonLd={pageJsonLd}
+>
+  <header class="subpage-header">
+    <a href="/" class="subpage-back" aria-label="Retour à l'accueil Camplo">
+      <img src="/brand/camplo-mark.svg" alt="" width="22" height="22" />
+      <span>Camplo</span>
+    </a>
+  </header>
+
+  <main class="subpage">
+    <article class="article">
+      <p class="eyebrow">Produit · Site de réservation camping</p>
+      <h1 class="title">
+        Le site de <em>réservation camping</em> qui encaisse, pas qui commissionne
+      </h1>
+
+      <p class="lede">
+        Un site de réservation en ligne dédié à votre camping, branché à un
+        terminal Stripe, qui transforme un visiteur curieux en réservation
+        confirmée et payée — sans intermédiaire, sans commission, sans
+        formulaire de douze pages.
+      </p>
+
+      <section class="section">
+        <h2>Un site de réservation en ligne pensé pour le camping</h2>
+        <p>
+          La majorité des campings québécois envoient encore leurs réservations
+          par téléphone, par courriel, ou via une plateforme tierce qui prend
+          10 à 20&nbsp;% sur chaque transaction. Camplo crée un site de
+          réservation camping <strong>qui vous appartient</strong>, hébergé à
+          votre nom de domaine, pensé pour la spécificité d'un camping :
+          emplacements, services, saisons, dates flexibles, services
+          additionnels.
+        </p>
+        <ul class="features">
+          <li>Réservation en ligne 24/7</li>
+          <li>Paiement par carte (Stripe intégré)</li>
+          <li>Confirmation automatique par courriel</li>
+          <li>Aucune commission par réservation</li>
+          <li>Design adapté à votre marque</li>
+          <li>Mobile-first, rapide, conçu pour Google</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Zéro commission, peu importe le volume</h2>
+        <p>
+          Sur 200 réservations à 200&nbsp;$ avec une plateforme qui prend
+          15&nbsp;%, vous laissez <strong>6&nbsp;000&nbsp;$ par mois</strong>
+          sur la table. Camplo, c'est un abonnement mensuel fixe — vous savez
+          d'avance ce que vous payez, peu importe que vous fassiez 50 ou 500
+          réservations dans le mois. Vos profits restent les vôtres.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Paiement par carte intégré (Stripe)</h2>
+        <p>
+          Stripe est le standard mondial du paiement en ligne. Aucun frais
+          caché, des taux de transaction transparents (~2,9&nbsp;% +
+          0,30&nbsp;$ par paiement), et l'argent est versé directement dans
+          votre compte bancaire. Camplo s'occupe de l'intégration technique :
+          vous donnez vos identifiants Stripe, on branche le tout.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Confirmation automatique, suivi, rappels</h2>
+        <p>
+          Quand un campeur réserve et paie, tout part automatiquement :
+          courriel de confirmation avec les détails du séjour, instructions
+          d'arrivée, votre numéro de téléphone. Pas de saisie manuelle, pas
+          d'oubli, pas de courriel à 22h après une journée de quinze heures.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Couplé avec votre logiciel de gestion (CRM)</h2>
+        <p>
+          Le site de réservation peut tourner seul, mais il devient
+          redoutable couplé avec le <a class="inline-cta" href="/logiciel-gestion-camping/">logiciel de gestion camping Camplo</a>.
+          Chaque réservation web apparaît instantanément dans votre tableau
+          de bord, avec le nom du client, son emplacement, ses services. Une
+          seule source de vérité, pas de double saisie.
+        </p>
+        <p>
+          <a class="inline-cta" href="/">Voir tous les produits Camplo →</a>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Discutons de votre projet</h2>
+        <p>
+          Chaque camping a sa réalité : nombre d'emplacements, types de
+          services, formules saisonnières, dépôts requis. On adapte le site
+          à votre opération. Premier appel sans engagement, on vous dit
+          honnêtement si Camplo correspond à votre besoin.
+        </p>
+        <div class="cta-row">
+          <a class="pill pill--primary" href="mailto:adamauger872@gmail.com">
+            Écrivez-nous
+          </a>
+          <a class="pill pill--ghost" href="tel:5817480161">
+            581-748-0161
+          </a>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .subpage-header {
+    display: flex;
+    justify-content: flex-start;
+    padding: 28px var(--wrap-pad-x) 0;
+  }
+
+  .subpage-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.78;
+    padding: 8px 14px 8px 10px;
+    border-radius: 9999px;
+    transition: opacity 160ms ease, background-color 160ms ease;
+  }
+  .subpage-back:hover {
+    opacity: 1;
+    background-color: rgba(28, 28, 26, 0.05);
+  }
+
+  .subpage {
+    background: var(--paper);
+    padding: clamp(40px, 6vw, 80px) 0 clamp(60px, 8vw, 120px);
+    min-height: 60vh;
+  }
+
+  .article {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 var(--wrap-pad-x);
+  }
+
+  .eyebrow {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fern);
+    margin-bottom: 18px;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 60px);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    color: var(--ink);
+    margin: 0 0 28px;
+  }
+  .title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+  }
+
+  .lede {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0 0 48px;
+    max-width: 60ch;
+  }
+
+  .section {
+    margin-top: clamp(40px, 5vw, 64px);
+  }
+
+  .section h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(24px, 2.6vw, 32px);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0 0 16px;
+  }
+
+  .section p {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: clamp(15px, 1.05vw, 17px);
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+    max-width: 62ch;
+  }
+
+  .section p strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .features {
+    list-style: none;
+    margin: 18px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .features li {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .features li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px;
+    height: 1px;
+    background: var(--marmalade);
+    transform: translateY(-4px);
+  }
+
+  .inline-cta {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--fern);
+    border-bottom: 1px solid var(--marmalade);
+    padding-bottom: 2px;
+    transition: color 160ms ease;
+  }
+  .inline-cta:hover {
+    color: var(--marmalade);
+  }
+
+  .cta-row {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 22px;
+    border-radius: 9999px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+  }
+  .pill--primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .pill--primary:hover {
+    background: var(--marmalade);
+  }
+  .pill--ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+  }
+  .pill--ghost:hover {
+    background: rgba(28, 28, 26, 0.05);
+  }
+</style>
